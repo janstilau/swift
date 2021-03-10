@@ -1,13 +1,3 @@
-//===--- Heap.cpp - Swift Language Heap Logic -----------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
 //===----------------------------------------------------------------------===//
 //
 // Implementations of the Swift heap
@@ -73,19 +63,21 @@ static_assert(_swift_MinAllocationAlignment > MALLOC_ALIGN_MASK,
 // i.e. 0 < alignment <= _minAllocationAlignment:
 //   The runtime may use either malloc or AlignedAlloc, and the standard library
 //   must deallocate using an identical alignment.
+// 不管怎么说, 就是最终分配的内存空间, 会是对齐后的内存空间.
 void *swift::swift_slowAlloc(size_t size, size_t alignMask) {
-  void *p;
-  // This check also forces "default" alignment to use AlignedAlloc.
-  if (alignMask <= MALLOC_ALIGN_MASK) {
-    p = malloc(size);
-  } else {
-    size_t alignment = (alignMask == ~(size_t(0)))
-                           ? _swift_MinAllocationAlignment
-                           : alignMask + 1;
-    p = AlignedAlloc(size, alignment);
-  }
-  if (!p) swift::crash("Could not allocate memory.");
-  return p;
+    void *p;
+    // This check also forces "default" alignment to use AlignedAlloc.
+    if (alignMask <= MALLOC_ALIGN_MASK) {
+        p = malloc(size);
+    } else {
+        size_t alignment = (alignMask == ~(size_t(0)))
+        ? _swift_MinAllocationAlignment
+        : alignMask + 1;
+        p = AlignedAlloc(size, alignment);
+    }
+    // 如果内存不够, 直接崩溃.
+    if (!p) swift::crash("Could not allocate memory.");
+    return p;
 }
 
 // Unknown alignment is specified by passing alignMask == ~(size_t(0)), forcing
@@ -105,9 +97,9 @@ void *swift::swift_slowAlloc(size_t size, size_t alignMask) {
 //   The runtime may use either `free` or AlignedFree as long as it is
 //   consistent with allocation with the same alignment.
 void swift::swift_slowDealloc(void *ptr, size_t bytes, size_t alignMask) {
-  if (alignMask <= MALLOC_ALIGN_MASK) {
-    free(ptr);
-  } else {
-    AlignedFree(ptr);
-  }
+    if (alignMask <= MALLOC_ALIGN_MASK) {
+        free(ptr);
+    } else {
+        AlignedFree(ptr);
+    }
 }

@@ -128,6 +128,56 @@
 		065F4FF825F86CDF006CAEF2 /* SwiftHashableSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftHashableSupport.h; path = ../../../SwiftHashableSupport.h; sourceTree = "<group>"; };
 		065F4FF925F86CDF006CAEF2 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = ../../../CMakeLists.txt; sourceTree = "<group>"; };
 		065F4FFA25F86CDF006CAEF2 /* ErrorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorObject.h; path = ../../../ErrorObject.h; sourceTree = "<group>"; };
+		065F528925F871C3006CAEF2 /* SwiftStdbool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftStdbool.h; sourceTree = "<group>"; };
+		065F528A25F871C3006CAEF2 /* XPCOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCOverlayShims.h; sourceTree = "<group>"; };
+		065F528B25F871C3006CAEF2 /* NSKeyedArchiverShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSKeyedArchiverShims.h; sourceTree = "<group>"; };
+		065F528C25F871C3006CAEF2 /* ClockKitOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClockKitOverlayShims.h; sourceTree = "<group>"; };
+		065F528D25F871C3006CAEF2 /* NSTimeZoneShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTimeZoneShims.h; sourceTree = "<group>"; };
+		065F528E25F871C3006CAEF2 /* UIKitOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIKitOverlayShims.h; sourceTree = "<group>"; };
+		065F528F25F871C3006CAEF2 /* ObjectiveCOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectiveCOverlayShims.h; sourceTree = "<group>"; };
+		065F529025F871C3006CAEF2 /* CoreMediaOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMediaOverlayShims.h; sourceTree = "<group>"; };
+		065F529125F871C3006CAEF2 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		065F529225F871C3006CAEF2 /* LibcShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibcShims.h; sourceTree = "<group>"; };
+		065F529325F871C3006CAEF2 /* NetworkOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkOverlayShims.h; sourceTree = "<group>"; };
+		065F529425F871C3006CAEF2 /* ThreadLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadLocalStorage.h; sourceTree = "<group>"; };
+		065F529525F871C3006CAEF2 /* NSIndexSetShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSIndexSetShims.h; sourceTree = "<group>"; };
+		065F529625F871C3006CAEF2 /* FoundationShimSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationShimSupport.h; sourceTree = "<group>"; };
+		065F529725F871C3006CAEF2 /* NSIndexPathShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSIndexPathShims.h; sourceTree = "<group>"; };
+		065F529825F871C3006CAEF2 /* SafariServicesOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariServicesOverlayShims.h; sourceTree = "<group>"; };
+		065F529925F871C3006CAEF2 /* LibcOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibcOverlayShims.h; sourceTree = "<group>"; };
+		065F529A25F871C3006CAEF2 /* NSUndoManagerShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSUndoManagerShims.h; sourceTree = "<group>"; };
+		065F529B25F871C3006CAEF2 /* NSCoderShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSCoderShims.h; sourceTree = "<group>"; };
+		065F529C25F871C3006CAEF2 /* NSDictionaryShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDictionaryShims.h; sourceTree = "<group>"; };
+		065F529D25F871C3006CAEF2 /* GlobalObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalObjects.h; sourceTree = "<group>"; };
+		065F529E25F871C3006CAEF2 /* CoreFoundationOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreFoundationOverlayShims.h; sourceTree = "<group>"; };
+		065F529F25F871C3006CAEF2 /* CFCharacterSetShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFCharacterSetShims.h; sourceTree = "<group>"; };
+		065F52A025F871C3006CAEF2 /* SwiftStdint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftStdint.h; sourceTree = "<group>"; };
+		065F52A125F871C3006CAEF2 /* NSErrorShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSErrorShims.h; sourceTree = "<group>"; };
+		065F52A225F871C3006CAEF2 /* FoundationOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationOverlayShims.h; sourceTree = "<group>"; };
+		065F52A325F871C3006CAEF2 /* CFHashingShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFHashingShims.h; sourceTree = "<group>"; };
+		065F52A425F871C3006CAEF2 /* Target.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target.h; sourceTree = "<group>"; };
+		065F52A525F871C3006CAEF2 /* HeapObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeapObject.h; sourceTree = "<group>"; };
+		065F52A625F871C3006CAEF2 /* DispatchOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DispatchOverlayShims.h; sourceTree = "<group>"; };
+		065F52A725F871C3006CAEF2 /* XCTestOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCTestOverlayShims.h; sourceTree = "<group>"; };
+		065F52A825F871C3006CAEF2 /* AssertionReporting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssertionReporting.h; sourceTree = "<group>"; };
+		065F52A925F871C3006CAEF2 /* NSCalendarShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSCalendarShims.h; sourceTree = "<group>"; };
+		065F52AA25F871C3006CAEF2 /* RuntimeStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuntimeStubs.h; sourceTree = "<group>"; };
+		065F52AB25F871C3006CAEF2 /* RuntimeShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuntimeShims.h; sourceTree = "<group>"; };
+		065F52AC25F871C3006CAEF2 /* System.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
+		065F52AD25F871C3006CAEF2 /* RefCount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefCount.h; sourceTree = "<group>"; };
+		065F52AE25F871C3006CAEF2 /* UnicodeShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnicodeShims.h; sourceTree = "<group>"; };
+		065F52AF25F871C3006CAEF2 /* KeyPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyPath.h; sourceTree = "<group>"; };
+		065F52B025F871C3006CAEF2 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		065F52B125F871C3006CAEF2 /* NSCharacterSetShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSCharacterSetShims.h; sourceTree = "<group>"; };
+		065F52B225F871C3006CAEF2 /* NSDataShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDataShims.h; sourceTree = "<group>"; };
+		065F52B325F871C3006CAEF2 /* Visibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Visibility.h; sourceTree = "<group>"; };
+		065F52B425F871C3006CAEF2 /* SwiftStddef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftStddef.h; sourceTree = "<group>"; };
+		065F52B525F871C3006CAEF2 /* FoundationShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationShims.h; sourceTree = "<group>"; };
+		065F52B625F871C3006CAEF2 /* NSLocaleShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLocaleShims.h; sourceTree = "<group>"; };
+		065F52B725F871C3006CAEF2 /* CoreFoundationShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreFoundationShims.h; sourceTree = "<group>"; };
+		065F52B825F871C3006CAEF2 /* NSFileManagerShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSFileManagerShims.h; sourceTree = "<group>"; };
+		065F52B925F871C3006CAEF2 /* OSOverlayShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSOverlayShims.h; sourceTree = "<group>"; };
+		065F52BA25F871C3006CAEF2 /* Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +210,7 @@
 		065F4FB325F86CC5006CAEF2 /* SwiftRuntime */ = {
 			isa = PBXGroup;
 			children = (
+				065F528825F871C3006CAEF2 /* SwiftShims */,
 				065F4FBC25F86CCA006CAEF2 /* Src */,
 				065F4FB425F86CC5006CAEF2 /* main.cpp */,
 			);
@@ -233,6 +284,64 @@
 				065F4FD825F86CDE006CAEF2 /* WeakReference.h */,
 			);
 			path = Src;
+			sourceTree = "<group>";
+		};
+		065F528825F871C3006CAEF2 /* SwiftShims */ = {
+			isa = PBXGroup;
+			children = (
+				065F52A825F871C3006CAEF2 /* AssertionReporting.h */,
+				065F529F25F871C3006CAEF2 /* CFCharacterSetShims.h */,
+				065F52A325F871C3006CAEF2 /* CFHashingShims.h */,
+				065F528C25F871C3006CAEF2 /* ClockKitOverlayShims.h */,
+				065F529125F871C3006CAEF2 /* CMakeLists.txt */,
+				065F529E25F871C3006CAEF2 /* CoreFoundationOverlayShims.h */,
+				065F52B725F871C3006CAEF2 /* CoreFoundationShims.h */,
+				065F529025F871C3006CAEF2 /* CoreMediaOverlayShims.h */,
+				065F52A625F871C3006CAEF2 /* DispatchOverlayShims.h */,
+				065F52A225F871C3006CAEF2 /* FoundationOverlayShims.h */,
+				065F52B525F871C3006CAEF2 /* FoundationShims.h */,
+				065F529625F871C3006CAEF2 /* FoundationShimSupport.h */,
+				065F529D25F871C3006CAEF2 /* GlobalObjects.h */,
+				065F52A525F871C3006CAEF2 /* HeapObject.h */,
+				065F52AF25F871C3006CAEF2 /* KeyPath.h */,
+				065F529925F871C3006CAEF2 /* LibcOverlayShims.h */,
+				065F529225F871C3006CAEF2 /* LibcShims.h */,
+				065F52B025F871C3006CAEF2 /* module.modulemap */,
+				065F529325F871C3006CAEF2 /* NetworkOverlayShims.h */,
+				065F52A925F871C3006CAEF2 /* NSCalendarShims.h */,
+				065F52B125F871C3006CAEF2 /* NSCharacterSetShims.h */,
+				065F529B25F871C3006CAEF2 /* NSCoderShims.h */,
+				065F52B225F871C3006CAEF2 /* NSDataShims.h */,
+				065F529C25F871C3006CAEF2 /* NSDictionaryShims.h */,
+				065F52A125F871C3006CAEF2 /* NSErrorShims.h */,
+				065F52B825F871C3006CAEF2 /* NSFileManagerShims.h */,
+				065F529725F871C3006CAEF2 /* NSIndexPathShims.h */,
+				065F529525F871C3006CAEF2 /* NSIndexSetShims.h */,
+				065F528B25F871C3006CAEF2 /* NSKeyedArchiverShims.h */,
+				065F52B625F871C3006CAEF2 /* NSLocaleShims.h */,
+				065F528D25F871C3006CAEF2 /* NSTimeZoneShims.h */,
+				065F529A25F871C3006CAEF2 /* NSUndoManagerShims.h */,
+				065F528F25F871C3006CAEF2 /* ObjectiveCOverlayShims.h */,
+				065F52B925F871C3006CAEF2 /* OSOverlayShims.h */,
+				065F52BA25F871C3006CAEF2 /* Random.h */,
+				065F52AD25F871C3006CAEF2 /* RefCount.h */,
+				065F52AB25F871C3006CAEF2 /* RuntimeShims.h */,
+				065F52AA25F871C3006CAEF2 /* RuntimeStubs.h */,
+				065F529825F871C3006CAEF2 /* SafariServicesOverlayShims.h */,
+				065F528925F871C3006CAEF2 /* SwiftStdbool.h */,
+				065F52B425F871C3006CAEF2 /* SwiftStddef.h */,
+				065F52A025F871C3006CAEF2 /* SwiftStdint.h */,
+				065F52AC25F871C3006CAEF2 /* System.h */,
+				065F52A425F871C3006CAEF2 /* Target.h */,
+				065F529425F871C3006CAEF2 /* ThreadLocalStorage.h */,
+				065F528E25F871C3006CAEF2 /* UIKitOverlayShims.h */,
+				065F52AE25F871C3006CAEF2 /* UnicodeShims.h */,
+				065F52B325F871C3006CAEF2 /* Visibility.h */,
+				065F52A725F871C3006CAEF2 /* XCTestOverlayShims.h */,
+				065F528A25F871C3006CAEF2 /* XPCOverlayShims.h */,
+			);
+			name = SwiftShims;
+			path = ../../../SwiftShims;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

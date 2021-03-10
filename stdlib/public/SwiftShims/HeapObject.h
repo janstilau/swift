@@ -1,14 +1,3 @@
-//===--- HeapObject.h -------------------------------------------*- C++ -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
 #ifndef SWIFT_STDLIB_SHIMS_HEAPOBJECT_H
 #define SWIFT_STDLIB_SHIMS_HEAPOBJECT_H
 
@@ -28,6 +17,8 @@ namespace swift {
 
 struct InProcess;
 
+// 这里, 应该是模板的前置声明, 真正的模板定义不在这里.
+// 不过可以看出, MetaData 是一个模板类, 是随着类型变化的.
 template <typename Target> struct TargetHeapMetadata;
 using HeapMetadata = TargetHeapMetadata<InProcess>;
 #else
@@ -38,36 +29,32 @@ typedef struct HeapObject HeapObject;
 // The members of the HeapObject header that are not shared by a
 // standard Objective-C instance
 #define SWIFT_HEAPOBJECT_NON_OBJC_MEMBERS       \
-  InlineRefCounts refCounts
+InlineRefCounts refCounts
 
-/// The Swift heap-object header.
-/// This must match RefCountedStructTy in IRGen.
+// 对于 Swift 来说, 堆空间的对象, 一定是, 有着元信息指针, 有着引用计数的.
 struct HeapObject {
-  /// This is always a valid pointer to a metadata object.
-  HeapMetadata const *metadata;
-
-  SWIFT_HEAPOBJECT_NON_OBJC_MEMBERS;
-
+    /// This is always a valid pointer to a metadata object.
+    HeapMetadata const *metadata;
+    InlineRefCounts refCounts
+    
+    
 #ifndef __swift__
-  HeapObject() = default;
-
-  // Initialize a HeapObject header as appropriate for a newly-allocated object.
-  constexpr HeapObject(HeapMetadata const *newMetadata) 
+    HeapObject() = default;
+    
+    // Initialize a HeapObject header as appropriate for a newly-allocated object.
+    // 根据 metadata 的值, 创建一个新的对象.
+    constexpr HeapObject(HeapMetadata const *newMetadata)
     : metadata(newMetadata)
     , refCounts(InlineRefCounts::Initialized)
-  { }
-  
-  // Initialize a HeapObject header for an immortal object
-  constexpr HeapObject(HeapMetadata const *newMetadata,
-                       InlineRefCounts::Immortal_t immortal)
-  : metadata(newMetadata)
-  , refCounts(InlineRefCounts::Immortal)
-  { }
-
-#ifndef NDEBUG
-  void dump() const LLVM_ATTRIBUTE_USED;
-#endif
-
+    { }
+    
+    // Initialize a HeapObject header for an immortal object
+    // 根据 metadata 的值, 创建一个不会消亡的对象.
+    constexpr HeapObject(HeapMetadata const *newMetadata,
+                         InlineRefCounts::Immortal_t immortal)
+    : metadata(newMetadata)
+    , refCounts(InlineRefCounts::Immortal)
+    { }
 #endif // __swift__
 };
 
@@ -116,99 +103,99 @@ static_assert(alignof(HeapObject) == alignof(void*),
 
 #ifdef __APPLE__
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DARWIN_X86_64_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DARWIN_X86_64_LEAST_VALID_POINTER
 #else
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
 #endif
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_X86_64_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_X86_64_SWIFT_SPARE_BITS_MASK
 #if SWIFT_TARGET_OS_SIMULATOR
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_X86_64_SIMULATOR_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_X86_64_SIMULATOR_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_X86_64_SIMULATOR_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_X86_64_SIMULATOR_OBJC_NUM_RESERVED_LOW_BITS
 #else
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_X86_64_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_X86_64_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_X86_64_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_X86_64_OBJC_NUM_RESERVED_LOW_BITS
 #endif
 
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
 
 #elif defined(__arm64__) || defined(__aarch64__) || defined(_M_ARM64)
 
 #ifdef __APPLE__
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DARWIN_ARM64_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DARWIN_ARM64_LEAST_VALID_POINTER
 #else
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
 #endif
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_ARM64_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_ARM64_SWIFT_SPARE_BITS_MASK
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_ARM64_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_ARM64_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_ARM64_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_ARM64_OBJC_NUM_RESERVED_LOW_BITS
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
 
 #elif defined(__powerpc64__)
 
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_POWERPC64_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_POWERPC64_SWIFT_SPARE_BITS_MASK
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_DEFAULT_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_DEFAULT_OBJC_NUM_RESERVED_LOW_BITS
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
 
 #elif defined(__s390x__)
 
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_S390X_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_S390X_SWIFT_SPARE_BITS_MASK
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_S390X_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_S390X_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_S390X_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_S390X_OBJC_NUM_RESERVED_LOW_BITS
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
 
 #else
 
 #define _swift_abi_LeastValidPointerValue                                      \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_LEAST_VALID_POINTER
 
 #if defined(__i386__)
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_I386_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_I386_SWIFT_SPARE_BITS_MASK
 #elif defined(__arm__) || defined(_M_ARM)
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_ARM_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_ARM_SWIFT_SPARE_BITS_MASK
 #else
 #define _swift_abi_SwiftSpareBitsMask                                          \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_SWIFT_SPARE_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_SWIFT_SPARE_BITS_MASK
 #endif
 
 #define _swift_abi_ObjCReservedBitsMask                                        \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_OBJC_RESERVED_BITS_MASK
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_OBJC_RESERVED_BITS_MASK
 #define _swift_abi_ObjCReservedLowBits                                         \
-  (unsigned) SWIFT_ABI_DEFAULT_OBJC_NUM_RESERVED_LOW_BITS
+(unsigned) SWIFT_ABI_DEFAULT_OBJC_NUM_RESERVED_LOW_BITS
 
 #if __POINTER_WIDTH__ == 64
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_64
 #else
 #define _swift_BridgeObject_TaggedPointerBits                                  \
-  (__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_32
+(__swift_uintptr_t) SWIFT_ABI_DEFAULT_BRIDGEOBJECT_TAG_32
 #endif
 
 #endif
@@ -217,15 +204,15 @@ static_assert(alignof(HeapObject) == alignof(void*),
 #ifdef __cplusplus
 namespace heap_object_abi {
 static const __swift_uintptr_t LeastValidPointerValue =
-    _swift_abi_LeastValidPointerValue;
+_swift_abi_LeastValidPointerValue;
 static const __swift_uintptr_t SwiftSpareBitsMask =
-    _swift_abi_SwiftSpareBitsMask;
+_swift_abi_SwiftSpareBitsMask;
 static const __swift_uintptr_t ObjCReservedBitsMask =
-    _swift_abi_ObjCReservedBitsMask;
+_swift_abi_ObjCReservedBitsMask;
 static const unsigned ObjCReservedLowBits =
-    _swift_abi_ObjCReservedLowBits;
+_swift_abi_ObjCReservedLowBits;
 static const __swift_uintptr_t BridgeObjectTagBitsMask =
-    _swift_BridgeObject_TaggedPointerBits;
+_swift_BridgeObject_TaggedPointerBits;
 } // heap_object_abi
 #endif // __cplusplus
 

@@ -67,318 +67,318 @@ namespace swift {
 //  * concurrent writes other than zeroing
 
 class WeakReferenceBits {
-  // On ObjC platforms, a weak variable may be controlled by the ObjC
-  // runtime or by the Swift runtime. NativeMarkerMask and NativeMarkerValue
-  // are used to distinguish them.
-  //   if ((ptr & NativeMarkerMask) == NativeMarkerValue) it's Swift
-  //   else it's ObjC
-  // NativeMarkerMask incorporates the ObjC tagged pointer bits
-  // plus one more bit that is set in Swift-controlled weak pointer values.
-  // Non-ObjC platforms don't use any markers.
-  enum : uintptr_t {
+    // On ObjC platforms, a weak variable may be controlled by the ObjC
+    // runtime or by the Swift runtime. NativeMarkerMask and NativeMarkerValue
+    // are used to distinguish them.
+    //   if ((ptr & NativeMarkerMask) == NativeMarkerValue) it's Swift
+    //   else it's ObjC
+    // NativeMarkerMask incorporates the ObjC tagged pointer bits
+    // plus one more bit that is set in Swift-controlled weak pointer values.
+    // Non-ObjC platforms don't use any markers.
+    enum : uintptr_t {
 #if !SWIFT_OBJC_INTEROP
-    NativeMarkerMask  = 0,
-    NativeMarkerValue = 0
+        NativeMarkerMask  = 0,
+        NativeMarkerValue = 0
 #elif defined(__x86_64__) && SWIFT_TARGET_OS_SIMULATOR
-    NativeMarkerMask  = SWIFT_ABI_X86_64_SIMULATOR_OBJC_WEAK_REFERENCE_MARKER_MASK,
-    NativeMarkerValue = SWIFT_ABI_X86_64_SIMULATOR_OBJC_WEAK_REFERENCE_MARKER_VALUE
+        NativeMarkerMask  = SWIFT_ABI_X86_64_SIMULATOR_OBJC_WEAK_REFERENCE_MARKER_MASK,
+        NativeMarkerValue = SWIFT_ABI_X86_64_SIMULATOR_OBJC_WEAK_REFERENCE_MARKER_VALUE
 #elif defined(__x86_64__)
-    NativeMarkerMask  = SWIFT_ABI_X86_64_OBJC_WEAK_REFERENCE_MARKER_MASK,
-    NativeMarkerValue = SWIFT_ABI_X86_64_OBJC_WEAK_REFERENCE_MARKER_VALUE
+        NativeMarkerMask  = SWIFT_ABI_X86_64_OBJC_WEAK_REFERENCE_MARKER_MASK,
+        NativeMarkerValue = SWIFT_ABI_X86_64_OBJC_WEAK_REFERENCE_MARKER_VALUE
 #elif defined(__i386__)
-    NativeMarkerMask  = SWIFT_ABI_I386_OBJC_WEAK_REFERENCE_MARKER_MASK,
-    NativeMarkerValue = SWIFT_ABI_I386_OBJC_WEAK_REFERENCE_MARKER_VALUE
+        NativeMarkerMask  = SWIFT_ABI_I386_OBJC_WEAK_REFERENCE_MARKER_MASK,
+        NativeMarkerValue = SWIFT_ABI_I386_OBJC_WEAK_REFERENCE_MARKER_VALUE
 #elif defined(__arm__) || defined(_M_ARM)
-    NativeMarkerMask  = SWIFT_ABI_ARM_OBJC_WEAK_REFERENCE_MARKER_MASK,
-    NativeMarkerValue = SWIFT_ABI_ARM_OBJC_WEAK_REFERENCE_MARKER_VALUE
+        NativeMarkerMask  = SWIFT_ABI_ARM_OBJC_WEAK_REFERENCE_MARKER_MASK,
+        NativeMarkerValue = SWIFT_ABI_ARM_OBJC_WEAK_REFERENCE_MARKER_VALUE
 #elif defined(__arm64__) || defined(__aarch64__) || defined(_M_ARM64)
-    NativeMarkerMask  = SWIFT_ABI_ARM64_OBJC_WEAK_REFERENCE_MARKER_MASK,
-    NativeMarkerValue = SWIFT_ABI_ARM64_OBJC_WEAK_REFERENCE_MARKER_VALUE
+        NativeMarkerMask  = SWIFT_ABI_ARM64_OBJC_WEAK_REFERENCE_MARKER_MASK,
+        NativeMarkerValue = SWIFT_ABI_ARM64_OBJC_WEAK_REFERENCE_MARKER_VALUE
 #else
-    #error unknown architecture
+#error unknown architecture
 #endif
-  };
-
-  static_assert((NativeMarkerMask & NativeMarkerValue) == NativeMarkerValue,
-                "native marker value must fall within native marker mask");
-  static_assert((NativeMarkerMask & heap_object_abi::SwiftSpareBitsMask)
-                == NativeMarkerMask,
-                "native marker mask must fall within Swift spare bits");
-#if SWIFT_OBJC_INTEROP
-  static_assert((NativeMarkerMask & heap_object_abi::ObjCReservedBitsMask)
-                == heap_object_abi::ObjCReservedBitsMask,
-                "native marker mask must contain all ObjC tagged pointer bits");
-  static_assert((NativeMarkerValue & heap_object_abi::ObjCReservedBitsMask)
-                == 0,
-                "native marker value must not interfere with ObjC bits");
-#endif
-
-  uintptr_t bits;
-
- public:
-  LLVM_ATTRIBUTE_ALWAYS_INLINE
-  WeakReferenceBits() { }
-
-  LLVM_ATTRIBUTE_ALWAYS_INLINE
-  WeakReferenceBits(HeapObjectSideTableEntry *newValue) {
-    setNativeOrNull(newValue);
-  }
-
-  LLVM_ATTRIBUTE_ALWAYS_INLINE
-  bool isNativeOrNull() const {
-    return bits == 0  ||  (bits & NativeMarkerMask) == NativeMarkerValue;
-  }
+    };
     
-  LLVM_ATTRIBUTE_ALWAYS_INLINE
-  HeapObjectSideTableEntry *getNativeOrNull() const {
-    assert(isNativeOrNull());
-    if (bits == 0)
-      return nullptr;
-    else
-      return
-        reinterpret_cast<HeapObjectSideTableEntry *>(bits & ~NativeMarkerMask);
-  }
-  
-  LLVM_ATTRIBUTE_ALWAYS_INLINE
-  void setNativeOrNull(HeapObjectSideTableEntry *newValue) {
-    assert((uintptr_t(newValue) & NativeMarkerMask) == 0);
-    if (newValue)
-      bits = uintptr_t(newValue) | NativeMarkerValue;
-    else
-      bits = 0;
-  }
+    static_assert((NativeMarkerMask & NativeMarkerValue) == NativeMarkerValue,
+                  "native marker value must fall within native marker mask");
+    static_assert((NativeMarkerMask & heap_object_abi::SwiftSpareBitsMask)
+                  == NativeMarkerMask,
+                  "native marker mask must fall within Swift spare bits");
+#if SWIFT_OBJC_INTEROP
+    static_assert((NativeMarkerMask & heap_object_abi::ObjCReservedBitsMask)
+                  == heap_object_abi::ObjCReservedBitsMask,
+                  "native marker mask must contain all ObjC tagged pointer bits");
+    static_assert((NativeMarkerValue & heap_object_abi::ObjCReservedBitsMask)
+                  == 0,
+                  "native marker value must not interfere with ObjC bits");
+#endif
+    
+    uintptr_t bits;
+    
+public:
+    LLVM_ATTRIBUTE_ALWAYS_INLINE
+    WeakReferenceBits() { }
+    
+    LLVM_ATTRIBUTE_ALWAYS_INLINE
+    WeakReferenceBits(HeapObjectSideTableEntry *newValue) {
+        setNativeOrNull(newValue);
+    }
+    
+    LLVM_ATTRIBUTE_ALWAYS_INLINE
+    bool isNativeOrNull() const {
+        return bits == 0  ||  (bits & NativeMarkerMask) == NativeMarkerValue;
+    }
+    
+    LLVM_ATTRIBUTE_ALWAYS_INLINE
+    HeapObjectSideTableEntry *getNativeOrNull() const {
+        assert(isNativeOrNull());
+        if (bits == 0)
+            return nullptr;
+        else
+            return
+            reinterpret_cast<HeapObjectSideTableEntry *>(bits & ~NativeMarkerMask);
+    }
+    
+    LLVM_ATTRIBUTE_ALWAYS_INLINE
+    void setNativeOrNull(HeapObjectSideTableEntry *newValue) {
+        assert((uintptr_t(newValue) & NativeMarkerMask) == 0);
+        if (newValue)
+            bits = uintptr_t(newValue) | NativeMarkerValue;
+        else
+            bits = 0;
+    }
 };
 
 
 class WeakReference {
-  union {
-    std::atomic<WeakReferenceBits> nativeValue;
+    union {
+        std::atomic<WeakReferenceBits> nativeValue;
 #if SWIFT_OBJC_INTEROP
-    id nonnativeValue;
+        id nonnativeValue;
 #endif
-  };
-
-  void destroyOldNativeBits(WeakReferenceBits oldBits) {
-    auto oldSide = oldBits.getNativeOrNull();
-    if (oldSide)
-      oldSide->decrementWeak();
-  }
-  
-  HeapObject *nativeLoadStrongFromBits(WeakReferenceBits bits) {
-    auto side = bits.getNativeOrNull();
-    return side ? side->tryRetain() : nullptr;
-  }
-  
-  HeapObject *nativeTakeStrongFromBits(WeakReferenceBits bits) {
-    auto side = bits.getNativeOrNull();
-    if (side) {
-      side->decrementWeak();
-      return side->tryRetain();
-    } else {
-      return nullptr;
+    };
+    
+    void destroyOldNativeBits(WeakReferenceBits oldBits) {
+        auto oldSide = oldBits.getNativeOrNull();
+        if (oldSide)
+            oldSide->decrementWeak();
     }
-  }
-  
-  void nativeCopyInitFromBits(WeakReferenceBits srcBits) {
-    auto side = srcBits.getNativeOrNull();
-    if (side)
-      side = side->incrementWeak();
-
-    nativeValue.store(WeakReferenceBits(side), std::memory_order_relaxed);
-  }
-
- public:
-  
-  WeakReference() : nativeValue() {}
-
-  WeakReference(std::nullptr_t)
+    
+    HeapObject *nativeLoadStrongFromBits(WeakReferenceBits bits) {
+        auto side = bits.getNativeOrNull();
+        return side ? side->tryRetain() : nullptr;
+    }
+    
+    HeapObject *nativeTakeStrongFromBits(WeakReferenceBits bits) {
+        auto side = bits.getNativeOrNull();
+        if (side) {
+            side->decrementWeak();
+            return side->tryRetain();
+        } else {
+            return nullptr;
+        }
+    }
+    
+    void nativeCopyInitFromBits(WeakReferenceBits srcBits) {
+        auto side = srcBits.getNativeOrNull();
+        if (side)
+            side = side->incrementWeak();
+        
+        nativeValue.store(WeakReferenceBits(side), std::memory_order_relaxed);
+    }
+    
+public:
+    
+    WeakReference() : nativeValue() {}
+    
+    WeakReference(std::nullptr_t)
     : nativeValue(WeakReferenceBits(nullptr)) { }
-
-  WeakReference(const WeakReference& rhs) = delete;
-
-
-  void nativeInit(HeapObject *object) {
-    auto side = object ? object->refCounts.formWeakReference() : nullptr;
-    nativeValue.store(WeakReferenceBits(side), std::memory_order_relaxed);
-  }
-  
-  void nativeDestroy() {
-    auto oldBits = nativeValue.load(std::memory_order_relaxed);
-    nativeValue.store(nullptr, std::memory_order_relaxed);
-    destroyOldNativeBits(oldBits);
-  }
-
-  void nativeAssign(HeapObject *newObject) {
-    if (newObject) {
-      assert(objectUsesNativeSwiftReferenceCounting(newObject) &&
-             "weak assign native with non-native new object");
+    
+    WeakReference(const WeakReference& rhs) = delete;
+    
+    
+    void nativeInit(HeapObject *object) {
+        auto side = object ? object->refCounts.formWeakReference() : nullptr;
+        nativeValue.store(WeakReferenceBits(side), std::memory_order_relaxed);
     }
     
-    auto newSide =
-      newObject ? newObject->refCounts.formWeakReference() : nullptr;
-    auto newBits = WeakReferenceBits(newSide);
-
-    auto oldBits = nativeValue.load(std::memory_order_relaxed);
-    nativeValue.store(newBits, std::memory_order_relaxed);
-
-    assert(oldBits.isNativeOrNull() &&
-           "weak assign native with non-native old object");
-    destroyOldNativeBits(oldBits);
-  }
-
-  HeapObject *nativeLoadStrong() {
-    auto bits = nativeValue.load(std::memory_order_relaxed);
-    return nativeLoadStrongFromBits(bits);
-  }
-
-  HeapObject *nativeTakeStrong() {
-    auto bits = nativeValue.load(std::memory_order_relaxed);
-    nativeValue.store(nullptr, std::memory_order_relaxed);
-    return nativeTakeStrongFromBits(bits);
-  }
-
-  void nativeCopyInit(WeakReference *src) {
-    auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
-    return nativeCopyInitFromBits(srcBits);
-  }
-
-  void nativeTakeInit(WeakReference *src) {
-    auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
-    assert(srcBits.isNativeOrNull());
-    src->nativeValue.store(nullptr, std::memory_order_relaxed);
-    nativeValue.store(srcBits, std::memory_order_relaxed);
-  }
-
-  void nativeCopyAssign(WeakReference *src) {
-    if (this == src) return;
-    nativeDestroy();
-    nativeCopyInit(src);
-  }
-
-  void nativeTakeAssign(WeakReference *src) {
-    if (this == src) return;
-    nativeDestroy();
-    nativeTakeInit(src);
-  }
-
+    void nativeDestroy() {
+        auto oldBits = nativeValue.load(std::memory_order_relaxed);
+        nativeValue.store(nullptr, std::memory_order_relaxed);
+        destroyOldNativeBits(oldBits);
+    }
+    
+    void nativeAssign(HeapObject *newObject) {
+        if (newObject) {
+            assert(objectUsesNativeSwiftReferenceCounting(newObject) &&
+                   "weak assign native with non-native new object");
+        }
+        
+        auto newSide =
+        newObject ? newObject->refCounts.formWeakReference() : nullptr;
+        auto newBits = WeakReferenceBits(newSide);
+        
+        auto oldBits = nativeValue.load(std::memory_order_relaxed);
+        nativeValue.store(newBits, std::memory_order_relaxed);
+        
+        assert(oldBits.isNativeOrNull() &&
+               "weak assign native with non-native old object");
+        destroyOldNativeBits(oldBits);
+    }
+    
+    HeapObject *nativeLoadStrong() {
+        auto bits = nativeValue.load(std::memory_order_relaxed);
+        return nativeLoadStrongFromBits(bits);
+    }
+    
+    HeapObject *nativeTakeStrong() {
+        auto bits = nativeValue.load(std::memory_order_relaxed);
+        nativeValue.store(nullptr, std::memory_order_relaxed);
+        return nativeTakeStrongFromBits(bits);
+    }
+    
+    void nativeCopyInit(WeakReference *src) {
+        auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
+        return nativeCopyInitFromBits(srcBits);
+    }
+    
+    void nativeTakeInit(WeakReference *src) {
+        auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
+        assert(srcBits.isNativeOrNull());
+        src->nativeValue.store(nullptr, std::memory_order_relaxed);
+        nativeValue.store(srcBits, std::memory_order_relaxed);
+    }
+    
+    void nativeCopyAssign(WeakReference *src) {
+        if (this == src) return;
+        nativeDestroy();
+        nativeCopyInit(src);
+    }
+    
+    void nativeTakeAssign(WeakReference *src) {
+        if (this == src) return;
+        nativeDestroy();
+        nativeTakeInit(src);
+    }
+    
 #if SWIFT_OBJC_INTEROP
- private:
-  void nonnativeInit(id object) {
-    objc_initWeak(&nonnativeValue, object);
-  }
-
-  void initWithNativeness(void *object, bool isNative) {
-    if (isNative)
-      nativeInit(static_cast<HeapObject *>(object));
-    else
-      nonnativeInit(static_cast<id>(object));
-  }
-
-  void nonnativeDestroy() {
-    objc_destroyWeak(&nonnativeValue);
-  }
-  
-  void destroyWithNativeness(bool isNative) {
-    if (isNative)
-      nativeDestroy();
-    else
-      nonnativeDestroy();
-  }
-
- public:
-  
-  void unknownInit(void *object) {
-    if (isObjCTaggedPointerOrNull(object)) {
-      nonnativeValue = static_cast<id>(object);
-    } else {
-      bool isNative = objectUsesNativeSwiftReferenceCounting(object);
-      initWithNativeness(object, isNative);
+private:
+    void nonnativeInit(id object) {
+        objc_initWeak(&nonnativeValue, object);
     }
-  }
-
-  void unknownDestroy() {
-    auto oldBits = nativeValue.load(std::memory_order_relaxed);
-    destroyWithNativeness(oldBits.isNativeOrNull());
-  }
-
-  void unknownAssign(void *newObject) {
-    // If the new value is not allocated, simply destroy any old value.
-    if (isObjCTaggedPointerOrNull(newObject)) {
-      unknownDestroy();
-      nonnativeValue = static_cast<id>(newObject);
-      return;
-    }
-
-    bool newIsNative = objectUsesNativeSwiftReferenceCounting(newObject);
     
-    auto oldBits = nativeValue.load(std::memory_order_relaxed);
-    bool oldIsNative = oldBits.isNativeOrNull();
-
-    // If they're both native, use the native function.
-    if (oldIsNative && newIsNative)
-      return nativeAssign(static_cast<HeapObject *>(newObject));
-
-    // If neither is native, use ObjC.
-    if (!oldIsNative && !newIsNative)
-      return (void) objc_storeWeak(&nonnativeValue, static_cast<id>(newObject));
-
-    // They don't match. Destroy and re-initialize.
-    destroyWithNativeness(oldIsNative);
-    initWithNativeness(newObject, newIsNative);
-  }
-
-  void *unknownLoadStrong() {
-    auto bits = nativeValue.load(std::memory_order_relaxed);
-    if (bits.isNativeOrNull())
-      return nativeLoadStrongFromBits(bits);
-    else
-      return objc_loadWeakRetained(&nonnativeValue);
-  }
-
-  void *unknownTakeStrong() {
-    auto bits = nativeValue.load(std::memory_order_relaxed);
-    if (bits.isNativeOrNull()) {
-      nativeValue.store(nullptr, std::memory_order_relaxed);
-      return nativeTakeStrongFromBits(bits);
+    void initWithNativeness(void *object, bool isNative) {
+        if (isNative)
+            nativeInit(static_cast<HeapObject *>(object));
+        else
+            nonnativeInit(static_cast<id>(object));
     }
-    else {
-      id result = objc_loadWeakRetained(&nonnativeValue);
-      objc_destroyWeak(&nonnativeValue);
-      return result;
+    
+    void nonnativeDestroy() {
+        objc_destroyWeak(&nonnativeValue);
     }
-  }
-
-  void unknownCopyInit(WeakReference *src) {
-    auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
-    if (srcBits.isNativeOrNull())
-      nativeCopyInitFromBits(srcBits);
-    else
-      objc_copyWeak(&nonnativeValue, &src->nonnativeValue);
-  }
-
-  void unknownTakeInit(WeakReference *src) {
-    auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
-    if (srcBits.isNativeOrNull())
-      nativeTakeInit(src);
-    else
-      objc_moveWeak(&nonnativeValue, &src->nonnativeValue);
-  }
-
-  void unknownCopyAssign(WeakReference *src) {
-    if (this == src) return;
-    unknownDestroy();
-    unknownCopyInit(src);
-  }
-
-  void unknownTakeAssign(WeakReference *src) {
-    if (this == src) return;
-    unknownDestroy();
-    unknownTakeInit(src);
-  }
-
-// SWIFT_OBJC_INTEROP
+    
+    void destroyWithNativeness(bool isNative) {
+        if (isNative)
+            nativeDestroy();
+        else
+            nonnativeDestroy();
+    }
+    
+public:
+    
+    void unknownInit(void *object) {
+        if (isObjCTaggedPointerOrNull(object)) {
+            nonnativeValue = static_cast<id>(object);
+        } else {
+            bool isNative = objectUsesNativeSwiftReferenceCounting(object);
+            initWithNativeness(object, isNative);
+        }
+    }
+    
+    void unknownDestroy() {
+        auto oldBits = nativeValue.load(std::memory_order_relaxed);
+        destroyWithNativeness(oldBits.isNativeOrNull());
+    }
+    
+    void unknownAssign(void *newObject) {
+        // If the new value is not allocated, simply destroy any old value.
+        if (isObjCTaggedPointerOrNull(newObject)) {
+            unknownDestroy();
+            nonnativeValue = static_cast<id>(newObject);
+            return;
+        }
+        
+        bool newIsNative = objectUsesNativeSwiftReferenceCounting(newObject);
+        
+        auto oldBits = nativeValue.load(std::memory_order_relaxed);
+        bool oldIsNative = oldBits.isNativeOrNull();
+        
+        // If they're both native, use the native function.
+        if (oldIsNative && newIsNative)
+            return nativeAssign(static_cast<HeapObject *>(newObject));
+        
+        // If neither is native, use ObjC.
+        if (!oldIsNative && !newIsNative)
+            return (void) objc_storeWeak(&nonnativeValue, static_cast<id>(newObject));
+        
+        // They don't match. Destroy and re-initialize.
+        destroyWithNativeness(oldIsNative);
+        initWithNativeness(newObject, newIsNative);
+    }
+    
+    void *unknownLoadStrong() {
+        auto bits = nativeValue.load(std::memory_order_relaxed);
+        if (bits.isNativeOrNull())
+            return nativeLoadStrongFromBits(bits);
+        else
+            return objc_loadWeakRetained(&nonnativeValue);
+    }
+    
+    void *unknownTakeStrong() {
+        auto bits = nativeValue.load(std::memory_order_relaxed);
+        if (bits.isNativeOrNull()) {
+            nativeValue.store(nullptr, std::memory_order_relaxed);
+            return nativeTakeStrongFromBits(bits);
+        }
+        else {
+            id result = objc_loadWeakRetained(&nonnativeValue);
+            objc_destroyWeak(&nonnativeValue);
+            return result;
+        }
+    }
+    
+    void unknownCopyInit(WeakReference *src) {
+        auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
+        if (srcBits.isNativeOrNull())
+            nativeCopyInitFromBits(srcBits);
+        else
+            objc_copyWeak(&nonnativeValue, &src->nonnativeValue);
+    }
+    
+    void unknownTakeInit(WeakReference *src) {
+        auto srcBits = src->nativeValue.load(std::memory_order_relaxed);
+        if (srcBits.isNativeOrNull())
+            nativeTakeInit(src);
+        else
+            objc_moveWeak(&nonnativeValue, &src->nonnativeValue);
+    }
+    
+    void unknownCopyAssign(WeakReference *src) {
+        if (this == src) return;
+        unknownDestroy();
+        unknownCopyInit(src);
+    }
+    
+    void unknownTakeAssign(WeakReference *src) {
+        if (this == src) return;
+        unknownDestroy();
+        unknownTakeInit(src);
+    }
+    
+    // SWIFT_OBJC_INTEROP
 #endif
-
+    
 };
 
 static_assert(sizeof(WeakReference) == sizeof(void*),
