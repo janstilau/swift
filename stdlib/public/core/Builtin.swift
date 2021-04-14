@@ -661,8 +661,7 @@ func _getSuperclass(_ t: Any.Type) -> AnyClass? {
 // will attempt to generate generic code for the transparent function
 // and type checking will fail.
 
-/// Returns `true` if `object` is uniquely referenced.
-@usableFromInline @_transparent
+// 最终, 还是调用到了 Builtin.isUnique 里面.
 internal func _isUnique<T>(_ object: inout T) -> Bool {
   return Bool(Builtin.isUnique(&object))
 }

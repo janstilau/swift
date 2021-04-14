@@ -489,14 +489,11 @@ extension ManagedBufferPointer: Equatable {
   }
 }
 
-// FIXME: when our calling convention changes to pass self at +0,
-// inout should be dropped from the arguments to these functions.
-// FIXME(docs): isKnownUniquelyReferenced should check weak/unowned counts too, 
-// but currently does not. rdar://problem/29341361
 
 /// Returns a Boolean value indicating whether the given object is known to
 /// have a single strong reference.
 ///
+/// 这个函数, 一般就是用在 Copy On Write 的实现上.
 /// The `isKnownUniquelyReferenced(_:)` function is useful for implementing the
 /// copy-on-write optimization for the deep storage of value types:
 ///
@@ -507,6 +504,7 @@ extension ManagedBufferPointer: Equatable {
 ///         myStorage.update(withValue: value)
 ///     }
 ///
+/// 这里是说, 在 条件运算的时候, myStorage.shouldCopy 这个使用, 是会增加引用计数的, 所以, 后面的判断, 一定会导致拷贝的发生.
 /// Use care when calling `isKnownUniquelyReferenced(_:)` from within a Boolean
 /// expression. In debug builds, an instance in the left-hand side of a `&&`
 /// or `||` expression may still be referenced when evaluating the right-hand

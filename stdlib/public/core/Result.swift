@@ -1,168 +1,85 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2018 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 /// A value that represents either a success or a failure, including an
 /// associated value in each case.
 @frozen
 public enum Result<Success, Failure: Error> {
-  /// A success, storing a `Success` value.
-  case success(Success)
-  
-  /// A failure, storing a `Failure` value.
-  case failure(Failure)
-  
-  /// Returns a new result, mapping any success value using the given
-  /// transformation.
-  ///
-  /// Use this method when you need to transform the value of a `Result`
-  /// instance when it represents a success. The following example transforms
-  /// the integer success value of a result into a string:
-  ///
-  ///     func getNextInteger() -> Result<Int, Error> { /* ... */ }
-  ///
-  ///     let integerResult = getNextInteger()
-  ///     // integerResult == .success(5)
-  ///     let stringResult = integerResult.map({ String($0) })
-  ///     // stringResult == .success("5")
-  ///
-  /// - Parameter transform: A closure that takes the success value of this
-  ///   instance.
-  /// - Returns: A `Result` instance with the result of evaluating `transform`
-  ///   as the new success value if this instance represents a success.
-  public func map<NewSuccess>(
-    _ transform: (Success) -> NewSuccess
-  ) -> Result<NewSuccess, Failure> {
-    switch self {
-    case let .success(success):
-      return .success(transform(success))
-    case let .failure(failure):
-      return .failure(failure)
+    /// A success, storing a `Success` value.
+    // 一个专门的 case, 代表 Right, 附带的数据是对应的场景的模型
+    case success(Success)
+    
+    /// A failure, storing a `Failure` value.
+    // 一个专门的 case, 代表 Wrong, 附带的数据, 是表示 error 的模型.
+    case failure(Failure)
+    
+    // Map, 就是保留 failure 的值不变, 如果是 success 的话, 就抽取里面的值, 然后进行 transform 进行变化.
+    // 最终生成一个 Result, 来包含上面的逻辑.
+    public func map<NewSuccess>(
+        _ transform: (Success) -> NewSuccess
+    ) -> Result<NewSuccess, Failure> {
+        switch self {
+        case let .success(success):
+            return .success(transform(success))
+        case let .failure(failure):
+            return .failure(failure)
+        }
     }
-  }
-  
-  /// Returns a new result, mapping any failure value using the given
-  /// transformation.
-  ///
-  /// Use this method when you need to transform the value of a `Result`
-  /// instance when it represents a failure. The following example transforms
-  /// the error value of a result by wrapping it in a custom `Error` type:
-  ///
-  ///     struct DatedError: Error {
-  ///         var error: Error
-  ///         var date: Date
-  ///
-  ///         init(_ error: Error) {
-  ///             self.error = error
-  ///             self.date = Date()
-  ///         }
-  ///     }
-  ///
-  ///     let result: Result<Int, Error> = // ...
-  ///     // result == .failure(<error value>)
-  ///     let resultWithDatedError = result.mapError({ e in DatedError(e) })
-  ///     // result == .failure(DatedError(error: <error value>, date: <date>))
-  ///
-  /// - Parameter transform: A closure that takes the failure value of the
-  ///   instance.
-  /// - Returns: A `Result` instance with the result of evaluating `transform`
-  ///   as the new failure value if this instance represents a failure.
-  public func mapError<NewFailure>(
-    _ transform: (Failure) -> NewFailure
-  ) -> Result<Success, NewFailure> {
-    switch self {
-    case let .success(success):
-      return .success(success)
-    case let .failure(failure):
-      return .failure(transform(failure))
+    
+    // 这个就是上面的另外一个 side.
+    public func mapError<NewFailure>(
+        _ transform: (Failure) -> NewFailure
+    ) -> Result<Success, NewFailure> {
+        switch self {
+        case let .success(success):
+            return .success(success)
+        case let .failure(failure):
+            return .failure(transform(failure))
+        }
     }
-  }
-  
-  /// Returns a new result, mapping any success value using the given
-  /// transformation and unwrapping the produced result.
-  ///
-  /// - Parameter transform: A closure that takes the success value of the
-  ///   instance.
-  /// - Returns: A `Result` instance with the result of evaluating `transform`
-  ///   as the new failure value if this instance represents a failure.
-  public func flatMap<NewSuccess>(
-    _ transform: (Success) -> Result<NewSuccess, Failure>
-  ) -> Result<NewSuccess, Failure> {
-    switch self {
-    case let .success(success):
-      return transform(success)
-    case let .failure(failure):
-      return .failure(failure)
+    
+    // Flat 的版本, 就是接受一个值, 然后直接生成 Result.
+    // 使用 Flat, 就是避免, 再次进行封包的过程. 再次封包, 会导致使用者要进行两次解包.
+    public func flatMap<NewSuccess>(
+        _ transform: (Success) -> Result<NewSuccess, Failure>
+    ) -> Result<NewSuccess, Failure> {
+        switch self {
+        case let .success(success):
+            return transform(success)
+        case let .failure(failure):
+            return .failure(failure)
+        }
     }
-  }
-  
-  /// Returns a new result, mapping any failure value using the given
-  /// transformation and unwrapping the produced result.
-  ///
-  /// - Parameter transform: A closure that takes the failure value of the
-  ///   instance.
-  /// - Returns: A `Result` instance, either from the closure or the previous 
-  ///   `.success`.
-  public func flatMapError<NewFailure>(
-    _ transform: (Failure) -> Result<Success, NewFailure>
-  ) -> Result<Success, NewFailure> {
-    switch self {
-    case let .success(success):
-      return .success(success)
-    case let .failure(failure):
-      return transform(failure)
+    public func flatMapError<NewFailure>(
+        _ transform: (Failure) -> Result<Success, NewFailure>
+    ) -> Result<Success, NewFailure> {
+        switch self {
+        case let .success(success):
+            return .success(success)
+        case let .failure(failure):
+            return transform(failure)
+        }
     }
-  }
-  
-  /// Returns the success value as a throwing expression.
-  ///
-  /// Use this method to retrieve the value of this result if it represents a
-  /// success, or to catch the value if it represents a failure.
-  ///
-  ///     let integerResult: Result<Int, Error> = .success(5)
-  ///     do {
-  ///         let value = try integerResult.get()
-  ///         print("The value is \(value).")
-  ///     } catch error {
-  ///         print("Error retrieving the value: \(error)")
-  ///     }
-  ///     // Prints "The value is 5."
-  ///
-  /// - Returns: The success value, if the instance represents a success.
-  /// - Throws: The failure value, if the instance represents a failure.
-  public func get() throws -> Success {
-    switch self {
-    case let .success(success):
-      return success
-    case let .failure(failure):
-      throw failure
+    
+    public func get() throws -> Success {
+        switch self {
+            case let .success(success):
+                return success
+            case let .failure(failure):
+                throw failure
+        }
     }
-  }
 }
 
+// 非常方便的封装, Result 的生成过程, 就是 body 的调用过程.
+// Body 的调用, 会直接变为 Result 的数据.
 extension Result where Failure == Swift.Error {
-  /// Creates a new result by evaluating a throwing closure, capturing the
-  /// returned value as a success, or any thrown error as a failure.
-  ///
-  /// - Parameter body: A throwing closure to evaluate.
-  @_transparent
-  public init(catching body: () throws -> Success) {
-    do {
-      self = .success(try body())
-    } catch {
-      self = .failure(error)
+    @_transparent
+    public init(catching body: () throws -> Success) {
+        do {
+            self = .success(try body())
+        } catch {
+            self = .failure(error)
+        }
     }
-  }
 }
 
 extension Result: Equatable where Success: Equatable, Failure: Equatable { }
-
 extension Result: Hashable where Success: Hashable, Failure: Hashable { }
