@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060885632627ED7800C7D65A /* AnyPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060885622627ED7800C7D65A /* AnyPrefix.swift */; };
 		06D4469825F86C5D006D6337 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D4469725F86C5D006D6337 /* main.swift */; };
 		06D4475D25F86C88006D6337 /* RangeReplaceableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446A125F86C85006D6337 /* RangeReplaceableCollection.swift */; };
 		06D4475E25F86C88006D6337 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446A225F86C85006D6337 /* Algorithm.swift */; };
@@ -196,6 +197,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		060885622627ED7800C7D65A /* AnyPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPrefix.swift; sourceTree = "<group>"; };
 		06D4469425F86C5D006D6337 /* SwiftCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftCore; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D4469725F86C5D006D6337 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		06D446A025F86C85006D6337 /* GroupInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = GroupInfo.json; path = ../../../GroupInfo.json; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 				06D446F925F86C86006D6337 /* VarArgs.swift */,
 				06D446B225F86C85006D6337 /* WriteBackMutableSlice.swift */,
 				06D4471B25F86C87006D6337 /* Zip.swift */,
+				060885622627ED7800C7D65A /* AnyPrefix.swift */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				06D4476A25F86C88006D6337 /* CollectionAlgorithms.swift in Sources */,
 				06D447DD25F86C88006D6337 /* AnyHashable.swift in Sources */,
 				06D447F725F86C88006D6337 /* String.swift in Sources */,
+				060885632627ED7800C7D65A /* AnyPrefix.swift in Sources */,
 				06D4478925F86C88006D6337 /* HashTable.swift in Sources */,
 				06D4477825F86C88006D6337 /* InputStream.swift in Sources */,
 				06D4478125F86C88006D6337 /* Sequence.swift in Sources */,
