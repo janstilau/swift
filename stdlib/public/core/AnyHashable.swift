@@ -1,47 +1,25 @@
-/// A value that has a custom representation in `AnyHashable`.
-///
-/// `Self` should also conform to `Hashable`.
+// 如果, 一个类型, 有着自己的对于 anyHash 的实现, 就会用他自己的实现.
+// 这个主要用在了 AnyHashable 的初始化里面了.
+// Array, set, dict 都实现了这个协议. 这是一个内部协议. 标准库的使用者, 不应该使用.
+// 不过这是一个思路, 算是标准库对于扩展点的一个使用.
+// 在我们自己写库的时候可以借鉴. 一个私有协议, 可以带来性能的提升, 同时, 定义一个默认的实现.
+// 这在 Collection 的 SubSequence 等里面, 也有使用.
 public protocol _HasCustomAnyHashableRepresentation {
-    /// Returns a custom representation of `self` as `AnyHashable`.
-    /// If returns nil, the default representation is used.
-    ///
-    /// If your custom representation is a class instance, it
-    /// needs to be boxed into `AnyHashable` using the static
-    /// type that introduces the `Hashable` conformance.
-    ///
-    ///     class Base: Hashable {}
-    ///     class Derived1: Base {}
-    ///     class Derived2: Base, _HasCustomAnyHashableRepresentation {
-    ///       func _toCustomAnyHashable() -> AnyHashable? {
-    ///         // `Derived2` is canonicalized to `Derived1`.
-    ///         let customRepresentation = Derived1()
-    ///
-    ///         // Wrong:
-    ///         // return AnyHashable(customRepresentation)
-    ///
-    ///         // Correct:
-    ///         return AnyHashable(customRepresentation as Base)
-    ///       }
     __consuming func _toCustomAnyHashable() -> AnyHashable?
 }
 
-@usableFromInline
 internal protocol _AnyHashableBox {
     var _canonicalBox: _AnyHashableBox { get }
-    
-    /// Determine whether values in the boxes are equivalent.
-    ///
-    /// - Precondition: `self` and `box` are in canonical form.
-    /// - Returns: `nil` to indicate that the boxes store different types, so
-    ///   no comparison is possible. Otherwise, contains the result of `==`.
     func _isEqual(to box: _AnyHashableBox) -> Bool?
-    var _hashValue: Int { get }
-    func _hash(into hasher: inout Hasher)
     func _rawHashValue(_seed: Int) -> Int
     
     var _base: Any { get }
     func _unbox<T: Hashable>() -> T?
     func _downCastConditional<T>(into result: UnsafeMutablePointer<T>) -> Bool
+    
+    //
+    var _hashValue: Int { get }
+    func _hash(into hasher: inout Hasher)
 }
 
 extension _AnyHashableBox {
@@ -50,6 +28,7 @@ extension _AnyHashableBox {
     }
 }
 
+// 默认的对于 _AnyHashableBox 的实现.
 internal struct _ConcreteHashableBox<Base: Hashable>: _AnyHashableBox {
     internal var _baseHashable: Base
     
@@ -57,11 +36,14 @@ internal struct _ConcreteHashableBox<Base: Hashable>: _AnyHashableBox {
         self._baseHashable = base
     }
     
+    // 这里, 原来是转为协议, 然后转为下面的 _ConcreteHashableBox<T>
+    // 用 as? _ConcreteHashableBox<T> 也没有问题.
     internal func _unbox<T: Hashable>() -> T? {
         //        return (self as _AnyHashableBox as? _ConcreteHashableBox<T>)?._baseHashable
         return (self as? _ConcreteHashableBox<T>)?._baseHashable
     }
     
+    // _baseHashable 并没有限定, 必须是类, 所以使用的 ==
     internal func _isEqual(to rhs: _AnyHashableBox) -> Bool? {
         if let rhs: Base = rhs._unbox() {
             return _baseHashable == rhs
@@ -85,7 +67,6 @@ internal struct _ConcreteHashableBox<Base: Hashable>: _AnyHashableBox {
         return _baseHashable
     }
     
-    internal
     func _downCastConditional<T>(into result: UnsafeMutablePointer<T>) -> Bool {
         guard let value = _baseHashable as? T else { return false }
         result.initialize(to: value)
@@ -115,10 +96,15 @@ internal struct _ConcreteHashableBox<Base: Hashable>: _AnyHashableBox {
 ///     print(descriptions[AnyHashable(43)])       // prints "nil"
 ///     print(descriptions[AnyHashable(Int8(43))]!) // prints "an Int8"
 ///     print(descriptions[AnyHashable(Set(["a", "b"]))]!) // prints "a set of strings"
-@frozen
+//
 public struct AnyHashable {
     internal var _box: _AnyHashableBox
     
+    // 这个函数, 就是 _AnyHashableBox 这层抽象存在的意义所在了.
+    // 实现了 _HasCustomAnyHashableRepresentation 的类, 需要返回一个 AnyHashable
+    // 但是, 其实 AnyHashable 的实现是固定的, 是一个 struct, 能够自定义的, 只有是自定义 _AnyHashableBox, 然后传递给 AnyHashable 作为里面 _base 的初值.
+    // 因为, 有了这层替换的要求, 才专门建立了一个抽象层在里面.
+    // 在我们自己写 anyProtocol 的时候, 可以去掉这层抽象.
     internal init(_box box: _AnyHashableBox) {
         self._box = box
     }
@@ -133,6 +119,7 @@ public struct AnyHashable {
             return
         }
         
+        // 默认, 就是使用 _ConcreteHashableBox
         self.init(_box: _ConcreteHashableBox(false)) // Dummy value
         _makeAnyHashableUpcastingToHashableBaseType(
             base,
@@ -143,16 +130,6 @@ public struct AnyHashable {
         self._box = _ConcreteHashableBox(base)
     }
     
-    /// The value wrapped by this instance.
-    ///
-    /// The `base` property can be cast back to its original type using one of
-    /// the casting operators (`as?`, `as!`, or `as`).
-    ///
-    ///     let anyMessage = AnyHashable("Hello world!")
-    ///     if let unwrappedMessage = anyMessage.base as? String {
-    ///         print(unwrappedMessage)
-    ///     }
-    ///     // Prints "Hello world!"
     public var base: Any {
         return _box._base
     }

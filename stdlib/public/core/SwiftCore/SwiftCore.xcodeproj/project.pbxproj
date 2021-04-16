@@ -58,7 +58,6 @@
 		06D4478B25F86C88006D6337 /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446D725F86C86006D6337 /* Substring.swift */; };
 		06D4478C25F86C88006D6337 /* Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446D825F86C86006D6337 /* Hashable.swift */; };
 		06D4478D25F86C88006D6337 /* SetAnyHashableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446D925F86C86006D6337 /* SetAnyHashableExtensions.swift */; };
-		06D4478E25F86C88006D6337 /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446DA25F86C86006D6337 /* Availability.swift */; };
 		06D4478F25F86C88006D6337 /* Integers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446DC25F86C86006D6337 /* Integers.swift */; };
 		06D4479025F86C88006D6337 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446DD25F86C86006D6337 /* Hashing.swift */; };
 		06D4479125F86C88006D6337 /* StringLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D446DE25F86C86006D6337 /* StringLegacy.swift */; };
@@ -258,7 +257,6 @@
 		06D446D725F86C86006D6337 /* Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Substring.swift; path = ../../../Substring.swift; sourceTree = "<group>"; };
 		06D446D825F86C86006D6337 /* Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hashable.swift; path = ../../../Hashable.swift; sourceTree = "<group>"; };
 		06D446D925F86C86006D6337 /* SetAnyHashableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetAnyHashableExtensions.swift; path = ../../../SetAnyHashableExtensions.swift; sourceTree = "<group>"; };
-		06D446DA25F86C86006D6337 /* Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Availability.swift; path = ../../../Availability.swift; sourceTree = "<group>"; };
 		06D446DB25F86C86006D6337 /* FloatingPointParsing.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FloatingPointParsing.swift.gyb; path = ../../../FloatingPointParsing.swift.gyb; sourceTree = "<group>"; };
 		06D446DC25F86C86006D6337 /* Integers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Integers.swift; path = ../../../Integers.swift; sourceTree = "<group>"; };
 		06D446DD25F86C86006D6337 /* Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hashing.swift; path = ../../../Hashing.swift; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 				06D4471125F86C87006D6337 /* Assert.swift */,
 				06D4470F25F86C87006D6337 /* AssertCommon.swift */,
 				06D446D325F86C86006D6337 /* AtomicInt.swift.gyb */,
-				06D446DA25F86C86006D6337 /* Availability.swift */,
 				06D446ED25F86C86006D6337 /* BidirectionalCollection.swift */,
 				06D4475025F86C88006D6337 /* Bitset.swift */,
 				06D4473925F86C87006D6337 /* Bool.swift */,
@@ -837,7 +834,6 @@
 				06D4479525F86C88006D6337 /* OutputStream.swift in Sources */,
 				06D447AD25F86C88006D6337 /* StringHashable.swift in Sources */,
 				06D447D125F86C88006D6337 /* StringUTF8View.swift in Sources */,
-				06D4478E25F86C88006D6337 /* Availability.swift in Sources */,
 				06D4477D25F86C88006D6337 /* CommandLine.swift in Sources */,
 				06D447C325F86C88006D6337 /* Assert.swift in Sources */,
 				06D447FE25F86C88006D6337 /* Bitset.swift in Sources */,

@@ -1,4 +1,4 @@
-/// A sequence whose elements consist of the initial consecutive elements of
+21o]\       是  p/// A sequence whose elements consist of the initial consecutive elements of
 /// some base sequence that satisfy a given predicate.
 @frozen // lazy-performance
 public struct LazyPrefixWhileSequence<Base: Sequence> {
