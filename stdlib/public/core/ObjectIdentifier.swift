@@ -2,7 +2,7 @@
 // 实际上, 这个类就是对于指针的操作.
 // 出现这个类的原因, 就是将指针的操作封装, 主要是 compare, equeal, hash 的能力的封装.
 // 真正的实现方式, 就是对于指针的操作.
-@frozen // trivial-implementation
+
 public struct ObjectIdentifier {
   @usableFromInline // trivial-implementation
   internal let _value: Builtin.RawPointer
