@@ -1,15 +1,3 @@
-//===--- Filter.swift -----------------------------------------*- swift -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 
 /// A sequence whose elements consist of the elements of some base
 /// sequence that also satisfy a given predicate.
@@ -62,6 +50,8 @@ extension LazyFilterSequence {
   }
 }
 
+
+// Filter 对于 lazy 的适配, 就是 base 取值之后, 每次都进行 filter 闭包的验证, 只有达到了条件的, 才真正的返回.
 extension LazyFilterSequence.Iterator: IteratorProtocol, Sequence {
   public typealias Element = Base.Element
   

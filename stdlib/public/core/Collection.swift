@@ -366,15 +366,7 @@ public protocol Collection: Sequence {
   ///         print(numbers[index ..< numbers.endIndex])
   ///     }
   ///     // Prints "[30, 40, 50]"
-  ///
-  /// If the collection is empty, `endIndex` is equal to `startIndex`.
-  var endIndex: Index { get }
-
-  /// A type that provides the collection's iteration interface and
-  /// encapsulates its iteration state.
-  ///
-  /// By default, a collection conforms to the `Sequence` protocol by
-  /// supplying `IndexingIterator` as its associated `Iterator`
+  ///;火锅放大为 4578903
   /// type.
   associatedtype Iterator = IndexingIterator<Self>
 

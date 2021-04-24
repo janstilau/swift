@@ -1,110 +1,69 @@
-//===--- DropWhile.swift - Lazy views for drop(while:) --------*- swift -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
 
-/// A sequence whose elements consist of the elements that follow the initial
-/// consecutive elements of some base sequence that satisfy a given predicate.
-@frozen // lazy-performance
+// 定义, 就是存储 base, 以及进行判断的闭包而已.
 public struct LazyDropWhileSequence<Base: Sequence> {
-  public typealias Element = Base.Element
-  
-  /// Create an instance with elements `transform(x)` for each element
-  /// `x` of base.
-  @inlinable // lazy-performance
-  internal init(_base: Base, predicate: @escaping (Element) -> Bool) {
-    self._base = _base
-    self._predicate = predicate
-  }
-
-  @usableFromInline // lazy-performance
-  internal var _base: Base
-  @usableFromInline // lazy-performance
-  internal let _predicate: (Element) -> Bool
+    public typealias Element = Base.Element
+    internal init(_base: Base, predicate: @escaping (Element) -> Bool) {
+        self._base = _base
+        self._predicate = predicate
+    }
+    
+    internal var _base: Base
+    internal let _predicate: (Element) -> Bool
 }
 
 extension LazyDropWhileSequence {
-  /// An iterator over the elements traversed by a base iterator that follow the
-  /// initial consecutive elements that satisfy a given predicate.
-  ///
-  /// This is the associated iterator for the `LazyDropWhileSequence`,
-  /// `LazyDropWhileCollection`, and `LazyDropWhileBidirectionalCollection`
-  /// types.
-  @frozen // lazy-performance
-  public struct Iterator {
-    public typealias Element = Base.Element
-    
-    @inlinable // lazy-performance
-    internal init(_base: Base.Iterator, predicate: @escaping (Element) -> Bool) {
-      self._base = _base
-      self._predicate = predicate
+    public struct Iterator {
+        public typealias Element = Base.Element
+        internal init(_base: Base.Iterator, predicate: @escaping (Element) -> Bool) {
+            self._base = _base
+            self._predicate = predicate
+        }
+        
+        // _predicateHasFailed 这个标志位, 代表着当前的 predicate 是否已经是失去效力了.
+        // 也就是说, 可以真正的返回值了.
+        internal var _predicateHasFailed = false
+        internal var _base: Base.Iterator
+        internal let _predicate: (Element) -> Bool
     }
-
-    @usableFromInline // lazy-performance
-    internal var _predicateHasFailed = false
-    @usableFromInline // lazy-performance
-    internal var _base: Base.Iterator
-    @usableFromInline // lazy-performance
-    internal let _predicate: (Element) -> Bool
-  }
 }
 
 extension LazyDropWhileSequence.Iterator: IteratorProtocol {
-  @inlinable // lazy-performance
-  public mutating func next() -> Element? {
-    // Once the predicate has failed for the first time, the base iterator
-    // can be used for the rest of the elements.
-    if _predicateHasFailed {
-      return _base.next()
+    public mutating func next() -> Element? {
+        // 如果, predicate 失败过一次了, 就是可以正常的取 base 里面的值了.
+        if _predicateHasFailed {
+            return _base.next()
+        }
+        
+        // 通过 base 取值的时候, 首先会有一次前面的数据的过滤操作.
+        // 知道, predicate 认为, 达到了条件位置, 之前的数据都会舍弃.
+        // 之后的获取ele, 从 base 拿回的数据, 就不在走过滤了.
+        while let nextElement = _base.next() {
+            if !_predicate(nextElement) {
+                _predicateHasFailed = true
+                return nextElement
+            }
+        }
+        return nil
     }
-
-    // Retrieve and discard elements from the base iterator until one fails
-    // the predicate.
-    while let nextElement = _base.next() {
-      if !_predicate(nextElement) {
-        _predicateHasFailed = true
-        return nextElement
-      }
-    }
-    return nil
-  }  
 }
 
 extension LazyDropWhileSequence: Sequence {
-  /// Returns an iterator over the elements of this sequence.
-  ///
-  /// - Complexity: O(1).
-  @inlinable // lazy-performance
-  public __consuming func makeIterator() -> Iterator {
-    return Iterator(_base: _base.makeIterator(), predicate: _predicate)
-  }
+    public __consuming func makeIterator() -> Iterator {
+        return Iterator(_base: _base.makeIterator(), predicate: _predicate)
+    }
 }
 
 extension LazyDropWhileSequence: LazySequenceProtocol {
-  public typealias Elements = LazyDropWhileSequence
+    public typealias Elements = LazyDropWhileSequence
 }
 
+// 一个特殊的方法, 返回 LazyDropWhileSequence 来体现 dropWhile 这个业务.
 extension LazySequenceProtocol {
-  /// Returns a lazy sequence that skips any initial elements that satisfy
-  /// `predicate`.
-  ///
-  /// - Parameter predicate: A closure that takes an element of the sequence as
-  ///   its argument and returns `true` if the element should be skipped or
-  ///   `false` otherwise. Once `predicate` returns `false` it will not be
-  ///   called again.
-  @inlinable // lazy-performance
-  public __consuming func drop(
-    while predicate: @escaping (Elements.Element) -> Bool
-  ) -> LazyDropWhileSequence<Self.Elements> {
-    return LazyDropWhileSequence(_base: self.elements, predicate: predicate)
-  }
+    public __consuming func drop(
+        while predicate: @escaping (Elements.Element) -> Bool
+    ) -> LazyDropWhileSequence<Self.Elements> {
+        return LazyDropWhileSequence(_base: self.elements, predicate: predicate)
+    }
 }
 
 /// A lazy wrapper that includes the elements of an underlying
@@ -120,42 +79,42 @@ extension LazySequenceProtocol {
 public typealias LazyDropWhileCollection<T: Collection> = LazyDropWhileSequence<T>
 
 extension LazyDropWhileCollection: Collection {
-  public typealias SubSequence = Slice<LazyDropWhileCollection<Base>>
-  public typealias Index = Base.Index
-
-  @inlinable // lazy-performance
-  public var startIndex: Index {
-    var index = _base.startIndex
-    while index != _base.endIndex && _predicate(_base[index]) {
-      _base.formIndex(after: &index)
+    public typealias SubSequence = Slice<LazyDropWhileCollection<Base>>
+    public typealias Index = Base.Index
+    
+    @inlinable // lazy-performance
+    public var startIndex: Index {
+        var index = _base.startIndex
+        while index != _base.endIndex && _predicate(_base[index]) {
+            _base.formIndex(after: &index)
+        }
+        return index
     }
-    return index
-  }
-
-  @inlinable // lazy-performance
-  public var endIndex: Index {
-    return _base.endIndex
-  }
-
-  @inlinable // lazy-performance
-  public func index(after i: Index) -> Index {
-    _precondition(i < _base.endIndex, "Can't advance past endIndex")
-    return _base.index(after: i)
-  }
-
-  @inlinable // lazy-performance
-  public subscript(position: Index) -> Element {
-    return _base[position]
-  }
+    
+    @inlinable // lazy-performance
+    public var endIndex: Index {
+        return _base.endIndex
+    }
+    
+    @inlinable // lazy-performance
+    public func index(after i: Index) -> Index {
+        _precondition(i < _base.endIndex, "Can't advance past endIndex")
+        return _base.index(after: i)
+    }
+    
+    @inlinable // lazy-performance
+    public subscript(position: Index) -> Element {
+        return _base[position]
+    }
 }
 
 extension LazyDropWhileCollection: BidirectionalCollection 
 where Base: BidirectionalCollection {
-  @inlinable // lazy-performance
-  public func index(before i: Index) -> Index {
-    _precondition(i > startIndex, "Can't move before startIndex")
-    return _base.index(before: i)
-  }
+    @inlinable // lazy-performance
+    public func index(before i: Index) -> Index {
+        _precondition(i > startIndex, "Can't move before startIndex")
+        return _base.index(before: i)
+    }
 }
 
 extension LazyDropWhileCollection: LazyCollectionProtocol { }
