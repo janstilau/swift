@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAAEF6AF26B7F4FA00708A72 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEF6AE26B7F4FA00708A72 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAAEF6A926B7F4FA00708A72 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AAAEF6AB26B7F4FA00708A72 /* SwfitCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwfitCore; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAEF6AE26B7F4FA00708A72 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AAAEF6B626B7F52300708A72 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		AAAEF6B726B7F52300708A72 /* UnicodeScalarProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalarProperties.swift; sourceTree = "<group>"; };
+		AAAEF6B826B7F52300708A72 /* UnsafeRawPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeRawPointer.swift; sourceTree = "<group>"; };
+		AAAEF6B926B7F52300708A72 /* ThreadLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadLocalStorage.swift; sourceTree = "<group>"; };
+		AAAEF6BA26B7F52300708A72 /* StringUTF8Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF8Validation.swift; sourceTree = "<group>"; };
+		AAAEF6BB26B7F52300708A72 /* FloatingPointTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = FloatingPointTypes.swift.gyb; sourceTree = "<group>"; };
+		AAAEF6BC26B7F52300708A72 /* StringGutsSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGutsSlice.swift; sourceTree = "<group>"; };
+		AAAEF6BD26B7F52300708A72 /* UIntBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntBuffer.swift; sourceTree = "<group>"; };
+		AAAEF6BE26B7F52300708A72 /* SetAnyHashableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAnyHashableExtensions.swift; sourceTree = "<group>"; };
+		AAAEF6BF26B7F52300708A72 /* MutableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableCollection.swift; sourceTree = "<group>"; };
+		AAAEF6C026B7F52300708A72 /* RandomAccessCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection.swift; sourceTree = "<group>"; };
+		AAAEF6C126B7F52300708A72 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		AAAEF6C226B7F52300708A72 /* Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers.swift; sourceTree = "<group>"; };
+		AAAEF6C326B7F52300708A72 /* LifetimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeManager.swift; sourceTree = "<group>"; };
+		AAAEF6C426B7F52300708A72 /* BridgeObjectiveC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeObjectiveC.swift; sourceTree = "<group>"; };
+		AAAEF6C526B7F52300708A72 /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
+		AAAEF6C626B7F52300708A72 /* PrefixWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixWhile.swift; sourceTree = "<group>"; };
+		AAAEF6C726B7F52300708A72 /* Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashable.swift; sourceTree = "<group>"; };
+		AAAEF6C826B7F52300708A72 /* BridgingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingBuffer.swift; sourceTree = "<group>"; };
+		AAAEF6C926B7F52300708A72 /* Diffing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffing.swift; sourceTree = "<group>"; };
+		AAAEF6CA26B7F52300708A72 /* CollectionDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDifference.swift; sourceTree = "<group>"; };
+		AAAEF6CB26B7F52300708A72 /* NativeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeDictionary.swift; sourceTree = "<group>"; };
+		AAAEF6CC26B7F52300708A72 /* DictionaryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
+		AAAEF6CD26B7F52300708A72 /* StringIndexConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIndexConversions.swift; sourceTree = "<group>"; };
+		AAAEF6CE26B7F52300708A72 /* EmptyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollection.swift; sourceTree = "<group>"; };
+		AAAEF6CF26B7F52300708A72 /* IntegerParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerParsing.swift; sourceTree = "<group>"; };
+		AAAEF6D026B7F52300708A72 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		AAAEF6D126B7F52300708A72 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		AAAEF6D226B7F52300708A72 /* MemoryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLayout.swift; sourceTree = "<group>"; };
+		AAAEF6D326B7F52300708A72 /* Unicode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unicode.swift; sourceTree = "<group>"; };
+		AAAEF6D426B7F52300708A72 /* IntegerTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = IntegerTypes.swift.gyb; sourceTree = "<group>"; };
+		AAAEF6D526B7F52300708A72 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
+		AAAEF6D626B7F52300708A72 /* StringComparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringComparable.swift; sourceTree = "<group>"; };
+		AAAEF6D726B7F52300708A72 /* StringBreadcrumbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBreadcrumbs.swift; sourceTree = "<group>"; };
+		AAAEF6D826B7F52300708A72 /* SetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuilder.swift; sourceTree = "<group>"; };
+		AAAEF6D926B7F52300708A72 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		AAAEF6DA26B7F52300708A72 /* ShadowProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowProtocols.swift; sourceTree = "<group>"; };
+		AAAEF6DB26B7F52300708A72 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
+		AAAEF6DC26B7F52300708A72 /* ArrayShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShared.swift; sourceTree = "<group>"; };
+		AAAEF6DD26B7F52300708A72 /* SIMDVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDVector.swift; sourceTree = "<group>"; };
+		AAAEF6DE26B7F52300708A72 /* CString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CString.swift; sourceTree = "<group>"; };
+		AAAEF6DF26B7F52300708A72 /* Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Join.swift; sourceTree = "<group>"; };
+		AAAEF6E026B7F52300708A72 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
+		AAAEF6E126B7F52300708A72 /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		AAAEF6E226B7F52300708A72 /* ManagedBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBuffer.swift; sourceTree = "<group>"; };
+		AAAEF6E326B7F52300708A72 /* UnavailableStringAPIs.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnavailableStringAPIs.swift.gyb; sourceTree = "<group>"; };
+		AAAEF6E426B7F52300708A72 /* StringBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBridge.swift; sourceTree = "<group>"; };
+		AAAEF6E526B7F52300708A72 /* UnicodeHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeHelpers.swift; sourceTree = "<group>"; };
+		AAAEF6E626B7F52300708A72 /* ArraySlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySlice.swift; sourceTree = "<group>"; };
+		AAAEF6E726B7F52300708A72 /* UnsafeBufferPointer.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnsafeBufferPointer.swift.gyb; sourceTree = "<group>"; };
+		AAAEF6E826B7F52300708A72 /* CollectionAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAlgorithms.swift; sourceTree = "<group>"; };
+		AAAEF6E926B7F52300708A72 /* SwiftNativeNSArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNativeNSArray.swift; sourceTree = "<group>"; };
+		AAAEF6EA26B7F52300708A72 /* SliceBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliceBuffer.swift; sourceTree = "<group>"; };
+		AAAEF6EB26B7F52300708A72 /* KeyValuePairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePairs.swift; sourceTree = "<group>"; };
+		AAAEF6EC26B7F52300708A72 /* LegacyABI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyABI.swift; sourceTree = "<group>"; };
+		AAAEF6ED26B7F52300708A72 /* StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticString.swift; sourceTree = "<group>"; };
+		AAAEF6EE26B7F52300708A72 /* Unmanaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unmanaged.swift; sourceTree = "<group>"; };
+		AAAEF6EF26B7F52300708A72 /* UnmanagedOpaqueString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnmanagedOpaqueString.swift; sourceTree = "<group>"; };
+		AAAEF6F026B7F52300708A72 /* VarArgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarArgs.swift; sourceTree = "<group>"; };
+		AAAEF6F126B7F52300708A72 /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
+		AAAEF6F226B7F52300708A72 /* ContiguouslyStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguouslyStored.swift; sourceTree = "<group>"; };
+		AAAEF6F326B7F52300708A72 /* SetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
+		AAAEF6F426B7F52300708A72 /* StringUTF8View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF8View.swift; sourceTree = "<group>"; };
+		AAAEF6F526B7F52300708A72 /* StringTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTesting.swift; sourceTree = "<group>"; };
+		AAAEF6F626B7F52300708A72 /* Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dump.swift; sourceTree = "<group>"; };
+		AAAEF6F726B7F52300708A72 /* ArrayCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCast.swift; sourceTree = "<group>"; };
+		AAAEF6F826B7F52300708A72 /* RuntimeFunctionCounters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeFunctionCounters.swift; sourceTree = "<group>"; };
+		AAAEF6F926B7F52300708A72 /* MigrationSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationSupport.swift; sourceTree = "<group>"; };
+		AAAEF6FA26B7F52300708A72 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		AAAEF6FB26B7F52300708A72 /* DebuggerSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggerSupport.swift; sourceTree = "<group>"; };
+		AAAEF6FC26B7F52300708A72 /* StringGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGuts.swift; sourceTree = "<group>"; };
+		AAAEF6FD26B7F52300708A72 /* AnyHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyHashable.swift; sourceTree = "<group>"; };
+		AAAEF6FE26B7F52300708A72 /* GroupInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GroupInfo.json; sourceTree = "<group>"; };
+		AAAEF6FF26B7F52300708A72 /* UnicodeEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeEncoding.swift; sourceTree = "<group>"; };
+		AAAEF70026B7F52300708A72 /* StringNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNormalization.swift; sourceTree = "<group>"; };
+		AAAEF70126B7F52300708A72 /* FlatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatMap.swift; sourceTree = "<group>"; };
+		AAAEF70226B7F52300708A72 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		AAAEF70326B7F52300708A72 /* Tuple.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tuple.swift.gyb; sourceTree = "<group>"; };
+		AAAEF70426B7F52300708A72 /* StringUnicodeScalarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUnicodeScalarView.swift; sourceTree = "<group>"; };
+		AAAEF70526B7F52300708A72 /* StringRangeReplaceableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRangeReplaceableCollection.swift; sourceTree = "<group>"; };
+		AAAEF70626B7F52300708A72 /* ICU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICU.swift; sourceTree = "<group>"; };
+		AAAEF70726B7F52300708A72 /* StringInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterpolation.swift; sourceTree = "<group>"; };
+		AAAEF70826B7F52300708A72 /* StringComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringComparison.swift; sourceTree = "<group>"; };
+		AAAEF70926B7F52300708A72 /* BridgeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeStorage.swift; sourceTree = "<group>"; };
+		AAAEF70A26B7F52300708A72 /* ReflectionMirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionMirror.swift; sourceTree = "<group>"; };
+		AAAEF70B26B7F52300708A72 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		AAAEF70C26B7F52300708A72 /* PlaygroundDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundDisplay.swift; sourceTree = "<group>"; };
+		AAAEF70D26B7F52300708A72 /* StringLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLegacy.swift; sourceTree = "<group>"; };
+		AAAEF70E26B7F52300708A72 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		AAAEF70F26B7F52300708A72 /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
+		AAAEF71026B7F52300708A72 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		AAAEF71126B7F52300708A72 /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		AAAEF71226B7F52300708A72 /* WriteBackMutableSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBackMutableSlice.swift; sourceTree = "<group>"; };
+		AAAEF71326B7F52300708A72 /* DictionaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBuilder.swift; sourceTree = "<group>"; };
+		AAAEF71426B7F52300708A72 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
+		AAAEF71526B7F52300708A72 /* ArrayBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBuffer.swift; sourceTree = "<group>"; };
+		AAAEF71626B7F52300708A72 /* ArrayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayType.swift; sourceTree = "<group>"; };
+		AAAEF71726B7F52300708A72 /* ArrayBufferProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBufferProtocol.swift; sourceTree = "<group>"; };
+		AAAEF71826B7F52300708A72 /* Indices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indices.swift; sourceTree = "<group>"; };
+		AAAEF71926B7F52300708A72 /* Reverse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reverse.swift; sourceTree = "<group>"; };
+		AAAEF71A26B7F52300708A72 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
+		AAAEF71B26B7F52300708A72 /* SmallString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallString.swift; sourceTree = "<group>"; };
+		AAAEF71C26B7F52300708A72 /* FloatingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPoint.swift; sourceTree = "<group>"; };
+		AAAEF71D26B7F52300708A72 /* StringGutsRangeReplaceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGutsRangeReplaceable.swift; sourceTree = "<group>"; };
+		AAAEF71E26B7F52300708A72 /* SetVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVariant.swift; sourceTree = "<group>"; };
+		AAAEF71F26B7F52300708A72 /* Hasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hasher.swift; sourceTree = "<group>"; };
+		AAAEF72026B7F52300708A72 /* SetAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlgebra.swift; sourceTree = "<group>"; };
+		AAAEF72126B7F52300708A72 /* Mirrors.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mirrors.swift.gyb; sourceTree = "<group>"; };
+		AAAEF72226B7F52300708A72 /* UnsafeRawBufferPointer.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnsafeRawBufferPointer.swift.gyb; sourceTree = "<group>"; };
+		AAAEF72326B7F52300708A72 /* UTF32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF32.swift; sourceTree = "<group>"; };
+		AAAEF72426B7F52300708A72 /* DictionaryCasting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCasting.swift; sourceTree = "<group>"; };
+		AAAEF72526B7F52300708A72 /* UTF16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF16.swift; sourceTree = "<group>"; };
+		AAAEF72626B7F52300708A72 /* Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
+		AAAEF72726B7F52300708A72 /* InputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStream.swift; sourceTree = "<group>"; };
+		AAAEF72826B7F52300708A72 /* CompilerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilerProtocols.swift; sourceTree = "<group>"; };
+		AAAEF72926B7F52300708A72 /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		AAAEF72A26B7F52300708A72 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
+		AAAEF72B26B7F52300708A72 /* ObjectIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectIdentifier.swift; sourceTree = "<group>"; };
+		AAAEF72C26B7F52300708A72 /* REPL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REPL.swift; sourceTree = "<group>"; };
+		AAAEF72D26B7F52300708A72 /* ClosedRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedRange.swift; sourceTree = "<group>"; };
+		AAAEF72E26B7F52300708A72 /* NativeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSet.swift; sourceTree = "<group>"; };
+		AAAEF72F26B7F52300708A72 /* StringGutsVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGutsVisitor.swift; sourceTree = "<group>"; };
+		AAAEF73026B7F52300708A72 /* OptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSet.swift; sourceTree = "<group>"; };
+		AAAEF73126B7F52300708A72 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		AAAEF73226B7F52300708A72 /* StringUTF16View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF16View.swift; sourceTree = "<group>"; };
+		AAAEF73326B7F52300708A72 /* AtomicInt.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = AtomicInt.swift.gyb; sourceTree = "<group>"; };
+		AAAEF73426B7F52300708A72 /* CollectionOfOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionOfOne.swift; sourceTree = "<group>"; };
+		AAAEF73526B7F52300708A72 /* SequenceAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceAlgorithms.swift; sourceTree = "<group>"; };
+		AAAEF73626B7F52300708A72 /* Slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slice.swift; sourceTree = "<group>"; };
+		AAAEF73726B7F52300708A72 /* Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flatten.swift; sourceTree = "<group>"; };
+		AAAEF73826B7F52300708A72 /* Mirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mirror.swift; sourceTree = "<group>"; };
+		AAAEF73926B7F52300708A72 /* MathFunctions.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = MathFunctions.swift.gyb; sourceTree = "<group>"; };
+		AAAEF73A26B7F52300708A72 /* AssertCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertCommon.swift; sourceTree = "<group>"; };
+		AAAEF73B26B7F52300708A72 /* FloatingPointParsing.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = FloatingPointParsing.swift.gyb; sourceTree = "<group>"; };
+		AAAEF73C26B7F52300708A72 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		AAAEF73D26B7F52300708A72 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		AAAEF73E26B7F52300708A72 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		AAAEF73F26B7F52300708A72 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		AAAEF74026B7F52300708A72 /* StringSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSwitch.swift; sourceTree = "<group>"; };
+		AAAEF74126B7F52300708A72 /* StringCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCharacterView.swift; sourceTree = "<group>"; };
+		AAAEF74226B7F52300708A72 /* UTF8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF8.swift; sourceTree = "<group>"; };
+		AAAEF74326B7F52300708A72 /* UTFEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTFEncoding.swift; sourceTree = "<group>"; };
+		AAAEF74426B7F52300708A72 /* KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
+		AAAEF74526B7F52300708A72 /* ExistentialCollection.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExistentialCollection.swift.gyb; sourceTree = "<group>"; };
+		AAAEF74626B7F52300708A72 /* FixedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedArray.swift; sourceTree = "<group>"; };
+		AAAEF74726B7F52300708A72 /* UnicodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeParser.swift; sourceTree = "<group>"; };
+		AAAEF74826B7F52300708A72 /* UnicodeScalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalar.swift; sourceTree = "<group>"; };
+		AAAEF74926B7F52300708A72 /* LazySequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazySequence.swift; sourceTree = "<group>"; };
+		AAAEF74A26B7F52300708A72 /* DictionaryBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBridging.swift; sourceTree = "<group>"; };
+		AAAEF74B26B7F52300708A72 /* Zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
+		AAAEF74C26B7F52300708A72 /* Bitset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitset.swift; sourceTree = "<group>"; };
+		AAAEF74D26B7F52300708A72 /* SetCasting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCasting.swift; sourceTree = "<group>"; };
+		AAAEF74E26B7F52300708A72 /* OutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStream.swift; sourceTree = "<group>"; };
+		AAAEF74F26B7F52300708A72 /* SetBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBridging.swift; sourceTree = "<group>"; };
+		AAAEF75026B7F52300708A72 /* StringHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHashable.swift; sourceTree = "<group>"; };
+		AAAEF75126B7F52300708A72 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		AAAEF75226B7F52300708A72 /* ArrayBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBody.swift; sourceTree = "<group>"; };
+		AAAEF75326B7F52300708A72 /* CharacterProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProperties.swift; sourceTree = "<group>"; };
+		AAAEF75426B7F52300708A72 /* CTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTypes.swift; sourceTree = "<group>"; };
+		AAAEF75526B7F52300708A72 /* StringIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
+		AAAEF75626B7F52300708A72 /* DropWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropWhile.swift; sourceTree = "<group>"; };
+		AAAEF75726B7F52300708A72 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		AAAEF75826B7F52300708A72 /* DictionaryVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryVariant.swift; sourceTree = "<group>"; };
+		AAAEF75926B7F52300708A72 /* Runtime.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Runtime.swift.gyb; sourceTree = "<group>"; };
+		AAAEF75A26B7F52300708A72 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		AAAEF75B26B7F52300708A72 /* StringCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCreate.swift; sourceTree = "<group>"; };
+		AAAEF75C26B7F52300708A72 /* BidirectionalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalCollection.swift; sourceTree = "<group>"; };
+		AAAEF75E26B7F52300708A72 /* SipHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SipHash.swift; sourceTree = "<group>"; };
+		AAAEF75F26B7F52300708A72 /* Hashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		AAAEF76026B7F52300708A72 /* UnfoldSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfoldSequence.swift; sourceTree = "<group>"; };
+		AAAEF76126B7F52300708A72 /* ValidUTF8Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidUTF8Buffer.swift; sourceTree = "<group>"; };
+		AAAEF76226B7F52300708A72 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		AAAEF76326B7F52300708A72 /* Builtin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builtin.swift; sourceTree = "<group>"; };
+		AAAEF76426B7F52300708A72 /* SIMDVectorTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = SIMDVectorTypes.swift.gyb; sourceTree = "<group>"; };
+		AAAEF76526B7F52300708A72 /* UnsafePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafePointer.swift; sourceTree = "<group>"; };
+		AAAEF76626B7F52300708A72 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		AAAEF76726B7F52300708A72 /* ContiguousArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguousArray.swift; sourceTree = "<group>"; };
+		AAAEF76826B7F52300708A72 /* NewtypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewtypeWrapper.swift; sourceTree = "<group>"; };
+		AAAEF76926B7F52300708A72 /* CocoaArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaArray.swift; sourceTree = "<group>"; };
+		AAAEF76A26B7F52300708A72 /* RangeReplaceableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeReplaceableCollection.swift; sourceTree = "<group>"; };
+		AAAEF76B26B7F52300708A72 /* UnmanagedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnmanagedString.swift; sourceTree = "<group>"; };
+		AAAEF76C26B7F52300708A72 /* StringGraphemeBreaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGraphemeBreaking.swift; sourceTree = "<group>"; };
+		AAAEF76D26B7F52300708A72 /* Stride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stride.swift; sourceTree = "<group>"; };
+		AAAEF76E26B7F52300708A72 /* Shims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shims.swift; sourceTree = "<group>"; };
+		AAAEF76F26B7F52300708A72 /* StringObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringObject.swift; sourceTree = "<group>"; };
+		AAAEF77026B7F52300708A72 /* ContiguousArrayBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguousArrayBuffer.swift; sourceTree = "<group>"; };
+		AAAEF77126B7F52300708A72 /* StringStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringStorage.swift; sourceTree = "<group>"; };
+		AAAEF77226B7F52300708A72 /* LazyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyCollection.swift; sourceTree = "<group>"; };
+		AAAEF77326B7F52300708A72 /* Codable.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Codable.swift.gyb; sourceTree = "<group>"; };
+		AAAEF77526B7F53000708A72 /* Demangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Demangle.cpp; sourceTree = "<group>"; };
+		AAAEF77626B7F53000708A72 /* CompatibilityOverride.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompatibilityOverride.h; sourceTree = "<group>"; };
+		AAAEF77726B7F53000708A72 /* SwiftRT-COFF.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "SwiftRT-COFF.cpp"; sourceTree = "<group>"; };
+		AAAEF77826B7F53000708A72 /* SwiftObject.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SwiftObject.mm; sourceTree = "<group>"; };
+		AAAEF77926B7F53000708A72 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		AAAEF77A26B7F53000708A72 /* SwiftObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftObject.h; sourceTree = "<group>"; };
+		AAAEF77B26B7F53000708A72 /* ErrorObjectConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ErrorObjectConstants.cpp; sourceTree = "<group>"; };
+		AAAEF77C26B7F53000708A72 /* ImageInspectionCOFF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageInspectionCOFF.h; sourceTree = "<group>"; };
+		AAAEF77D26B7F53000708A72 /* ThreadLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadLocalStorage.h; sourceTree = "<group>"; };
+		AAAEF77E26B7F53000708A72 /* KeyPaths.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyPaths.cpp; sourceTree = "<group>"; };
+		AAAEF77F26B7F53000708A72 /* BackDeployment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BackDeployment.cpp; sourceTree = "<group>"; };
+		AAAEF78026B7F53000708A72 /* LLVMSupport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LLVMSupport.cpp; sourceTree = "<group>"; };
+		AAAEF78126B7F53000708A72 /* RuntimeInvocationsTracking.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RuntimeInvocationsTracking.cpp; sourceTree = "<group>"; };
+		AAAEF78226B7F53000708A72 /* MetadataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetadataCache.h; sourceTree = "<group>"; };
+		AAAEF78326B7F53000708A72 /* ErrorObject.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ErrorObject.mm; sourceTree = "<group>"; };
+		AAAEF78426B7F53000708A72 /* CompatibilityOverride.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = CompatibilityOverride.def; sourceTree = "<group>"; };
+		AAAEF78526B7F53000708A72 /* EnumImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumImpl.h; sourceTree = "<group>"; };
+		AAAEF78626B7F53000708A72 /* Heap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Heap.cpp; sourceTree = "<group>"; };
+		AAAEF78726B7F53000708A72 /* ImageInspectionELF.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInspectionELF.cpp; sourceTree = "<group>"; };
+		AAAEF78826B7F53000708A72 /* Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Private.h; sourceTree = "<group>"; };
+		AAAEF78926B7F53000708A72 /* AnyHashableSupport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnyHashableSupport.cpp; sourceTree = "<group>"; };
+		AAAEF78A26B7F53000708A72 /* ExistentialMetadataImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExistentialMetadataImpl.h; sourceTree = "<group>"; };
+		AAAEF78B26B7F53000708A72 /* ReflectionMirror.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ReflectionMirror.mm; sourceTree = "<group>"; };
+		AAAEF78C26B7F53000708A72 /* Numeric.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Numeric.cpp; sourceTree = "<group>"; };
+		AAAEF78D26B7F53000708A72 /* MutexWin32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MutexWin32.cpp; sourceTree = "<group>"; };
+		AAAEF78E26B7F53000708A72 /* KnownMetadata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KnownMetadata.cpp; sourceTree = "<group>"; };
+		AAAEF78F26B7F53000708A72 /* ErrorObjectNative.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ErrorObjectNative.cpp; sourceTree = "<group>"; };
+		AAAEF79026B7F53000708A72 /* CygwinPort.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CygwinPort.cpp; sourceTree = "<group>"; };
+		AAAEF79126B7F53000708A72 /* ProtocolConformance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProtocolConformance.cpp; sourceTree = "<group>"; };
+		AAAEF79226B7F53100708A72 /* Array.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Array.cpp; sourceTree = "<group>"; };
+		AAAEF79326B7F53100708A72 /* Casting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Casting.cpp; sourceTree = "<group>"; };
+		AAAEF79426B7F53100708A72 /* SwiftValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValue.h; sourceTree = "<group>"; };
+		AAAEF79526B7F53100708A72 /* Enum.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Enum.cpp; sourceTree = "<group>"; };
+		AAAEF79626B7F53100708A72 /* ImageInspectionCOFF.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInspectionCOFF.cpp; sourceTree = "<group>"; };
+		AAAEF79726B7F53100708A72 /* MutexPThread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MutexPThread.cpp; sourceTree = "<group>"; };
+		AAAEF79826B7F53100708A72 /* ErrorDefaultImpls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ErrorDefaultImpls.cpp; sourceTree = "<group>"; };
+		AAAEF79926B7F53100708A72 /* MetadataImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetadataImpl.h; sourceTree = "<group>"; };
+		AAAEF79A26B7F53100708A72 /* ImageInspectionELF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageInspectionELF.h; sourceTree = "<group>"; };
+		AAAEF79B26B7F53100708A72 /* ImageInspection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageInspection.h; sourceTree = "<group>"; };
+		AAAEF79C26B7F53100708A72 /* RefCount.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RefCount.cpp; sourceTree = "<group>"; };
+		AAAEF79D26B7F53100708A72 /* Leaks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Leaks.h; sourceTree = "<group>"; };
+		AAAEF79E26B7F53100708A72 /* Metadata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Metadata.cpp; sourceTree = "<group>"; };
+		AAAEF79F26B7F53100708A72 /* SwiftRT-ELF.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "SwiftRT-ELF.cpp"; sourceTree = "<group>"; };
+		AAAEF7A026B7F53100708A72 /* ObjCRuntimeGetImageNameFromClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCRuntimeGetImageNameFromClass.h; sourceTree = "<group>"; };
+		AAAEF7A126B7F53100708A72 /* Portability.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Portability.cpp; sourceTree = "<group>"; };
+		AAAEF7A226B7F53100708A72 /* Errors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Errors.cpp; sourceTree = "<group>"; };
+		AAAEF7A326B7F53100708A72 /* ObjCRuntimeGetImageNameFromClass.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjCRuntimeGetImageNameFromClass.mm; sourceTree = "<group>"; };
+		AAAEF7A426B7F53100708A72 /* CompatibilityOverride.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CompatibilityOverride.cpp; sourceTree = "<group>"; };
+		AAAEF7A526B7F53100708A72 /* ImageInspectionMachO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInspectionMachO.cpp; sourceTree = "<group>"; };
+		AAAEF7A626B7F53100708A72 /* SwiftDtoa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SwiftDtoa.cpp; sourceTree = "<group>"; };
+		AAAEF7A726B7F53100708A72 /* ExistentialContainer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExistentialContainer.cpp; sourceTree = "<group>"; };
+		AAAEF7A826B7F53100708A72 /* Leaks.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Leaks.mm; sourceTree = "<group>"; };
+		AAAEF7A926B7F53100708A72 /* ErrorObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorObject.h; sourceTree = "<group>"; };
+		AAAEF7AA26B7F53100708A72 /* RuntimeInvocationsTracking.def */ = {isa = PBXFileReference; lastKnownFileType = text; path = RuntimeInvocationsTracking.def; sourceTree = "<group>"; };
+		AAAEF7AB26B7F53100708A72 /* MetadataLookup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MetadataLookup.cpp; sourceTree = "<group>"; };
+		AAAEF7AC26B7F53100708A72 /* HeapObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HeapObject.cpp; sourceTree = "<group>"; };
+		AAAEF7AD26B7F53100708A72 /* Exclusivity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Exclusivity.cpp; sourceTree = "<group>"; };
+		AAAEF7AE26B7F53100708A72 /* SwiftHashableSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftHashableSupport.h; sourceTree = "<group>"; };
+		AAAEF7AF26B7F53100708A72 /* WeakReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeakReference.h; sourceTree = "<group>"; };
+		AAAEF7B026B7F53100708A72 /* Once.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Once.cpp; sourceTree = "<group>"; };
+		AAAEF7B126B7F53100708A72 /* RuntimeInvocationsTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuntimeInvocationsTracking.h; sourceTree = "<group>"; };
+		AAAEF7B226B7F53100708A72 /* SwiftValue.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SwiftValue.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAAEF6A826B7F4FA00708A72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAAEF6A226B7F4FA00708A72 = {
+			isa = PBXGroup;
+			children = (
+				AAAEF6AD26B7F4FA00708A72 /* SwfitCore */,
+				AAAEF6AC26B7F4FA00708A72 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAAEF6AC26B7F4FA00708A72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEF6AB26B7F4FA00708A72 /* SwfitCore */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAAEF6AD26B7F4FA00708A72 /* SwfitCore */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEF77426B7F53000708A72 /* runtime */,
+				AAAEF6B526B7F52300708A72 /* core */,
+				AAAEF6AE26B7F4FA00708A72 /* main.swift */,
+			);
+			path = SwfitCore;
+			sourceTree = "<group>";
+		};
+		AAAEF6B526B7F52300708A72 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEF6B626B7F52300708A72 /* Print.swift */,
+				AAAEF6B726B7F52300708A72 /* UnicodeScalarProperties.swift */,
+				AAAEF6B826B7F52300708A72 /* UnsafeRawPointer.swift */,
+				AAAEF6B926B7F52300708A72 /* ThreadLocalStorage.swift */,
+				AAAEF6BA26B7F52300708A72 /* StringUTF8Validation.swift */,
+				AAAEF6BB26B7F52300708A72 /* FloatingPointTypes.swift.gyb */,
+				AAAEF6BC26B7F52300708A72 /* StringGutsSlice.swift */,
+				AAAEF6BD26B7F52300708A72 /* UIntBuffer.swift */,
+				AAAEF6BE26B7F52300708A72 /* SetAnyHashableExtensions.swift */,
+				AAAEF6BF26B7F52300708A72 /* MutableCollection.swift */,
+				AAAEF6C026B7F52300708A72 /* RandomAccessCollection.swift */,
+				AAAEF6C126B7F52300708A72 /* Random.swift */,
+				AAAEF6C226B7F52300708A72 /* Integers.swift */,
+				AAAEF6C326B7F52300708A72 /* LifetimeManager.swift */,
+				AAAEF6C426B7F52300708A72 /* BridgeObjectiveC.swift */,
+				AAAEF6C526B7F52300708A72 /* ASCII.swift */,
+				AAAEF6C626B7F52300708A72 /* PrefixWhile.swift */,
+				AAAEF6C726B7F52300708A72 /* Hashable.swift */,
+				AAAEF6C826B7F52300708A72 /* BridgingBuffer.swift */,
+				AAAEF6C926B7F52300708A72 /* Diffing.swift */,
+				AAAEF6CA26B7F52300708A72 /* CollectionDifference.swift */,
+				AAAEF6CB26B7F52300708A72 /* NativeDictionary.swift */,
+				AAAEF6CC26B7F52300708A72 /* DictionaryStorage.swift */,
+				AAAEF6CD26B7F52300708A72 /* StringIndexConversions.swift */,
+				AAAEF6CE26B7F52300708A72 /* EmptyCollection.swift */,
+				AAAEF6CF26B7F52300708A72 /* IntegerParsing.swift */,
+				AAAEF6D026B7F52300708A72 /* Array.swift */,
+				AAAEF6D126B7F52300708A72 /* CMakeLists.txt */,
+				AAAEF6D226B7F52300708A72 /* MemoryLayout.swift */,
+				AAAEF6D326B7F52300708A72 /* Unicode.swift */,
+				AAAEF6D426B7F52300708A72 /* IntegerTypes.swift.gyb */,
+				AAAEF6D526B7F52300708A72 /* Pointer.swift */,
+				AAAEF6D626B7F52300708A72 /* StringComparable.swift */,
+				AAAEF6D726B7F52300708A72 /* StringBreadcrumbs.swift */,
+				AAAEF6D826B7F52300708A72 /* SetBuilder.swift */,
+				AAAEF6D926B7F52300708A72 /* Collection.swift */,
+				AAAEF6DA26B7F52300708A72 /* ShadowProtocols.swift */,
+				AAAEF6DB26B7F52300708A72 /* Assert.swift */,
+				AAAEF6DC26B7F52300708A72 /* ArrayShared.swift */,
+				AAAEF6DD26B7F52300708A72 /* SIMDVector.swift */,
+				AAAEF6DE26B7F52300708A72 /* CString.swift */,
+				AAAEF6DF26B7F52300708A72 /* Join.swift */,
+				AAAEF6E026B7F52300708A72 /* Comparable.swift */,
+				AAAEF6E126B7F52300708A72 /* CommandLine.swift */,
+				AAAEF6E226B7F52300708A72 /* ManagedBuffer.swift */,
+				AAAEF6E326B7F52300708A72 /* UnavailableStringAPIs.swift.gyb */,
+				AAAEF6E426B7F52300708A72 /* StringBridge.swift */,
+				AAAEF6E526B7F52300708A72 /* UnicodeHelpers.swift */,
+				AAAEF6E626B7F52300708A72 /* ArraySlice.swift */,
+				AAAEF6E726B7F52300708A72 /* UnsafeBufferPointer.swift.gyb */,
+				AAAEF6E826B7F52300708A72 /* CollectionAlgorithms.swift */,
+				AAAEF6E926B7F52300708A72 /* SwiftNativeNSArray.swift */,
+				AAAEF6EA26B7F52300708A72 /* SliceBuffer.swift */,
+				AAAEF6EB26B7F52300708A72 /* KeyValuePairs.swift */,
+				AAAEF6EC26B7F52300708A72 /* LegacyABI.swift */,
+				AAAEF6ED26B7F52300708A72 /* StaticString.swift */,
+				AAAEF6EE26B7F52300708A72 /* Unmanaged.swift */,
+				AAAEF6EF26B7F52300708A72 /* UnmanagedOpaqueString.swift */,
+				AAAEF6F026B7F52300708A72 /* VarArgs.swift */,
+				AAAEF6F126B7F52300708A72 /* Policy.swift */,
+				AAAEF6F226B7F52300708A72 /* ContiguouslyStored.swift */,
+				AAAEF6F326B7F52300708A72 /* SetStorage.swift */,
+				AAAEF6F426B7F52300708A72 /* StringUTF8View.swift */,
+				AAAEF6F526B7F52300708A72 /* StringTesting.swift */,
+				AAAEF6F626B7F52300708A72 /* Dump.swift */,
+				AAAEF6F726B7F52300708A72 /* ArrayCast.swift */,
+				AAAEF6F826B7F52300708A72 /* RuntimeFunctionCounters.swift */,
+				AAAEF6F926B7F52300708A72 /* MigrationSupport.swift */,
+				AAAEF6FA26B7F52300708A72 /* Character.swift */,
+				AAAEF6FB26B7F52300708A72 /* DebuggerSupport.swift */,
+				AAAEF6FC26B7F52300708A72 /* StringGuts.swift */,
+				AAAEF6FD26B7F52300708A72 /* AnyHashable.swift */,
+				AAAEF6FE26B7F52300708A72 /* GroupInfo.json */,
+				AAAEF6FF26B7F52300708A72 /* UnicodeEncoding.swift */,
+				AAAEF70026B7F52300708A72 /* StringNormalization.swift */,
+				AAAEF70126B7F52300708A72 /* FlatMap.swift */,
+				AAAEF70226B7F52300708A72 /* Result.swift */,
+				AAAEF70326B7F52300708A72 /* Tuple.swift.gyb */,
+				AAAEF70426B7F52300708A72 /* StringUnicodeScalarView.swift */,
+				AAAEF70526B7F52300708A72 /* StringRangeReplaceableCollection.swift */,
+				AAAEF70626B7F52300708A72 /* ICU.swift */,
+				AAAEF70726B7F52300708A72 /* StringInterpolation.swift */,
+				AAAEF70826B7F52300708A72 /* StringComparison.swift */,
+				AAAEF70926B7F52300708A72 /* BridgeStorage.swift */,
+				AAAEF70A26B7F52300708A72 /* ReflectionMirror.swift */,
+				AAAEF70B26B7F52300708A72 /* Sequence.swift */,
+				AAAEF70C26B7F52300708A72 /* PlaygroundDisplay.swift */,
+				AAAEF70D26B7F52300708A72 /* StringLegacy.swift */,
+				AAAEF70E26B7F52300708A72 /* Misc.swift */,
+				AAAEF70F26B7F52300708A72 /* Availability.swift */,
+				AAAEF71026B7F52300708A72 /* Range.swift */,
+				AAAEF71126B7F52300708A72 /* Substring.swift */,
+				AAAEF71226B7F52300708A72 /* WriteBackMutableSlice.swift */,
+				AAAEF71326B7F52300708A72 /* DictionaryBuilder.swift */,
+				AAAEF71426B7F52300708A72 /* Algorithm.swift */,
+				AAAEF71526B7F52300708A72 /* ArrayBuffer.swift */,
+				AAAEF71626B7F52300708A72 /* ArrayType.swift */,
+				AAAEF71726B7F52300708A72 /* ArrayBufferProtocol.swift */,
+				AAAEF71826B7F52300708A72 /* Indices.swift */,
+				AAAEF71926B7F52300708A72 /* Reverse.swift */,
+				AAAEF71A26B7F52300708A72 /* Repeat.swift */,
+				AAAEF71B26B7F52300708A72 /* SmallString.swift */,
+				AAAEF71C26B7F52300708A72 /* FloatingPoint.swift */,
+				AAAEF71D26B7F52300708A72 /* StringGutsRangeReplaceable.swift */,
+				AAAEF71E26B7F52300708A72 /* SetVariant.swift */,
+				AAAEF71F26B7F52300708A72 /* Hasher.swift */,
+				AAAEF72026B7F52300708A72 /* SetAlgebra.swift */,
+				AAAEF72126B7F52300708A72 /* Mirrors.swift.gyb */,
+				AAAEF72226B7F52300708A72 /* UnsafeRawBufferPointer.swift.gyb */,
+				AAAEF72326B7F52300708A72 /* UTF32.swift */,
+				AAAEF72426B7F52300708A72 /* DictionaryCasting.swift */,
+				AAAEF72526B7F52300708A72 /* UTF16.swift */,
+				AAAEF72626B7F52300708A72 /* Equatable.swift */,
+				AAAEF72726B7F52300708A72 /* InputStream.swift */,
+				AAAEF72826B7F52300708A72 /* CompilerProtocols.swift */,
+				AAAEF72926B7F52300708A72 /* HashTable.swift */,
+				AAAEF72A26B7F52300708A72 /* Sort.swift */,
+				AAAEF72B26B7F52300708A72 /* ObjectIdentifier.swift */,
+				AAAEF72C26B7F52300708A72 /* REPL.swift */,
+				AAAEF72D26B7F52300708A72 /* ClosedRange.swift */,
+				AAAEF72E26B7F52300708A72 /* NativeSet.swift */,
+				AAAEF72F26B7F52300708A72 /* StringGutsVisitor.swift */,
+				AAAEF73026B7F52300708A72 /* OptionSet.swift */,
+				AAAEF73126B7F52300708A72 /* Dictionary.swift */,
+				AAAEF73226B7F52300708A72 /* StringUTF16View.swift */,
+				AAAEF73326B7F52300708A72 /* AtomicInt.swift.gyb */,
+				AAAEF73426B7F52300708A72 /* CollectionOfOne.swift */,
+				AAAEF73526B7F52300708A72 /* SequenceAlgorithms.swift */,
+				AAAEF73626B7F52300708A72 /* Slice.swift */,
+				AAAEF73726B7F52300708A72 /* Flatten.swift */,
+				AAAEF73826B7F52300708A72 /* Mirror.swift */,
+				AAAEF73926B7F52300708A72 /* MathFunctions.swift.gyb */,
+				AAAEF73A26B7F52300708A72 /* AssertCommon.swift */,
+				AAAEF73B26B7F52300708A72 /* FloatingPointParsing.swift.gyb */,
+				AAAEF73C26B7F52300708A72 /* Filter.swift */,
+				AAAEF73D26B7F52300708A72 /* String.swift */,
+				AAAEF73E26B7F52300708A72 /* ErrorType.swift */,
+				AAAEF73F26B7F52300708A72 /* Identifiable.swift */,
+				AAAEF74026B7F52300708A72 /* StringSwitch.swift */,
+				AAAEF74126B7F52300708A72 /* StringCharacterView.swift */,
+				AAAEF74226B7F52300708A72 /* UTF8.swift */,
+				AAAEF74326B7F52300708A72 /* UTFEncoding.swift */,
+				AAAEF74426B7F52300708A72 /* KeyPath.swift */,
+				AAAEF74526B7F52300708A72 /* ExistentialCollection.swift.gyb */,
+				AAAEF74626B7F52300708A72 /* FixedArray.swift */,
+				AAAEF74726B7F52300708A72 /* UnicodeParser.swift */,
+				AAAEF74826B7F52300708A72 /* UnicodeScalar.swift */,
+				AAAEF74926B7F52300708A72 /* LazySequence.swift */,
+				AAAEF74A26B7F52300708A72 /* DictionaryBridging.swift */,
+				AAAEF74B26B7F52300708A72 /* Zip.swift */,
+				AAAEF74C26B7F52300708A72 /* Bitset.swift */,
+				AAAEF74D26B7F52300708A72 /* SetCasting.swift */,
+				AAAEF74E26B7F52300708A72 /* OutputStream.swift */,
+				AAAEF74F26B7F52300708A72 /* SetBridging.swift */,
+				AAAEF75026B7F52300708A72 /* StringHashable.swift */,
+				AAAEF75126B7F52300708A72 /* StringProtocol.swift */,
+				AAAEF75226B7F52300708A72 /* ArrayBody.swift */,
+				AAAEF75326B7F52300708A72 /* CharacterProperties.swift */,
+				AAAEF75426B7F52300708A72 /* CTypes.swift */,
+				AAAEF75526B7F52300708A72 /* StringIndex.swift */,
+				AAAEF75626B7F52300708A72 /* DropWhile.swift */,
+				AAAEF75726B7F52300708A72 /* Map.swift */,
+				AAAEF75826B7F52300708A72 /* DictionaryVariant.swift */,
+				AAAEF75926B7F52300708A72 /* Runtime.swift.gyb */,
+				AAAEF75A26B7F52300708A72 /* Bool.swift */,
+				AAAEF75B26B7F52300708A72 /* StringCreate.swift */,
+				AAAEF75C26B7F52300708A72 /* BidirectionalCollection.swift */,
+				AAAEF75D26B7F52300708A72 /* SwiftCore */,
+				AAAEF75E26B7F52300708A72 /* SipHash.swift */,
+				AAAEF75F26B7F52300708A72 /* Hashing.swift */,
+				AAAEF76026B7F52300708A72 /* UnfoldSequence.swift */,
+				AAAEF76126B7F52300708A72 /* ValidUTF8Buffer.swift */,
+				AAAEF76226B7F52300708A72 /* Optional.swift */,
+				AAAEF76326B7F52300708A72 /* Builtin.swift */,
+				AAAEF76426B7F52300708A72 /* SIMDVectorTypes.swift.gyb */,
+				AAAEF76526B7F52300708A72 /* UnsafePointer.swift */,
+				AAAEF76626B7F52300708A72 /* Set.swift */,
+				AAAEF76726B7F52300708A72 /* ContiguousArray.swift */,
+				AAAEF76826B7F52300708A72 /* NewtypeWrapper.swift */,
+				AAAEF76926B7F52300708A72 /* CocoaArray.swift */,
+				AAAEF76A26B7F52300708A72 /* RangeReplaceableCollection.swift */,
+				AAAEF76B26B7F52300708A72 /* UnmanagedString.swift */,
+				AAAEF76C26B7F52300708A72 /* StringGraphemeBreaking.swift */,
+				AAAEF76D26B7F52300708A72 /* Stride.swift */,
+				AAAEF76E26B7F52300708A72 /* Shims.swift */,
+				AAAEF76F26B7F52300708A72 /* StringObject.swift */,
+				AAAEF77026B7F52300708A72 /* ContiguousArrayBuffer.swift */,
+				AAAEF77126B7F52300708A72 /* StringStorage.swift */,
+				AAAEF77226B7F52300708A72 /* LazyCollection.swift */,
+				AAAEF77326B7F52300708A72 /* Codable.swift.gyb */,
+			);
+			name = core;
+			path = ../../stdlib/public/core;
+			sourceTree = "<group>";
+		};
+		AAAEF75D26B7F52300708A72 /* SwiftCore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftCore;
+			sourceTree = "<group>";
+		};
+		AAAEF77426B7F53000708A72 /* runtime */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEF77526B7F53000708A72 /* Demangle.cpp */,
+				AAAEF77626B7F53000708A72 /* CompatibilityOverride.h */,
+				AAAEF77726B7F53000708A72 /* SwiftRT-COFF.cpp */,
+				AAAEF77826B7F53000708A72 /* SwiftObject.mm */,
+				AAAEF77926B7F53000708A72 /* CMakeLists.txt */,
+				AAAEF77A26B7F53000708A72 /* SwiftObject.h */,
+				AAAEF77B26B7F53000708A72 /* ErrorObjectConstants.cpp */,
+				AAAEF77C26B7F53000708A72 /* ImageInspectionCOFF.h */,
+				AAAEF77D26B7F53000708A72 /* ThreadLocalStorage.h */,
+				AAAEF77E26B7F53000708A72 /* KeyPaths.cpp */,
+				AAAEF77F26B7F53000708A72 /* BackDeployment.cpp */,
+				AAAEF78026B7F53000708A72 /* LLVMSupport.cpp */,
+				AAAEF78126B7F53000708A72 /* RuntimeInvocationsTracking.cpp */,
+				AAAEF78226B7F53000708A72 /* MetadataCache.h */,
+				AAAEF78326B7F53000708A72 /* ErrorObject.mm */,
+				AAAEF78426B7F53000708A72 /* CompatibilityOverride.def */,
+				AAAEF78526B7F53000708A72 /* EnumImpl.h */,
+				AAAEF78626B7F53000708A72 /* Heap.cpp */,
+				AAAEF78726B7F53000708A72 /* ImageInspectionELF.cpp */,
+				AAAEF78826B7F53000708A72 /* Private.h */,
+				AAAEF78926B7F53000708A72 /* AnyHashableSupport.cpp */,
+				AAAEF78A26B7F53000708A72 /* ExistentialMetadataImpl.h */,
+				AAAEF78B26B7F53000708A72 /* ReflectionMirror.mm */,
+				AAAEF78C26B7F53000708A72 /* Numeric.cpp */,
+				AAAEF78D26B7F53000708A72 /* MutexWin32.cpp */,
+				AAAEF78E26B7F53000708A72 /* KnownMetadata.cpp */,
+				AAAEF78F26B7F53000708A72 /* ErrorObjectNative.cpp */,
+				AAAEF79026B7F53000708A72 /* CygwinPort.cpp */,
+				AAAEF79126B7F53000708A72 /* ProtocolConformance.cpp */,
+				AAAEF79226B7F53100708A72 /* Array.cpp */,
+				AAAEF79326B7F53100708A72 /* Casting.cpp */,
+				AAAEF79426B7F53100708A72 /* SwiftValue.h */,
+				AAAEF79526B7F53100708A72 /* Enum.cpp */,
+				AAAEF79626B7F53100708A72 /* ImageInspectionCOFF.cpp */,
+				AAAEF79726B7F53100708A72 /* MutexPThread.cpp */,
+				AAAEF79826B7F53100708A72 /* ErrorDefaultImpls.cpp */,
+				AAAEF79926B7F53100708A72 /* MetadataImpl.h */,
+				AAAEF79A26B7F53100708A72 /* ImageInspectionELF.h */,
+				AAAEF79B26B7F53100708A72 /* ImageInspection.h */,
+				AAAEF79C26B7F53100708A72 /* RefCount.cpp */,
+				AAAEF79D26B7F53100708A72 /* Leaks.h */,
+				AAAEF79E26B7F53100708A72 /* Metadata.cpp */,
+				AAAEF79F26B7F53100708A72 /* SwiftRT-ELF.cpp */,
+				AAAEF7A026B7F53100708A72 /* ObjCRuntimeGetImageNameFromClass.h */,
+				AAAEF7A126B7F53100708A72 /* Portability.cpp */,
+				AAAEF7A226B7F53100708A72 /* Errors.cpp */,
+				AAAEF7A326B7F53100708A72 /* ObjCRuntimeGetImageNameFromClass.mm */,
+				AAAEF7A426B7F53100708A72 /* CompatibilityOverride.cpp */,
+				AAAEF7A526B7F53100708A72 /* ImageInspectionMachO.cpp */,
+				AAAEF7A626B7F53100708A72 /* SwiftDtoa.cpp */,
+				AAAEF7A726B7F53100708A72 /* ExistentialContainer.cpp */,
+				AAAEF7A826B7F53100708A72 /* Leaks.mm */,
+				AAAEF7A926B7F53100708A72 /* ErrorObject.h */,
+				AAAEF7AA26B7F53100708A72 /* RuntimeInvocationsTracking.def */,
+				AAAEF7AB26B7F53100708A72 /* MetadataLookup.cpp */,
+				AAAEF7AC26B7F53100708A72 /* HeapObject.cpp */,
+				AAAEF7AD26B7F53100708A72 /* Exclusivity.cpp */,
+				AAAEF7AE26B7F53100708A72 /* SwiftHashableSupport.h */,
+				AAAEF7AF26B7F53100708A72 /* WeakReference.h */,
+				AAAEF7B026B7F53100708A72 /* Once.cpp */,
+				AAAEF7B126B7F53100708A72 /* RuntimeInvocationsTracking.h */,
+				AAAEF7B226B7F53100708A72 /* SwiftValue.mm */,
+			);
+			name = runtime;
+			path = ../../stdlib/public/runtime;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAAEF6AA26B7F4FA00708A72 /* SwfitCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAAEF6B226B7F4FA00708A72 /* Build configuration list for PBXNativeTarget "SwfitCore" */;
+			buildPhases = (
+				AAAEF6A726B7F4FA00708A72 /* Sources */,
+				AAAEF6A826B7F4FA00708A72 /* Frameworks */,
+				AAAEF6A926B7F4FA00708A72 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwfitCore;
+			productName = SwfitCore;
+			productReference = AAAEF6AB26B7F4FA00708A72 /* SwfitCore */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAAEF6A326B7F4FA00708A72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					AAAEF6AA26B7F4FA00708A72 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = AAAEF6A626B7F4FA00708A72 /* Build configuration list for PBXProject "SwfitCore" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAAEF6A226B7F4FA00708A72;
+			productRefGroup = AAAEF6AC26B7F4FA00708A72 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAAEF6AA26B7F4FA00708A72 /* SwfitCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAAEF6A726B7F4FA00708A72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAAEF6AF26B7F4FA00708A72 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AAAEF6B026B7F4FA00708A72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAAEF6B126B7F4FA00708A72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		AAAEF6B326B7F4FA00708A72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TSQ8MZ6PMZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AAAEF6B426B7F4FA00708A72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TSQ8MZ6PMZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAAEF6A626B7F4FA00708A72 /* Build configuration list for PBXProject "SwfitCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEF6B026B7F4FA00708A72 /* Debug */,
+				AAAEF6B126B7F4FA00708A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAAEF6B226B7F4FA00708A72 /* Build configuration list for PBXNativeTarget "SwfitCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEF6B326B7F4FA00708A72 /* Debug */,
+				AAAEF6B426B7F4FA00708A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAAEF6A326B7F4FA00708A72 /* Project object */;
+}
