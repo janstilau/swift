@@ -1,14 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
 import SwiftShims
 
 /// A type representing an error value that can be thrown.
@@ -111,23 +100,23 @@ import SwiftShims
 ///     }
 ///     // Prints "Parsing error: mismatchedTag [19:5]"
 public protocol Error {
-  var _domain: String { get }
-  var _code: Int { get }
-
-  // Note: _userInfo is always an NSDictionary, but we cannot use that type here
-  // because the standard library cannot depend on Foundation. However, the
-  // underscore implies that we control all implementations of this requirement.
-  var _userInfo: AnyObject? { get }
-
-#if _runtime(_ObjC)
-  func _getEmbeddedNSError() -> AnyObject?
-#endif
+    var _domain: String { get }
+    var _code: Int { get }
+    
+    // Note: _userInfo is always an NSDictionary, but we cannot use that type here
+    // because the standard library cannot depend on Foundation. However, the
+    // underscore implies that we control all implementations of this requirement.
+    var _userInfo: AnyObject? { get }
+    
+    #if _runtime(_ObjC)
+    func _getEmbeddedNSError() -> AnyObject?
+    #endif
 }
 
 #if _runtime(_ObjC)
 extension Error {
-  /// Default implementation: there is no embedded NSError.
-  public func _getEmbeddedNSError() -> AnyObject? { return nil }
+    /// Default implementation: there is no embedded NSError.
+    public func _getEmbeddedNSError() -> AnyObject? { return nil }
 }
 #endif
 
@@ -137,32 +126,32 @@ extension Error {
 @_silgen_name("")
 internal func _getErrorDomainNSString<T: Error>(_ x: UnsafePointer<T>)
 -> AnyObject {
-  return x.pointee._domain._bridgeToObjectiveCImpl()
+    return x.pointee._domain._bridgeToObjectiveCImpl()
 }
 
 @_silgen_name("")
 internal func _getErrorCode<T: Error>(_ x: UnsafePointer<T>) -> Int {
-  return x.pointee._code
+    return x.pointee._code
 }
 
 @_silgen_name("")
 internal func _getErrorUserInfoNSDictionary<T: Error>(_ x: UnsafePointer<T>)
 -> AnyObject? {
-  return x.pointee._userInfo.map { $0 as AnyObject }
+    return x.pointee._userInfo.map { $0 as AnyObject }
 }
 
 // Called by the casting machinery to extract an NSError from an Error value.
 @_silgen_name("")
 internal func _getErrorEmbeddedNSErrorIndirect<T: Error>(
     _ x: UnsafePointer<T>) -> AnyObject? {
-  return x.pointee._getEmbeddedNSError()
+    return x.pointee._getEmbeddedNSError()
 }
 
 /// Called by compiler-generated code to extract an NSError from an Error value.
 public // COMPILER_INTRINSIC
 func _getErrorEmbeddedNSError<T: Error>(_ x: T)
 -> AnyObject? {
-  return x._getEmbeddedNSError()
+    return x._getEmbeddedNSError()
 }
 
 /// Provided by the ErrorObject implementation.
@@ -179,25 +168,25 @@ public func _bridgeErrorToNSError(_ error: __owned Error) -> AnyObject
 /// throws an error.
 @_silgen_name("swift_unexpectedError")
 public func _unexpectedError(
-  _ error: __owned Error,
-  filenameStart: Builtin.RawPointer,
-  filenameLength: Builtin.Word,
-  filenameIsASCII: Builtin.Int1,
-  line: Builtin.Word
+    _ error: __owned Error,
+    filenameStart: Builtin.RawPointer,
+    filenameLength: Builtin.Word,
+    filenameIsASCII: Builtin.Int1,
+    line: Builtin.Word
 ) {
-  preconditionFailure(
-    "'try!' expression unexpectedly raised an error: \(String(reflecting: error))",
-    file: StaticString(
-      _start: filenameStart,
-      utf8CodeUnitCount: filenameLength,
-      isASCII: filenameIsASCII),
-    line: UInt(line))
+    preconditionFailure(
+        "'try!' expression unexpectedly raised an error: \(String(reflecting: error))",
+        file: StaticString(
+            _start: filenameStart,
+            utf8CodeUnitCount: filenameLength,
+            isASCII: filenameIsASCII),
+        line: UInt(line))
 }
 
 /// Invoked by the compiler when code at top level throws an uncaught error.
 @_silgen_name("swift_errorInMain")
 public func _errorInMain(_ error: Error) {
-  fatalError("Error raised at top level: \(String(reflecting: error))")
+    fatalError("Error raised at top level: \(String(reflecting: error))")
 }
 
 /// Runtime function to determine the default code for an Error-conforming type.
@@ -206,31 +195,31 @@ public func _errorInMain(_ error: Error) {
 public func _getDefaultErrorCode<T: Error>(_ error: T) -> Int
 
 extension Error {
-  public var _code: Int {
-    return _getDefaultErrorCode(self)
-  }
-
-  public var _domain: String {
-    return String(reflecting: type(of: self))
-  }
-
-  public var _userInfo: AnyObject? {
-#if _runtime(_ObjC)
-    return _getErrorDefaultUserInfo(self)
-#else
-    return nil
-#endif
-  }
+    public var _code: Int {
+        return _getDefaultErrorCode(self)
+    }
+    
+    public var _domain: String {
+        return String(reflecting: type(of: self))
+    }
+    
+    public var _userInfo: AnyObject? {
+        #if _runtime(_ObjC)
+        return _getErrorDefaultUserInfo(self)
+        #else
+        return nil
+        #endif
+    }
 }
 
 extension Error where Self: RawRepresentable, Self.RawValue: FixedWidthInteger {
-  // The error code of Error with integral raw values is the raw value.
-  public var _code: Int {
-    if Self.RawValue.isSigned {
-      return numericCast(self.rawValue)
+    // The error code of Error with integral raw values is the raw value.
+    public var _code: Int {
+        if Self.RawValue.isSigned {
+            return numericCast(self.rawValue)
+        }
+        
+        let uintValue: UInt = numericCast(self.rawValue)
+        return Int(bitPattern: uintValue)
     }
-
-    let uintValue: UInt = numericCast(self.rawValue)
-    return Int(bitPattern: uintValue)
-  }
 }
