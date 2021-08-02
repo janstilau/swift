@@ -111,186 +111,156 @@ public typealias CChar32 = Unicode.Scalar
 /// The C '_Bool' and C++ 'bool' type.
 public typealias CBool = Bool
 
-/// A wrapper around an opaque C pointer.
-///
-/// Opaque pointers are used to represent C pointers to types that
-/// cannot be represented in Swift, such as incomplete struct types.
+/*
+ C 指针的表现.
+ 就是 void *
+ 如果 Builtin.RawPointer 被暴露出来, 那么所有的就是直接操作 Builtin.RawPointer 了.
+ 但是这样, 操作就不在类型的限制之下了.
+ 各种概念, 都被特定的类型所束缚着. 相应的代价就是, 要提供大量的转化函数.
+ */
 @frozen
 public struct OpaquePointer {
-  @usableFromInline
-  internal var _rawValue: Builtin.RawPointer
+    // 内存部分, 就是一个 void * 指针.
+    internal var _rawValue: Builtin.RawPointer
+    
+    internal init(_ v: Builtin.RawPointer) {
+        self._rawValue = v
+    }
+    
+    // 用 Int 值来表现这个指针, 因为 Int 是跟随操作系统的字长的, 所以, 一定可以表示.
+    public init?(bitPattern: Int) {
+        if bitPattern == 0 { return nil }
+        self._rawValue = Builtin.inttoptr_Word(bitPattern._builtinWordValue)
+    }
+    
+    public init?(bitPattern: UInt) {
+        if bitPattern == 0 { return nil }
+        self._rawValue = Builtin.inttoptr_Word(bitPattern._builtinWordValue)
+    }
 
-  @usableFromInline @_transparent
-  internal init(_ v: Builtin.RawPointer) {
-    self._rawValue = v
-  }
-
-  /// Creates an `OpaquePointer` from a given address in memory.
-  @_transparent
-  public init?(bitPattern: Int) {
-    if bitPattern == 0 { return nil }
-    self._rawValue = Builtin.inttoptr_Word(bitPattern._builtinWordValue)
-  }
-
-  /// Creates an `OpaquePointer` from a given address in memory.
-  @_transparent
-  public init?(bitPattern: UInt) {
-    if bitPattern == 0 { return nil }
-    self._rawValue = Builtin.inttoptr_Word(bitPattern._builtinWordValue)
-  }
-
-  /// Converts a typed `UnsafePointer` to an opaque C pointer.
-  @_transparent
-  public init<T>(_ from: UnsafePointer<T>) {
-    self._rawValue = from._rawValue
-  }
-
-  /// Converts a typed `UnsafePointer` to an opaque C pointer.
-  ///
-  /// The result is `nil` if `from` is `nil`.
-  @_transparent
-  public init?<T>(_ from: UnsafePointer<T>?) {
-    guard let unwrapped = from else { return nil }
-    self.init(unwrapped)
-  }
-
-  /// Converts a typed `UnsafeMutablePointer` to an opaque C pointer.
-  @_transparent
-  public init<T>(_ from: UnsafeMutablePointer<T>) {
-    self._rawValue = from._rawValue
-  }
-
-  /// Converts a typed `UnsafeMutablePointer` to an opaque C pointer.
-  ///
-  /// The result is `nil` if `from` is `nil`.
-  @_transparent
-  public init?<T>(_ from: UnsafeMutablePointer<T>?) {
-    guard let unwrapped = from else { return nil }
-    self.init(unwrapped)
-  }
+    // 用 Swfit 的指针类型初始化.
+    public init<T>(_ from: UnsafePointer<T>) {
+        self._rawValue = from._rawValue
+    }
+    
+    public init?<T>(_ from: UnsafePointer<T>?) {
+        guard let unwrapped = from else { return nil }
+        self.init(unwrapped)
+    }
+    
+    // 用 Swift 可变指针类型初始化.
+    public init<T>(_ from: UnsafeMutablePointer<T>) {
+        self._rawValue = from._rawValue
+    }
+    
+    public init?<T>(_ from: UnsafeMutablePointer<T>?) {
+        guard let unwrapped = from else { return nil }
+        self.init(unwrapped)
+    }
 }
 
+// 相等性比较, 就是原始指针的比较.
 extension OpaquePointer: Equatable {
-  @inlinable // unsafe-performance
-  public static func == (lhs: OpaquePointer, rhs: OpaquePointer) -> Bool {
-    return Bool(Builtin.cmp_eq_RawPointer(lhs._rawValue, rhs._rawValue))
-  }
+    @inlinable // unsafe-performance
+    public static func == (lhs: OpaquePointer, rhs: OpaquePointer) -> Bool {
+        return Bool(Builtin.cmp_eq_RawPointer(lhs._rawValue, rhs._rawValue))
+    }
 }
 
+// Hash 就是拿到原始指针进行 Hash
 extension OpaquePointer: Hashable {
-  /// Hashes the essential components of this value by feeding them into the
-  /// given hasher.
-  ///
-  /// - Parameter hasher: The hasher to use when combining the components
-  ///   of this instance.
-  @inlinable
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(Int(Builtin.ptrtoint_Word(_rawValue)))
-  }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(Int(Builtin.ptrtoint_Word(_rawValue)))
+    }
 }
 
 extension OpaquePointer: CustomDebugStringConvertible {
-  /// A textual representation of the pointer, suitable for debugging.
-  public var debugDescription: String {
-    return _rawPointerToString(_rawValue)
-  }
+    public var debugDescription: String {
+        return _rawPointerToString(_rawValue)
+    }
 }
 
+// 提供指针到 Int 值的转变.
 extension Int {
-  /// Creates a new value with the bit pattern of the given pointer.
-  ///
-  /// The new value represents the address of the pointer passed as `pointer`.
-  /// If `pointer` is `nil`, the result is `0`.
-  ///
-  /// - Parameter pointer: The pointer to use as the source for the new
-  ///   integer.
-  @inlinable // unsafe-performance
-  public init(bitPattern pointer: OpaquePointer?) {
-    self.init(bitPattern: UnsafeRawPointer(pointer))
-  }
+    public init(bitPattern pointer: OpaquePointer?) {
+        self.init(bitPattern: UnsafeRawPointer(pointer))
+    }
 }
 
+// 提供指针到 Int 值的转变.
 extension UInt {
-  /// Creates a new value with the bit pattern of the given pointer.
-  ///
-  /// The new value represents the address of the pointer passed as `pointer`.
-  /// If `pointer` is `nil`, the result is `0`.
-  ///
-  /// - Parameter pointer: The pointer to use as the source for the new
-  ///   integer.
-  @inlinable // unsafe-performance
-  public init(bitPattern pointer: OpaquePointer?) {
-    self.init(bitPattern: UnsafeRawPointer(pointer))
-  }
+    public init(bitPattern pointer: OpaquePointer?) {
+        self.init(bitPattern: UnsafeRawPointer(pointer))
+    }
 }
 
 /// A wrapper around a C `va_list` pointer.
 #if arch(arm64) && !(os(macOS) || os(iOS) || os(tvOS) || os(watchOS) || os(Windows))
 @frozen
 public struct CVaListPointer {
-  @usableFromInline // unsafe-performance
-  internal var _value: (__stack: UnsafeMutablePointer<Int>?,
-                        __gr_top: UnsafeMutablePointer<Int>?,
-                        __vr_top: UnsafeMutablePointer<Int>?,
-                        __gr_off: Int32,
-                        __vr_off: Int32)
-
-  @inlinable // unsafe-performance
-  public // @testable
-  init(__stack: UnsafeMutablePointer<Int>?,
-       __gr_top: UnsafeMutablePointer<Int>?,
-       __vr_top: UnsafeMutablePointer<Int>?,
-       __gr_off: Int32,
-       __vr_off: Int32) {
-    _value = (__stack, __gr_top, __vr_top, __gr_off, __vr_off)
-  }
+    @usableFromInline // unsafe-performance
+    internal var _value: (__stack: UnsafeMutablePointer<Int>?,
+                          __gr_top: UnsafeMutablePointer<Int>?,
+                          __vr_top: UnsafeMutablePointer<Int>?,
+                          __gr_off: Int32,
+                          __vr_off: Int32)
+    
+    @inlinable // unsafe-performance
+    public // @testable
+    init(__stack: UnsafeMutablePointer<Int>?,
+         __gr_top: UnsafeMutablePointer<Int>?,
+         __vr_top: UnsafeMutablePointer<Int>?,
+         __gr_off: Int32,
+         __vr_off: Int32) {
+        _value = (__stack, __gr_top, __vr_top, __gr_off, __vr_off)
+    }
 }
 
 extension CVaListPointer: CustomDebugStringConvertible {
-  public var debugDescription: String {
-    return "(\(_value.__stack.debugDescription), " +
-           "\(_value.__gr_top.debugDescription), " +
-           "\(_value.__vr_top.debugDescription), " +
-           "\(_value.__gr_off), " +
-           "\(_value.__vr_off))"
-  }
+    public var debugDescription: String {
+        return "(\(_value.__stack.debugDescription), " +
+            "\(_value.__gr_top.debugDescription), " +
+            "\(_value.__vr_top.debugDescription), " +
+            "\(_value.__gr_off), " +
+            "\(_value.__vr_off))"
+    }
 }
 
 #else
 
 @frozen
 public struct CVaListPointer {
-  @usableFromInline // unsafe-performance
-  internal var _value: UnsafeMutableRawPointer
-
-  @inlinable // unsafe-performance
-  public // @testable
-  init(_fromUnsafeMutablePointer from: UnsafeMutableRawPointer) {
-    _value = from
-  }
+    @usableFromInline // unsafe-performance
+    internal var _value: UnsafeMutableRawPointer
+    
+    @inlinable // unsafe-performance
+    public // @testable
+    init(_fromUnsafeMutablePointer from: UnsafeMutableRawPointer) {
+        _value = from
+    }
 }
 
 extension CVaListPointer: CustomDebugStringConvertible {
-  /// A textual representation of the pointer, suitable for debugging.
-  public var debugDescription: String {
-    return _value.debugDescription
-  }
+    /// A textual representation of the pointer, suitable for debugging.
+    public var debugDescription: String {
+        return _value.debugDescription
+    }
 }
 
 #endif
 
 @inlinable
 internal func _memcpy(
-  dest destination: UnsafeMutableRawPointer,
-  src: UnsafeRawPointer,
-  size: UInt
+    dest destination: UnsafeMutableRawPointer,
+    src: UnsafeRawPointer,
+    size: UInt
 ) {
-  let dest = destination._rawValue
-  let src = src._rawValue
-  let size = UInt64(size)._value
-  Builtin.int_memcpy_RawPointer_RawPointer_Int64(
-    dest, src, size,
-    /*volatile:*/ false._value)
+    let dest = destination._rawValue
+    let src = src._rawValue
+    let size = UInt64(size)._value
+    Builtin.int_memcpy_RawPointer_RawPointer_Int64(
+        dest, src, size,
+        /*volatile:*/ false._value)
 }
 
 /// Copy `count` bytes of memory from `src` into `dest`.
@@ -299,14 +269,14 @@ internal func _memcpy(
 /// `dest..<dest + count` may overlap.
 @inlinable
 internal func _memmove(
-  dest destination: UnsafeMutableRawPointer,
-  src: UnsafeRawPointer,
-  size: UInt
+    dest destination: UnsafeMutableRawPointer,
+    src: UnsafeRawPointer,
+    size: UInt
 ) {
-  let dest = destination._rawValue
-  let src = src._rawValue
-  let size = UInt64(size)._value
-  Builtin.int_memmove_RawPointer_RawPointer_Int64(
-    dest, src, size,
-    /*volatile:*/ false._value)
+    let dest = destination._rawValue
+    let src = src._rawValue
+    let size = UInt64(size)._value
+    Builtin.int_memmove_RawPointer_RawPointer_Int64(
+        dest, src, size,
+        /*volatile:*/ false._value)
 }

@@ -1,7 +1,4 @@
 
-// TODO: swift-3-indexing-model: perform type erasure on the associated
-// `Indices` type.
-
 import SwiftShims
 
 @inline(never)
@@ -143,26 +140,9 @@ internal final class _IteratorBox<
 //===--- Sequence ---------------------------------------------------------===//
 //===----------------------------------------------------------------------===//
 
-% for Kind in ['Sequence', 'Collection', 'BidirectionalCollection', 'RandomAccessCollection']:
-
-@_fixed_layout
-@usableFromInline
-%   if Kind == 'Sequence':
 internal class _AnySequenceBox<Element>
-%   elif Kind == 'Collection':
-internal class _AnyCollectionBox<Element>: _AnySequenceBox<Element>
-%   elif Kind == 'BidirectionalCollection':
-internal class _AnyBidirectionalCollectionBox<Element>
-: _AnyCollectionBox<Element>
-%   elif Kind == 'RandomAccessCollection':
-internal class _AnyRandomAccessCollectionBox<Element>
-: _AnyBidirectionalCollectionBox<Element>
-%   else:
-%     assert False, 'Unknown kind'
-%   end
 {
     
-    %   if Kind == 'Sequence':
     @inlinable // FIXME(sil-serialize-all)
     internal init() { }
     
@@ -211,13 +191,6 @@ internal class _AnyRandomAccessCollectionBox<Element>
         _abstract()
     }
     
-    %   end
-        
-        % # This deinit has to be present on all the types
-    @inlinable // FIXME(sil-serialize-all)
-    deinit {}
-    
-    %   if Kind == 'Sequence':
     @inlinable
     internal func _drop(
         while predicate: (Element) throws -> Bool
@@ -698,19 +671,14 @@ public struct AnySequence<Element> {
 extension  AnySequence: Sequence {
     public typealias Iterator = AnyIterator<Element>
     
-    /// Creates a new sequence that wraps and forwards operations to `base`.
     @inlinable
     public init<S: Sequence>(_ base: S)
-    where
-        S.Element == Element {
-        self._box = _SequenceBox(_base: base)
+    where S.Element == Element {
+        self._box = _AnySequenceBox(_base: base)
     }
 }
 
-% for Kind in ['Sequence', 'Collection', 'BidirectionalCollection', 'RandomAccessCollection']:
-extension Any${Kind} {
-    %   if Kind == 'Sequence':
-    /// Returns an iterator over the elements of this sequence.
+extension AnSequence {
     @inline(__always)
     @inlinable
     public __consuming func makeIterator() -> Iterator {
@@ -730,29 +698,6 @@ extension Any${Kind} {
     public __consuming func suffix(_ maxLength: Int) -> [Element] {
         return _box._suffix(maxLength)
     }
-    %   else:
-    /// Returns an iterator over the elements of this collection.
-    @inline(__always)
-    @inlinable
-    public __consuming func makeIterator() -> Iterator {
-        return _box._makeIterator()
-    }
-    @inlinable
-    public __consuming func dropLast(_ n: Int = 1) -> Any${Kind}<Element> {
-        return Any${Kind}(_box: _box._dropLast(n))
-    }
-    @inlinable
-    public __consuming func prefix(
-        while predicate: (Element) throws -> Bool
-    ) rethrows -> Any${Kind}<Element> {
-        return try Any${Kind}(_box: _box._prefix(while: predicate))
-    }
-    @inlinable
-    public __consuming func suffix(_ maxLength: Int) -> Any${Kind}<Element> {
-        return Any${Kind}(_box: _box._suffix(maxLength))
-    }
-    %   end
-    
     @inlinable
     public var underestimatedCount: Int {
         return _box._underestimatedCount
@@ -782,7 +727,7 @@ extension Any${Kind} {
     @inlinable
     public __consuming func drop(
         while predicate: (Element) throws -> Bool
-    ) rethrows -> Any${Kind}<Element> {
+    ) rethrows -> AnySequence<Element> {
         return try Any${Kind}(_box: _box._drop(while: predicate))
     }
     
@@ -815,7 +760,6 @@ extension Any${Kind} {
         return (AnyIterator(it),idx)
     }
 }
-% end
 
 //===--- Index ------------------------------------------------------------===//
 //===----------------------------------------------------------------------===//
