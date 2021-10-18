@@ -1,17 +1,8 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2018 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 /// A value that represents either a success or a failure, including an
 /// associated value in each case.
+
+// 在 KF 里面, 大量使用了异步操作. 所以, 这个 Result 被大量使用了.
+// 因为没有办法, 在异步操作里面表达使用 throw 表达成功失败, 现在 Swift 的异步操作, 都是使用的 Result 进行的.
 @frozen
 public enum Result<Success, Failure: Error> {
   /// A success, storing a `Success` value.
@@ -38,6 +29,11 @@ public enum Result<Success, Failure: Error> {
   ///   instance.
   /// - Returns: A `Result` instance with the result of evaluating `transform`
   ///   as the new success value if this instance represents a success.
+    /*
+        Map 的含义是映射.
+        这里是将 success 里面的值, 映射到另外的一个值, 还是 Result 类型的.
+        失败的话, 保持原有的失败状态不变.
+     */
   public func map<NewSuccess>(
     _ transform: (Success) -> NewSuccess
   ) -> Result<NewSuccess, Failure> {
@@ -75,6 +71,9 @@ public enum Result<Success, Failure: Error> {
   ///   instance.
   /// - Returns: A `Result` instance with the result of evaluating `transform`
   ///   as the new failure value if this instance represents a failure.
+    /*
+     根据闭包表达式的返回值, 决定返回值类型, 这是一个非常常见的用法.
+     */
   public func mapError<NewFailure>(
     _ transform: (Failure) -> NewFailure
   ) -> Result<Success, NewFailure> {
@@ -93,6 +92,14 @@ public enum Result<Success, Failure: Error> {
   ///   instance.
   /// - Returns: A `Result` instance with the result of evaluating `transform`
   ///   as the new failure value if this instance represents a failure.
+    
+    /*
+        FlatMap 和 Map 是完全不一样的用法.
+        FlatMap 是得到结果, 然后返回一个新的 Result. 由闭包来控制.
+        
+     如果是一个网络请求, 就是 http 相应成功了, 然后由 Transorm 使用 Http 的结构, 来进行业务分析, 然后根据业务信息, 返回对应的 Result.
+     这是一个流程的关系.
+     */
   public func flatMap<NewSuccess>(
     _ transform: (Success) -> Result<NewSuccess, Failure>
   ) -> Result<NewSuccess, Failure> {

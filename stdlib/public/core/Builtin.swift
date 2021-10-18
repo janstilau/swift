@@ -56,6 +56,7 @@ func _canBeClass<T>(_: T.Type) -> Int8 {
 /// layout-compatible type when conversion through other means is not
 /// possible. Common conversions supported by the Swift standard library
 /// include the following:
+///  首先, 两个类型的长度应该相同. 然后就是, 有了更加明确的方法, 应该使用那些方法. 这种强转, 是非常危险的.
 ///
 /// - Value conversion from one integer type to another. Use the destination
 ///   type's initializer or the `numericCast(_:)` function.
@@ -71,17 +72,20 @@ func _canBeClass<T>(_: T.Type) -> Int8 {
 ///
 /// - Warning: Calling this function breaks the guarantees of the Swift type
 ///   system; use with extreme care.
+///   这种强转, 使得 Swift 编译器, 丢失了对于类型的控制. 应该少用.
 ///
 /// - Parameters:
 ///   - x: The instance to cast to `type`.
 ///   - type: The type to cast `x` to. `type` and the type of `x` must have the
 ///     same size of memory representation and compatible memory layout.
-/// - Returns: A new instance of type `U`, cast from `x`.
-@inlinable // unsafe-performance
+/// - Returns: A new instance of type `U`, cast from `x`
+///
+
+/// 这个方法, 就是 Swift 上面的强转方法.
+/// reinterpretCast 应该会调用 C++ 的底层.
+/// 不过在真正强转之前, 会判断两个类型的长度应该是一样的.
 @_transparent
 public func unsafeBitCast<T, U>(_ x: T, to type: U.Type) -> U {
-  _precondition(MemoryLayout<T>.size == MemoryLayout<U>.size,
-    "Can't unsafeBitCast between types of different sizes")
   return Builtin.reinterpretCast(x)
 }
 
@@ -230,6 +234,8 @@ public func _unsafeReferenceCast<T, U>(_ x: T, to: U.Type) -> U {
 ///   - x: An instance to cast to type `T`.
 ///   - type: The type `T` to which `x` is cast.
 /// - Returns: The instance `x`, cast to type `T`.
+/// 这是, 指针之间的强转方法.
+/// 最终逻辑, 封装到 Builtin.castReference 里面, 没有暴露出来, 也不用专门去理解. 
 @_transparent
 public func unsafeDowncast<T: AnyObject>(_ x: AnyObject, to type: T.Type) -> T {
   _debugPrecondition(x is T, "invalid unsafeDowncast")
