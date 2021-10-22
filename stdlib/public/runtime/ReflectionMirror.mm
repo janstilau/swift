@@ -207,6 +207,9 @@ struct TupleImpl : ReflectionMirrorImpl {
         return Tuple->NumElements;
     }
     
+    /*
+     outFreeFunc 允许 C++ 的代码提供一个函数给调用者用来释放返回的名字。
+     */
     AnyReturn subscript(intptr_t i, const char **outName,
                         void (**outFreeFunc)(const char *)) {
         auto *Tuple = static_cast<const TupleTypeMetadata *>(type);
@@ -234,6 +237,8 @@ struct TupleImpl : ReflectionMirrorImpl {
             *outName = str;
         }
         
+        // 对于 C++ 的 str, 释放它就是调用 free .
+        // 这是为了在 swift 中, 可以正确的管理内存.
         *outFreeFunc = [](const char *str) { free(const_cast<char *>(str)); };
         
         // Get the nth element.
@@ -697,7 +702,6 @@ struct OpaqueImpl : ReflectionMirrorImpl {
  */
 
 /*
- 
  const F &f) -> decltype(f(nullptr))
  f 是一个闭包表达式, 这个 call 函数的返回值, 是根据 F 函数的返回值确定的.
  -> decltype(f(nullptr)) 指的就是, 根据 f 的返回值类型, 来决定函数的返回值类型.
@@ -706,6 +710,8 @@ struct OpaqueImpl : ReflectionMirrorImpl {
  call 是一个非常非常烂的命名, 这函数应该叫做 withObjMirrorImpThen()
  
  通过 obj 和 元信息, 获取到 mirror Imp, 然后传入闭包表达式, 返回闭包表达式的内容.
+ 
+ call 的实现并没有想象中那么令人激动。主要是一个大型的 switch 声明和一些额外的代码去处理特殊的情况。重要的是它会用一个 ReflectionMirrorImpl 的子类实例去结束调用 f，然后会调用这个实例上的方法去让真正的工作完成。
  */
 template<typename F>
 auto call(OpaqueValue *passedValue, // 实例

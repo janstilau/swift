@@ -21,12 +21,17 @@
 ///     //           - x: 21
 ///     //           - y: 30"
 ///
+///
 
 /*
     Mirror 可以用到任何的数据类型上, 而不单单是 class, 或者 struct 上.
     从实现上可以知道, Mirror 更多的是一个包装类, 真正的关于元信息的部分, 是在各个不同类型的 MetaData 上.
     具体 Enum 的 MetaData 如何设计, 比如, 如何取值, 如何计算 Count, 是要看个 MetaData 类如何设计的.
+ 
+    https://swift.gg/2018/11/15/how-mirror-works/
+    一个比较详细的, 关于 Mirror 的解析 Blog
  */
+
 public struct Mirror {
     /// Representation of descendant classes that don't override
     /// `customMirror`.
@@ -274,6 +279,8 @@ public struct Mirror {
         self._makeSuperclassMirror = Mirror._superclassIterator(
             subject, ancestorRepresentation)
         
+        // unlabeledChildren, 在 Array 里面使用了这个方法.
+        // 对于 array 来说, 它的子元素都是没有 label 的. 
         let lazyChildren =
         unlabeledChildren.lazy.map { Child(label: nil, value: $0) }
         self.children = Children(lazyChildren)
