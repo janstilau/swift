@@ -17,6 +17,7 @@
 
 // This definition is a placeholder for importing into Swift.
 // It provides size and alignment but cannot be manipulated safely there.
+// 引用计数的引用.
 typedef struct {
   __swift_uintptr_t refCounts SWIFT_ATTRIBUTE_UNAVAILABLE;
 } InlineRefCountsPlaceholder;

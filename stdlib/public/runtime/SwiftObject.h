@@ -1,20 +1,3 @@
-//===--- SwiftObject.h - Native Swift Object root class ---------*- C++ -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-//
-// This implements the Objective-C root class that provides basic `id`-
-// compatibility and `NSObject` protocol conformance for pure Swift classes.
-//
-//===----------------------------------------------------------------------===//
-
 #ifndef SWIFT_RUNTIME_SWIFTOBJECT_H
 #define SWIFT_RUNTIME_SWIFTOBJECT_H
 
@@ -37,10 +20,14 @@
 #if __has_attribute(objc_root_class)
 __attribute__((__objc_root_class__))
 #endif
+
+/*
+        Swfit 里面的对象, 为什么可以到 OC 环境里面, 是因为, 在这里.
+ */
 SWIFT_RUNTIME_EXPORT @interface SwiftObject<NSObject> {
- @private
-  Class isa;
-  SWIFT_HEAPOBJECT_NON_OBJC_MEMBERS;
+@private
+    Class isa;
+    SWIFT_HEAPOBJECT_NON_OBJC_MEMBERS;
 }
 
 - (BOOL)isEqual:(id)object;
@@ -74,6 +61,7 @@ SWIFT_RUNTIME_EXPORT @interface SwiftObject<NSObject> {
 
 - (NSString *)description;
 - (NSString *)debugDescription;
+
 @end
 
 namespace swift {

@@ -60,8 +60,7 @@ struct HeapObject {
   // Initialize a HeapObject header for an immortal object
   constexpr HeapObject(HeapMetadata const *newMetadata,
                        InlineRefCounts::Immortal_t immortal)
-  : metadata(newMetadata)
-  , refCounts(InlineRefCounts::Immortal)
+  : metadata(newMetadata), refCounts(InlineRefCounts::Immortal)
   { }
 
 #ifndef NDEBUG

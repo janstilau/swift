@@ -74,18 +74,18 @@ static_assert(_swift_MinAllocationAlignment > MALLOC_ALIGN_MASK,
 //   The runtime may use either malloc or AlignedAlloc, and the standard library
 //   must deallocate using an identical alignment.
 void *swift::swift_slowAlloc(size_t size, size_t alignMask) {
-  void *p;
-  // This check also forces "default" alignment to use AlignedAlloc.
-  if (alignMask <= MALLOC_ALIGN_MASK) {
-    p = malloc(size);
-  } else {
-    size_t alignment = (alignMask == ~(size_t(0)))
-                           ? _swift_MinAllocationAlignment
-                           : alignMask + 1;
-    p = AlignedAlloc(size, alignment);
-  }
-  if (!p) swift::crash("Could not allocate memory.");
-  return p;
+    void *p;
+    // This check also forces "default" alignment to use AlignedAlloc.
+    if (alignMask <= MALLOC_ALIGN_MASK) {
+        p = malloc(size);
+    } else {
+        size_t alignment = (alignMask == ~(size_t(0)))
+        ? _swift_MinAllocationAlignment
+        : alignMask + 1;
+        p = AlignedAlloc(size, alignment);
+    }
+    if (!p) swift::crash("Could not allocate memory.");
+    return p;
 }
 
 // Unknown alignment is specified by passing alignMask == ~(size_t(0)), forcing
@@ -105,9 +105,9 @@ void *swift::swift_slowAlloc(size_t size, size_t alignMask) {
 //   The runtime may use either `free` or AlignedFree as long as it is
 //   consistent with allocation with the same alignment.
 void swift::swift_slowDealloc(void *ptr, size_t bytes, size_t alignMask) {
-  if (alignMask <= MALLOC_ALIGN_MASK) {
-    free(ptr);
-  } else {
-    AlignedFree(ptr);
-  }
+    if (alignMask <= MALLOC_ALIGN_MASK) {
+        free(ptr);
+    } else {
+        AlignedFree(ptr);
+    }
 }

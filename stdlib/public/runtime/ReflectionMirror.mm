@@ -168,6 +168,7 @@ static bool loadSpecialReferenceStorage(OpaqueValue *fieldData,
 
 
 // Abstract base class for reflection implementations.
+
 /*
     Mirror 对象的接口定义.
     从这里可以看到, Mirror 能够做的工作非常少.
@@ -176,14 +177,18 @@ static bool loadSpecialReferenceStorage(OpaqueValue *fieldData,
     count, mirror 可以获取到的元信息的个数.
     subscript 获取属性的方式. 里面可以获得这个属性的名称, 以及实际的取值函数.
  */
+
 struct ReflectionMirrorImpl {
+    
     // Mirror 对象里面, 其实是拿到了当前的数据类型的元类型, 根据这个元类型, 进行的接口实现. 从这个意义来看, Mirror 对象, 其实是一个工具类, 做的就是信息从 MetaData 抽取的工作 .
     // 不同种类的 Mirror, 封装的是, 不同种类的 Metadata 的元信息抽取的工作.
+    
     const Metadata *type;
     OpaqueValue *value; // 存储实例对象.
     
-    virtual char displayStyle() = 0;
-    virtual intptr_t count() = 0;
+    virtual char displayStyle() = 0; // class, struct
+    virtual intptr_t count() = 0; //
+    // 取值函数.
     virtual AnyReturn subscript(intptr_t index, const char **outName,
                                 void (**outFreeFunc)(const char *)) = 0;
     virtual const char *enumCaseName() { return nullptr; }
