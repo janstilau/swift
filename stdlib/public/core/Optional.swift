@@ -23,6 +23,13 @@
 ///     print(noNumber == nil)
 ///     // Prints "true"
 ///
+
+/*
+    这里就是重点所在了, OC 里面, 可以给 nil 发送消息, 是一个很烂的设计.
+    之所以, 可以这样做, 是因为 OC 语言底层的消息机制, 但这不是一个 CleanCode 所应该坚持的风格.
+    Swift 强硬的分辨出, Opitonal 和 非 Optioanl 值, 让程序员将所操作的环境, 进行更好的判断, 设计.
+    不过这也让代码的缩进层级莫名增加了许多.
+*/
 /// You must unwrap the value of an `Optional` instance before you can use it
 /// in many contexts. Because Swift provides several ways to safely unwrap
 /// optional values, you can choose the one that helps you write clear,
@@ -33,7 +40,6 @@
 ///     let imagePaths = ["star": "/glyphs/star.png",
 ///                       "portrait": "/images/content/portrait.jpg",
 ///                       "spacer": "/images/shared/spacer.gif"]
-///
 /// Getting a dictionary's value using a key returns an optional value, so
 /// `imagePaths["star"]` has type `Optional<String>` or, written in the
 /// preferred manner, `String?`.
@@ -54,7 +60,8 @@
 ///
 /// Optional Chaining
 /// -----------------
-///
+
+// 在自己的代码里面, 很少看到, optional chaining. 到底哪里出了什么问题.
 /// To safely access the properties and methods of a wrapped instance, use the
 /// postfix optional chaining operator (postfix `?`). The following example uses
 /// optional chaining to access the `hasSuffix(_:)` method on a `String?`
@@ -64,7 +71,8 @@
 ///         print("The star image is in PNG format")
 ///     }
 ///     // Prints "The star image is in PNG format"
-///
+
+
 /// Using the Nil-Coalescing Operator
 /// ---------------------------------
 ///
@@ -76,7 +84,9 @@
 ///     let heartPath = imagePaths["heart"] ?? defaultImagePath
 ///     print(heartPath)
 ///     // Prints "/images/default.png"
-///
+
+
+// 不要这样写.
 /// The `??` operator also works with another `Optional` instance on the
 /// right-hand side. As a result, you can chain multiple `??` operators
 /// together.
@@ -84,7 +94,9 @@
 ///     let shapePath = imagePaths["cir"] ?? imagePaths["squ"] ?? defaultImagePath
 ///     print(shapePath)
 ///     // Prints "/images/default.png"
-///
+
+
+
 /// Unconditional Unwrapping
 /// ------------------------
 ///
@@ -105,14 +117,16 @@
 ///     // Prints "true"
 ///
 /// Unconditionally unwrapping a `nil` instance with `!` triggers a runtime
-/// error.
+
+
+// 整个 Optinal, 其实就是一个特殊的 Enum 类型.
+// 利用了泛型, 使得可以应用到各种类型的 Wrapped Value 上 .
 @frozen
 public enum Optional<Wrapped>: ExpressibleByNilLiteral {
     // The compiler has special knowledge of Optional<Wrapped>, including the fact
     // that it is an `enum` with cases named `none` and `some`.
     
     /// The absence of a value.
-    ///
     /// In code, the absence of a value is typically written using the `nil`
     /// literal rather than the explicit `.none` enumeration case.
     case none
@@ -124,9 +138,10 @@ public enum Optional<Wrapped>: ExpressibleByNilLiteral {
     @_transparent
     public init(_ some: Wrapped) { self = .some(some) }
     
+    
     /// Evaluates the given closure when this `Optional` instance is not `nil`,
     /// passing the unwrapped value as a parameter.
-    ///
+    
     /// Use the `map` method with a closure that returns a non-optional value.
     /// This example performs an arithmetic operation on an
     /// optional integer.
@@ -145,6 +160,10 @@ public enum Optional<Wrapped>: ExpressibleByNilLiteral {
     ///   of the instance.
     /// - Returns: The result of the given closure. If this instance is `nil`,
     ///   returns `nil`.
+    
+    // 自己很少写这个代码, 但是, 应该是很常见的一种用法才对.
+    // 返回值还是 Optional 的, 但是如果不是 Optional, 会返回新的 Wrapped Value 的 Optinal.
+    // 系统提供了很多的这种, 小 Tip 方式的 API. 应该熟悉这些东西然后多多使用.
     @inlinable
     public func map<U>(
         _ transform: (Wrapped) throws -> U
@@ -307,6 +326,9 @@ func _diagnoseUnexpectedNilOptional(_filenameStart: Builtin.RawPointer,
     }
 }
 
+
+// 专门的, 进行 Equal 的实现. 这也就是我们为什么可以进行 WrappedValue 和 Optional 的直接相等性判断.
+// Swift 里面, 没有默认的相等判断的逻辑. 所有的相等性判断, 都要显式的声明并实现.
 extension Optional: Equatable where Wrapped: Equatable {
     /// Returns a Boolean value indicating whether two optional instances are
     /// equal.
@@ -354,6 +376,7 @@ extension Optional: Equatable where Wrapped: Equatable {
     ///   - rhs: Another optional value to compare.
     @inlinable
     public static func ==(lhs: Wrapped?, rhs: Wrapped?) -> Bool {
+        // 首先, 前提就是, 这是同一种类型的 Optinal, 并且, Wrapped Value 也必须是可以判等的.
         switch (lhs, rhs) {
         case let (l?, r?):
             return l == r
@@ -365,6 +388,8 @@ extension Optional: Equatable where Wrapped: Equatable {
     }
 }
 
+// 所有的包装类型, 可以自实现某个协议, 一定都是, 这个包装类型, 写了实现这个协议的代码.
+// 一般来说, 条件就是, 包装的数据要实现该协议, 包装类型, 根据包装数据的结果, 来实现这个协议.
 extension Optional: Hashable where Wrapped: Hashable {
     /// Hashes the essential components of this value by feeding them into the
     /// given hasher.
