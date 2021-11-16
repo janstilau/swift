@@ -1,0 +1,698 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06CA87092740F64C00FCB478 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CA87082740F64C00FCB478 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		06CA87032740F64C00FCB478 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06CA87052740F64C00FCB478 /* SwiftCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftCore; sourceTree = BUILT_PRODUCTS_DIR; };
+		06CA87082740F64C00FCB478 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		06CA87102740F65B00FCB478 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		06CA87112740F65B00FCB478 /* UnicodeScalarProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalarProperties.swift; sourceTree = "<group>"; };
+		06CA87122740F65B00FCB478 /* UnsafeRawPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeRawPointer.swift; sourceTree = "<group>"; };
+		06CA87132740F65B00FCB478 /* ThreadLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadLocalStorage.swift; sourceTree = "<group>"; };
+		06CA87142740F65B00FCB478 /* StringUTF8Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF8Validation.swift; sourceTree = "<group>"; };
+		06CA87152740F65B00FCB478 /* FloatingPointTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = FloatingPointTypes.swift.gyb; sourceTree = "<group>"; };
+		06CA87162740F65B00FCB478 /* StringGutsSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGutsSlice.swift; sourceTree = "<group>"; };
+		06CA87172740F65B00FCB478 /* UIntBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntBuffer.swift; sourceTree = "<group>"; };
+		06CA87182740F65B00FCB478 /* SetAnyHashableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAnyHashableExtensions.swift; sourceTree = "<group>"; };
+		06CA87192740F65B00FCB478 /* MutableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableCollection.swift; sourceTree = "<group>"; };
+		06CA871A2740F65B00FCB478 /* RandomAccessCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection.swift; sourceTree = "<group>"; };
+		06CA871B2740F65B00FCB478 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		06CA871C2740F65B00FCB478 /* Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers.swift; sourceTree = "<group>"; };
+		06CA871D2740F65B00FCB478 /* LifetimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeManager.swift; sourceTree = "<group>"; };
+		06CA871E2740F65B00FCB478 /* BridgeObjectiveC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeObjectiveC.swift; sourceTree = "<group>"; };
+		06CA871F2740F65B00FCB478 /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
+		06CA87202740F65B00FCB478 /* PrefixWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixWhile.swift; sourceTree = "<group>"; };
+		06CA87212740F65B00FCB478 /* Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashable.swift; sourceTree = "<group>"; };
+		06CA87222740F65B00FCB478 /* BridgingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingBuffer.swift; sourceTree = "<group>"; };
+		06CA87232740F65B00FCB478 /* Diffing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffing.swift; sourceTree = "<group>"; };
+		06CA87242740F65B00FCB478 /* CollectionDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDifference.swift; sourceTree = "<group>"; };
+		06CA87252740F65B00FCB478 /* NativeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeDictionary.swift; sourceTree = "<group>"; };
+		06CA87262740F65B00FCB478 /* DictionaryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStorage.swift; sourceTree = "<group>"; };
+		06CA87272740F65B00FCB478 /* StringIndexConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIndexConversions.swift; sourceTree = "<group>"; };
+		06CA87282740F65B00FCB478 /* Mirrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mirrors.swift; sourceTree = "<group>"; };
+		06CA87292740F65B00FCB478 /* EmptyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollection.swift; sourceTree = "<group>"; };
+		06CA872A2740F65B00FCB478 /* IntegerParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerParsing.swift; sourceTree = "<group>"; };
+		06CA872B2740F65B00FCB478 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		06CA872C2740F65B00FCB478 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		06CA872D2740F65B00FCB478 /* MemoryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLayout.swift; sourceTree = "<group>"; };
+		06CA872E2740F65B00FCB478 /* Unicode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unicode.swift; sourceTree = "<group>"; };
+		06CA872F2740F65B00FCB478 /* IntegerTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = IntegerTypes.swift.gyb; sourceTree = "<group>"; };
+		06CA87302740F65B00FCB478 /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
+		06CA87312740F65B00FCB478 /* StringComparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringComparable.swift; sourceTree = "<group>"; };
+		06CA87322740F65B00FCB478 /* StringBreadcrumbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBreadcrumbs.swift; sourceTree = "<group>"; };
+		06CA87332740F65B00FCB478 /* SetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBuilder.swift; sourceTree = "<group>"; };
+		06CA87342740F65B00FCB478 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		06CA87352740F65B00FCB478 /* ShadowProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowProtocols.swift; sourceTree = "<group>"; };
+		06CA87362740F65B00FCB478 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
+		06CA87372740F65B00FCB478 /* ArrayShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShared.swift; sourceTree = "<group>"; };
+		06CA87382740F65B00FCB478 /* SIMDVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIMDVector.swift; sourceTree = "<group>"; };
+		06CA87392740F65B00FCB478 /* CString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CString.swift; sourceTree = "<group>"; };
+		06CA873A2740F65B00FCB478 /* Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Join.swift; sourceTree = "<group>"; };
+		06CA873B2740F65B00FCB478 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
+		06CA873C2740F65B00FCB478 /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		06CA873D2740F65B00FCB478 /* ManagedBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedBuffer.swift; sourceTree = "<group>"; };
+		06CA873E2740F65B00FCB478 /* StringBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringBridge.swift; sourceTree = "<group>"; };
+		06CA873F2740F65B00FCB478 /* UnicodeHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeHelpers.swift; sourceTree = "<group>"; };
+		06CA87402740F65B00FCB478 /* ArraySlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySlice.swift; sourceTree = "<group>"; };
+		06CA87412740F65B00FCB478 /* UnsafeBufferPointer.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnsafeBufferPointer.swift.gyb; sourceTree = "<group>"; };
+		06CA87422740F65B00FCB478 /* CollectionAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAlgorithms.swift; sourceTree = "<group>"; };
+		06CA87432740F65B00FCB478 /* SwiftNativeNSArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNativeNSArray.swift; sourceTree = "<group>"; };
+		06CA87442740F65B00FCB478 /* SliceBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliceBuffer.swift; sourceTree = "<group>"; };
+		06CA87452740F65B00FCB478 /* KeyValuePairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValuePairs.swift; sourceTree = "<group>"; };
+		06CA87462740F65B00FCB478 /* LegacyABI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyABI.swift; sourceTree = "<group>"; };
+		06CA87472740F65B00FCB478 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
+		06CA87482740F65B00FCB478 /* StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticString.swift; sourceTree = "<group>"; };
+		06CA87492740F65B00FCB478 /* Unmanaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unmanaged.swift; sourceTree = "<group>"; };
+		06CA874A2740F65B00FCB478 /* UnmanagedOpaqueString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnmanagedOpaqueString.swift; sourceTree = "<group>"; };
+		06CA874B2740F65B00FCB478 /* VarArgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarArgs.swift; sourceTree = "<group>"; };
+		06CA874C2740F65B00FCB478 /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
+		06CA874D2740F65B00FCB478 /* ContiguouslyStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguouslyStored.swift; sourceTree = "<group>"; };
+		06CA874E2740F65B00FCB478 /* SetStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStorage.swift; sourceTree = "<group>"; };
+		06CA874F2740F65B00FCB478 /* StringUTF8View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF8View.swift; sourceTree = "<group>"; };
+		06CA87502740F65B00FCB478 /* StringTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTesting.swift; sourceTree = "<group>"; };
+		06CA87512740F65B00FCB478 /* Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dump.swift; sourceTree = "<group>"; };
+		06CA87522740F65B00FCB478 /* ArrayCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCast.swift; sourceTree = "<group>"; };
+		06CA87532740F65B00FCB478 /* RuntimeFunctionCounters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeFunctionCounters.swift; sourceTree = "<group>"; };
+		06CA87542740F65B00FCB478 /* MigrationSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationSupport.swift; sourceTree = "<group>"; };
+		06CA87552740F65B00FCB478 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		06CA87562740F65B00FCB478 /* SIMDConcreteOperations.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = SIMDConcreteOperations.swift.gyb; sourceTree = "<group>"; };
+		06CA87572740F65B00FCB478 /* DebuggerSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggerSupport.swift; sourceTree = "<group>"; };
+		06CA87582740F65B00FCB478 /* StringGuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGuts.swift; sourceTree = "<group>"; };
+		06CA87592740F65B00FCB478 /* AnyHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyHashable.swift; sourceTree = "<group>"; };
+		06CA875A2740F65B00FCB478 /* GroupInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GroupInfo.json; sourceTree = "<group>"; };
+		06CA875B2740F65B00FCB478 /* UnicodeEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeEncoding.swift; sourceTree = "<group>"; };
+		06CA875C2740F65B00FCB478 /* StringNormalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNormalization.swift; sourceTree = "<group>"; };
+		06CA875D2740F65B00FCB478 /* FlatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatMap.swift; sourceTree = "<group>"; };
+		06CA875E2740F65B00FCB478 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		06CA875F2740F65B00FCB478 /* Tuple.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tuple.swift.gyb; sourceTree = "<group>"; };
+		06CA87602740F65C00FCB478 /* StringUnicodeScalarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUnicodeScalarView.swift; sourceTree = "<group>"; };
+		06CA87612740F65C00FCB478 /* StringRangeReplaceableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRangeReplaceableCollection.swift; sourceTree = "<group>"; };
+		06CA87622740F65C00FCB478 /* ICU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICU.swift; sourceTree = "<group>"; };
+		06CA87632740F65C00FCB478 /* StringInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterpolation.swift; sourceTree = "<group>"; };
+		06CA87642740F65C00FCB478 /* StringComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringComparison.swift; sourceTree = "<group>"; };
+		06CA87652740F65C00FCB478 /* BridgeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeStorage.swift; sourceTree = "<group>"; };
+		06CA87662740F65C00FCB478 /* ReflectionMirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionMirror.swift; sourceTree = "<group>"; };
+		06CA87672740F65C00FCB478 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		06CA87682740F65C00FCB478 /* PlaygroundDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundDisplay.swift; sourceTree = "<group>"; };
+		06CA87692740F65C00FCB478 /* StringLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLegacy.swift; sourceTree = "<group>"; };
+		06CA876A2740F65C00FCB478 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		06CA876B2740F65C00FCB478 /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
+		06CA876C2740F65C00FCB478 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		06CA876D2740F65C00FCB478 /* BuiltinMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltinMath.swift; sourceTree = "<group>"; };
+		06CA876E2740F65C00FCB478 /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		06CA876F2740F65C00FCB478 /* WriteBackMutableSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBackMutableSlice.swift; sourceTree = "<group>"; };
+		06CA87702740F65C00FCB478 /* DictionaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBuilder.swift; sourceTree = "<group>"; };
+		06CA87712740F65C00FCB478 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
+		06CA87722740F65C00FCB478 /* ArrayBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBuffer.swift; sourceTree = "<group>"; };
+		06CA87732740F65C00FCB478 /* ArrayType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayType.swift; sourceTree = "<group>"; };
+		06CA87742740F65C00FCB478 /* ArrayBufferProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBufferProtocol.swift; sourceTree = "<group>"; };
+		06CA87752740F65C00FCB478 /* Indices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indices.swift; sourceTree = "<group>"; };
+		06CA87762740F65C00FCB478 /* Reverse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reverse.swift; sourceTree = "<group>"; };
+		06CA87772740F65C00FCB478 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
+		06CA87782740F65C00FCB478 /* SmallString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallString.swift; sourceTree = "<group>"; };
+		06CA87792740F65C00FCB478 /* FloatingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPoint.swift; sourceTree = "<group>"; };
+		06CA877A2740F65C00FCB478 /* StringGutsRangeReplaceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGutsRangeReplaceable.swift; sourceTree = "<group>"; };
+		06CA877B2740F65C00FCB478 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		06CA877C2740F65C00FCB478 /* SetVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVariant.swift; sourceTree = "<group>"; };
+		06CA877D2740F65C00FCB478 /* Hasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hasher.swift; sourceTree = "<group>"; };
+		06CA877E2740F65C00FCB478 /* SetAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlgebra.swift; sourceTree = "<group>"; };
+		06CA877F2740F65C00FCB478 /* UnsafeRawBufferPointer.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnsafeRawBufferPointer.swift.gyb; sourceTree = "<group>"; };
+		06CA87802740F65C00FCB478 /* UTF32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF32.swift; sourceTree = "<group>"; };
+		06CA87812740F65C00FCB478 /* DictionaryCasting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCasting.swift; sourceTree = "<group>"; };
+		06CA87822740F65C00FCB478 /* PtrAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PtrAuth.swift; sourceTree = "<group>"; };
+		06CA87832740F65C00FCB478 /* UTF16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF16.swift; sourceTree = "<group>"; };
+		06CA87842740F65C00FCB478 /* FloatingPointRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointRandom.swift; sourceTree = "<group>"; };
+		06CA87852740F65C00FCB478 /* Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
+		06CA87862740F65C00FCB478 /* InputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStream.swift; sourceTree = "<group>"; };
+		06CA87872740F65C00FCB478 /* CompilerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilerProtocols.swift; sourceTree = "<group>"; };
+		06CA87882740F65C00FCB478 /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		06CA87892740F65C00FCB478 /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
+		06CA878A2740F65C00FCB478 /* ObjectIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectIdentifier.swift; sourceTree = "<group>"; };
+		06CA878B2740F65C00FCB478 /* REPL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REPL.swift; sourceTree = "<group>"; };
+		06CA878C2740F65C00FCB478 /* ClosedRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedRange.swift; sourceTree = "<group>"; };
+		06CA878D2740F65C00FCB478 /* NativeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSet.swift; sourceTree = "<group>"; };
+		06CA878E2740F65C00FCB478 /* OptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSet.swift; sourceTree = "<group>"; };
+		06CA878F2740F65C00FCB478 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		06CA87902740F65C00FCB478 /* StringUTF16View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUTF16View.swift; sourceTree = "<group>"; };
+		06CA87912740F65C00FCB478 /* AtomicInt.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = AtomicInt.swift.gyb; sourceTree = "<group>"; };
+		06CA87922740F65C00FCB478 /* EitherSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EitherSequence.swift; sourceTree = "<group>"; };
+		06CA87932740F65C00FCB478 /* CollectionOfOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionOfOne.swift; sourceTree = "<group>"; };
+		06CA87942740F65C00FCB478 /* SequenceAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceAlgorithms.swift; sourceTree = "<group>"; };
+		06CA87952740F65C00FCB478 /* Slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slice.swift; sourceTree = "<group>"; };
+		06CA87962740F65C00FCB478 /* Flatten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flatten.swift; sourceTree = "<group>"; };
+		06CA87972740F65C00FCB478 /* Mirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mirror.swift; sourceTree = "<group>"; };
+		06CA87982740F65C00FCB478 /* AssertCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertCommon.swift; sourceTree = "<group>"; };
+		06CA87992740F65C00FCB478 /* FloatingPointParsing.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = FloatingPointParsing.swift.gyb; sourceTree = "<group>"; };
+		06CA879A2740F65C00FCB478 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		06CA879B2740F65C00FCB478 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		06CA879C2740F65C00FCB478 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		06CA879D2740F65C00FCB478 /* StringStorageBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringStorageBridge.swift; sourceTree = "<group>"; };
+		06CA879E2740F65C00FCB478 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		06CA879F2740F65C00FCB478 /* UnavailableStringAPIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableStringAPIs.swift; sourceTree = "<group>"; };
+		06CA87A02740F65C00FCB478 /* StringSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSwitch.swift; sourceTree = "<group>"; };
+		06CA87A12740F65C00FCB478 /* StringCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCharacterView.swift; sourceTree = "<group>"; };
+		06CA87A22740F65C00FCB478 /* UTF8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF8.swift; sourceTree = "<group>"; };
+		06CA87A32740F65C00FCB478 /* UTFEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTFEncoding.swift; sourceTree = "<group>"; };
+		06CA87A42740F65C00FCB478 /* KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPath.swift; sourceTree = "<group>"; };
+		06CA87A52740F65C00FCB478 /* FixedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedArray.swift; sourceTree = "<group>"; };
+		06CA87A62740F65C00FCB478 /* UnicodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeParser.swift; sourceTree = "<group>"; };
+		06CA87A72740F65C00FCB478 /* UnicodeScalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalar.swift; sourceTree = "<group>"; };
+		06CA87A82740F65C00FCB478 /* LazySequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazySequence.swift; sourceTree = "<group>"; };
+		06CA87A92740F65C00FCB478 /* DictionaryBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBridging.swift; sourceTree = "<group>"; };
+		06CA87AA2740F65C00FCB478 /* Zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
+		06CA87AB2740F65C00FCB478 /* Bitset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitset.swift; sourceTree = "<group>"; };
+		06CA87AC2740F65C00FCB478 /* SetCasting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCasting.swift; sourceTree = "<group>"; };
+		06CA87AD2740F65C00FCB478 /* OutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStream.swift; sourceTree = "<group>"; };
+		06CA87AE2740F65C00FCB478 /* SetBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBridging.swift; sourceTree = "<group>"; };
+		06CA87AF2740F65C00FCB478 /* StringHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHashable.swift; sourceTree = "<group>"; };
+		06CA87B02740F65C00FCB478 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		06CA87B12740F65C00FCB478 /* ArrayBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBody.swift; sourceTree = "<group>"; };
+		06CA87B22740F65C00FCB478 /* CharacterProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProperties.swift; sourceTree = "<group>"; };
+		06CA87B32740F65C00FCB478 /* CTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTypes.swift; sourceTree = "<group>"; };
+		06CA87B42740F65C00FCB478 /* Prespecialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prespecialize.swift; sourceTree = "<group>"; };
+		06CA87B52740F65C00FCB478 /* ExistentialCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistentialCollection.swift; sourceTree = "<group>"; };
+		06CA87B62740F65C00FCB478 /* StringIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
+		06CA87B72740F65C00FCB478 /* DropWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropWhile.swift; sourceTree = "<group>"; };
+		06CA87B82740F65C00FCB478 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		06CA87B92740F65C00FCB478 /* DictionaryVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryVariant.swift; sourceTree = "<group>"; };
+		06CA87BA2740F65C00FCB478 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		06CA87BB2740F65C00FCB478 /* StringCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCreate.swift; sourceTree = "<group>"; };
+		06CA87BC2740F65C00FCB478 /* BidirectionalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalCollection.swift; sourceTree = "<group>"; };
+		06CA87BE2740F65C00FCB478 /* SipHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SipHash.swift; sourceTree = "<group>"; };
+		06CA87BF2740F65C00FCB478 /* Hashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		06CA87C02740F65C00FCB478 /* UnfoldSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfoldSequence.swift; sourceTree = "<group>"; };
+		06CA87C12740F65C00FCB478 /* ValidUTF8Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidUTF8Buffer.swift; sourceTree = "<group>"; };
+		06CA87C22740F65C00FCB478 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		06CA87C32740F65C00FCB478 /* Builtin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builtin.swift; sourceTree = "<group>"; };
+		06CA87C42740F65C00FCB478 /* SIMDVectorTypes.swift.gyb */ = {isa = PBXFileReference; lastKnownFileType = text; path = SIMDVectorTypes.swift.gyb; sourceTree = "<group>"; };
+		06CA87C52740F65C00FCB478 /* UnsafePointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafePointer.swift; sourceTree = "<group>"; };
+		06CA87C62740F65C00FCB478 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		06CA87C72740F65C00FCB478 /* ContiguousArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguousArray.swift; sourceTree = "<group>"; };
+		06CA87C82740F65C00FCB478 /* NewtypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewtypeWrapper.swift; sourceTree = "<group>"; };
+		06CA87C92740F65C00FCB478 /* Sendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sendable.swift; sourceTree = "<group>"; };
+		06CA87CA2740F65C00FCB478 /* CocoaArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaArray.swift; sourceTree = "<group>"; };
+		06CA87CB2740F65C00FCB478 /* RangeReplaceableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeReplaceableCollection.swift; sourceTree = "<group>"; };
+		06CA87CC2740F65C00FCB478 /* UnmanagedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnmanagedString.swift; sourceTree = "<group>"; };
+		06CA87CD2740F65C00FCB478 /* StringGraphemeBreaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGraphemeBreaking.swift; sourceTree = "<group>"; };
+		06CA87CE2740F65C00FCB478 /* Stride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stride.swift; sourceTree = "<group>"; };
+		06CA87CF2740F65C00FCB478 /* Shims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shims.swift; sourceTree = "<group>"; };
+		06CA87D02740F65C00FCB478 /* StringObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringObject.swift; sourceTree = "<group>"; };
+		06CA87D12740F65C00FCB478 /* ContiguousArrayBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContiguousArrayBuffer.swift; sourceTree = "<group>"; };
+		06CA87D22740F65C00FCB478 /* StringStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringStorage.swift; sourceTree = "<group>"; };
+		06CA87D32740F65C00FCB478 /* LazyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyCollection.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06CA87022740F64C00FCB478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06CA86FC2740F64C00FCB478 = {
+			isa = PBXGroup;
+			children = (
+				06CA87072740F64C00FCB478 /* SwiftCore */,
+				06CA87062740F64C00FCB478 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06CA87062740F64C00FCB478 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06CA87052740F64C00FCB478 /* SwiftCore */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06CA87072740F64C00FCB478 /* SwiftCore */ = {
+			isa = PBXGroup;
+			children = (
+				06CA870F2740F65B00FCB478 /* core */,
+				06CA87082740F64C00FCB478 /* main.swift */,
+			);
+			path = SwiftCore;
+			sourceTree = "<group>";
+		};
+		06CA870F2740F65B00FCB478 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				06CA87712740F65C00FCB478 /* Algorithm.swift */,
+				06CA87592740F65B00FCB478 /* AnyHashable.swift */,
+				06CA872B2740F65B00FCB478 /* Array.swift */,
+				06CA87B12740F65C00FCB478 /* ArrayBody.swift */,
+				06CA87722740F65C00FCB478 /* ArrayBuffer.swift */,
+				06CA87742740F65C00FCB478 /* ArrayBufferProtocol.swift */,
+				06CA87522740F65B00FCB478 /* ArrayCast.swift */,
+				06CA87372740F65B00FCB478 /* ArrayShared.swift */,
+				06CA87402740F65B00FCB478 /* ArraySlice.swift */,
+				06CA87732740F65C00FCB478 /* ArrayType.swift */,
+				06CA871F2740F65B00FCB478 /* ASCII.swift */,
+				06CA87362740F65B00FCB478 /* Assert.swift */,
+				06CA87982740F65C00FCB478 /* AssertCommon.swift */,
+				06CA87912740F65C00FCB478 /* AtomicInt.swift.gyb */,
+				06CA876B2740F65C00FCB478 /* Availability.swift */,
+				06CA87BC2740F65C00FCB478 /* BidirectionalCollection.swift */,
+				06CA87AB2740F65C00FCB478 /* Bitset.swift */,
+				06CA87BA2740F65C00FCB478 /* Bool.swift */,
+				06CA871E2740F65B00FCB478 /* BridgeObjectiveC.swift */,
+				06CA87652740F65C00FCB478 /* BridgeStorage.swift */,
+				06CA87222740F65B00FCB478 /* BridgingBuffer.swift */,
+				06CA87C32740F65C00FCB478 /* Builtin.swift */,
+				06CA876D2740F65C00FCB478 /* BuiltinMath.swift */,
+				06CA87552740F65B00FCB478 /* Character.swift */,
+				06CA87B22740F65C00FCB478 /* CharacterProperties.swift */,
+				06CA878C2740F65C00FCB478 /* ClosedRange.swift */,
+				06CA872C2740F65B00FCB478 /* CMakeLists.txt */,
+				06CA87CA2740F65C00FCB478 /* CocoaArray.swift */,
+				06CA877B2740F65C00FCB478 /* Codable.swift */,
+				06CA87342740F65B00FCB478 /* Collection.swift */,
+				06CA87422740F65B00FCB478 /* CollectionAlgorithms.swift */,
+				06CA87242740F65B00FCB478 /* CollectionDifference.swift */,
+				06CA87932740F65C00FCB478 /* CollectionOfOne.swift */,
+				06CA873C2740F65B00FCB478 /* CommandLine.swift */,
+				06CA873B2740F65B00FCB478 /* Comparable.swift */,
+				06CA87872740F65C00FCB478 /* CompilerProtocols.swift */,
+				06CA87C72740F65C00FCB478 /* ContiguousArray.swift */,
+				06CA87D12740F65C00FCB478 /* ContiguousArrayBuffer.swift */,
+				06CA874D2740F65B00FCB478 /* ContiguouslyStored.swift */,
+				06CA87392740F65B00FCB478 /* CString.swift */,
+				06CA87B32740F65C00FCB478 /* CTypes.swift */,
+				06CA87572740F65B00FCB478 /* DebuggerSupport.swift */,
+				06CA878F2740F65C00FCB478 /* Dictionary.swift */,
+				06CA87A92740F65C00FCB478 /* DictionaryBridging.swift */,
+				06CA87702740F65C00FCB478 /* DictionaryBuilder.swift */,
+				06CA87812740F65C00FCB478 /* DictionaryCasting.swift */,
+				06CA87262740F65B00FCB478 /* DictionaryStorage.swift */,
+				06CA87B92740F65C00FCB478 /* DictionaryVariant.swift */,
+				06CA87232740F65B00FCB478 /* Diffing.swift */,
+				06CA87B72740F65C00FCB478 /* DropWhile.swift */,
+				06CA87512740F65B00FCB478 /* Dump.swift */,
+				06CA87922740F65C00FCB478 /* EitherSequence.swift */,
+				06CA87292740F65B00FCB478 /* EmptyCollection.swift */,
+				06CA87852740F65C00FCB478 /* Equatable.swift */,
+				06CA879C2740F65C00FCB478 /* ErrorType.swift */,
+				06CA87B52740F65C00FCB478 /* ExistentialCollection.swift */,
+				06CA879A2740F65C00FCB478 /* Filter.swift */,
+				06CA87A52740F65C00FCB478 /* FixedArray.swift */,
+				06CA875D2740F65B00FCB478 /* FlatMap.swift */,
+				06CA87962740F65C00FCB478 /* Flatten.swift */,
+				06CA87792740F65C00FCB478 /* FloatingPoint.swift */,
+				06CA87992740F65C00FCB478 /* FloatingPointParsing.swift.gyb */,
+				06CA87842740F65C00FCB478 /* FloatingPointRandom.swift */,
+				06CA87152740F65B00FCB478 /* FloatingPointTypes.swift.gyb */,
+				06CA875A2740F65B00FCB478 /* GroupInfo.json */,
+				06CA87212740F65B00FCB478 /* Hashable.swift */,
+				06CA877D2740F65C00FCB478 /* Hasher.swift */,
+				06CA87BF2740F65C00FCB478 /* Hashing.swift */,
+				06CA87882740F65C00FCB478 /* HashTable.swift */,
+				06CA87622740F65C00FCB478 /* ICU.swift */,
+				06CA879E2740F65C00FCB478 /* Identifiable.swift */,
+				06CA87752740F65C00FCB478 /* Indices.swift */,
+				06CA87862740F65C00FCB478 /* InputStream.swift */,
+				06CA872A2740F65B00FCB478 /* IntegerParsing.swift */,
+				06CA871C2740F65B00FCB478 /* Integers.swift */,
+				06CA872F2740F65B00FCB478 /* IntegerTypes.swift.gyb */,
+				06CA873A2740F65B00FCB478 /* Join.swift */,
+				06CA87A42740F65C00FCB478 /* KeyPath.swift */,
+				06CA87452740F65B00FCB478 /* KeyValuePairs.swift */,
+				06CA87D32740F65C00FCB478 /* LazyCollection.swift */,
+				06CA87A82740F65C00FCB478 /* LazySequence.swift */,
+				06CA87462740F65B00FCB478 /* LegacyABI.swift */,
+				06CA871D2740F65B00FCB478 /* LifetimeManager.swift */,
+				06CA873D2740F65B00FCB478 /* ManagedBuffer.swift */,
+				06CA87B82740F65C00FCB478 /* Map.swift */,
+				06CA872D2740F65B00FCB478 /* MemoryLayout.swift */,
+				06CA87542740F65B00FCB478 /* MigrationSupport.swift */,
+				06CA87972740F65C00FCB478 /* Mirror.swift */,
+				06CA87282740F65B00FCB478 /* Mirrors.swift */,
+				06CA876A2740F65C00FCB478 /* Misc.swift */,
+				06CA87192740F65B00FCB478 /* MutableCollection.swift */,
+				06CA87252740F65B00FCB478 /* NativeDictionary.swift */,
+				06CA878D2740F65C00FCB478 /* NativeSet.swift */,
+				06CA87C82740F65C00FCB478 /* NewtypeWrapper.swift */,
+				06CA878A2740F65C00FCB478 /* ObjectIdentifier.swift */,
+				06CA87C22740F65C00FCB478 /* Optional.swift */,
+				06CA878E2740F65C00FCB478 /* OptionSet.swift */,
+				06CA87AD2740F65C00FCB478 /* OutputStream.swift */,
+				06CA87682740F65C00FCB478 /* PlaygroundDisplay.swift */,
+				06CA87302740F65B00FCB478 /* Pointer.swift */,
+				06CA874C2740F65B00FCB478 /* Policy.swift */,
+				06CA87202740F65B00FCB478 /* PrefixWhile.swift */,
+				06CA87B42740F65C00FCB478 /* Prespecialize.swift */,
+				06CA87102740F65B00FCB478 /* Print.swift */,
+				06CA87822740F65C00FCB478 /* PtrAuth.swift */,
+				06CA871B2740F65B00FCB478 /* Random.swift */,
+				06CA871A2740F65B00FCB478 /* RandomAccessCollection.swift */,
+				06CA876C2740F65C00FCB478 /* Range.swift */,
+				06CA87CB2740F65C00FCB478 /* RangeReplaceableCollection.swift */,
+				06CA87662740F65C00FCB478 /* ReflectionMirror.swift */,
+				06CA87772740F65C00FCB478 /* Repeat.swift */,
+				06CA878B2740F65C00FCB478 /* REPL.swift */,
+				06CA875E2740F65B00FCB478 /* Result.swift */,
+				06CA87762740F65C00FCB478 /* Reverse.swift */,
+				06CA87472740F65B00FCB478 /* Runtime.swift */,
+				06CA87532740F65B00FCB478 /* RuntimeFunctionCounters.swift */,
+				06CA87C92740F65C00FCB478 /* Sendable.swift */,
+				06CA87672740F65C00FCB478 /* Sequence.swift */,
+				06CA87942740F65C00FCB478 /* SequenceAlgorithms.swift */,
+				06CA87C62740F65C00FCB478 /* Set.swift */,
+				06CA877E2740F65C00FCB478 /* SetAlgebra.swift */,
+				06CA87182740F65B00FCB478 /* SetAnyHashableExtensions.swift */,
+				06CA87AE2740F65C00FCB478 /* SetBridging.swift */,
+				06CA87332740F65B00FCB478 /* SetBuilder.swift */,
+				06CA87AC2740F65C00FCB478 /* SetCasting.swift */,
+				06CA874E2740F65B00FCB478 /* SetStorage.swift */,
+				06CA877C2740F65C00FCB478 /* SetVariant.swift */,
+				06CA87352740F65B00FCB478 /* ShadowProtocols.swift */,
+				06CA87CF2740F65C00FCB478 /* Shims.swift */,
+				06CA87562740F65B00FCB478 /* SIMDConcreteOperations.swift.gyb */,
+				06CA87382740F65B00FCB478 /* SIMDVector.swift */,
+				06CA87C42740F65C00FCB478 /* SIMDVectorTypes.swift.gyb */,
+				06CA87BE2740F65C00FCB478 /* SipHash.swift */,
+				06CA87952740F65C00FCB478 /* Slice.swift */,
+				06CA87442740F65B00FCB478 /* SliceBuffer.swift */,
+				06CA87782740F65C00FCB478 /* SmallString.swift */,
+				06CA87892740F65C00FCB478 /* Sort.swift */,
+				06CA87482740F65B00FCB478 /* StaticString.swift */,
+				06CA87CE2740F65C00FCB478 /* Stride.swift */,
+				06CA879B2740F65C00FCB478 /* String.swift */,
+				06CA87322740F65B00FCB478 /* StringBreadcrumbs.swift */,
+				06CA873E2740F65B00FCB478 /* StringBridge.swift */,
+				06CA87A12740F65C00FCB478 /* StringCharacterView.swift */,
+				06CA87312740F65B00FCB478 /* StringComparable.swift */,
+				06CA87642740F65C00FCB478 /* StringComparison.swift */,
+				06CA87BB2740F65C00FCB478 /* StringCreate.swift */,
+				06CA87CD2740F65C00FCB478 /* StringGraphemeBreaking.swift */,
+				06CA87582740F65B00FCB478 /* StringGuts.swift */,
+				06CA877A2740F65C00FCB478 /* StringGutsRangeReplaceable.swift */,
+				06CA87162740F65B00FCB478 /* StringGutsSlice.swift */,
+				06CA87AF2740F65C00FCB478 /* StringHashable.swift */,
+				06CA87B62740F65C00FCB478 /* StringIndex.swift */,
+				06CA87272740F65B00FCB478 /* StringIndexConversions.swift */,
+				06CA87632740F65C00FCB478 /* StringInterpolation.swift */,
+				06CA87692740F65C00FCB478 /* StringLegacy.swift */,
+				06CA875C2740F65B00FCB478 /* StringNormalization.swift */,
+				06CA87D02740F65C00FCB478 /* StringObject.swift */,
+				06CA87B02740F65C00FCB478 /* StringProtocol.swift */,
+				06CA87612740F65C00FCB478 /* StringRangeReplaceableCollection.swift */,
+				06CA87D22740F65C00FCB478 /* StringStorage.swift */,
+				06CA879D2740F65C00FCB478 /* StringStorageBridge.swift */,
+				06CA87A02740F65C00FCB478 /* StringSwitch.swift */,
+				06CA87502740F65B00FCB478 /* StringTesting.swift */,
+				06CA87602740F65C00FCB478 /* StringUnicodeScalarView.swift */,
+				06CA87142740F65B00FCB478 /* StringUTF8Validation.swift */,
+				06CA874F2740F65B00FCB478 /* StringUTF8View.swift */,
+				06CA87902740F65C00FCB478 /* StringUTF16View.swift */,
+				06CA876E2740F65C00FCB478 /* Substring.swift */,
+				06CA87BD2740F65C00FCB478 /* SwiftCore */,
+				06CA87432740F65B00FCB478 /* SwiftNativeNSArray.swift */,
+				06CA87132740F65B00FCB478 /* ThreadLocalStorage.swift */,
+				06CA875F2740F65B00FCB478 /* Tuple.swift.gyb */,
+				06CA87172740F65B00FCB478 /* UIntBuffer.swift */,
+				06CA879F2740F65C00FCB478 /* UnavailableStringAPIs.swift */,
+				06CA87C02740F65C00FCB478 /* UnfoldSequence.swift */,
+				06CA872E2740F65B00FCB478 /* Unicode.swift */,
+				06CA875B2740F65B00FCB478 /* UnicodeEncoding.swift */,
+				06CA873F2740F65B00FCB478 /* UnicodeHelpers.swift */,
+				06CA87A62740F65C00FCB478 /* UnicodeParser.swift */,
+				06CA87A72740F65C00FCB478 /* UnicodeScalar.swift */,
+				06CA87112740F65B00FCB478 /* UnicodeScalarProperties.swift */,
+				06CA87492740F65B00FCB478 /* Unmanaged.swift */,
+				06CA874A2740F65B00FCB478 /* UnmanagedOpaqueString.swift */,
+				06CA87CC2740F65C00FCB478 /* UnmanagedString.swift */,
+				06CA87412740F65B00FCB478 /* UnsafeBufferPointer.swift.gyb */,
+				06CA87C52740F65C00FCB478 /* UnsafePointer.swift */,
+				06CA877F2740F65C00FCB478 /* UnsafeRawBufferPointer.swift.gyb */,
+				06CA87122740F65B00FCB478 /* UnsafeRawPointer.swift */,
+				06CA87A22740F65C00FCB478 /* UTF8.swift */,
+				06CA87832740F65C00FCB478 /* UTF16.swift */,
+				06CA87802740F65C00FCB478 /* UTF32.swift */,
+				06CA87A32740F65C00FCB478 /* UTFEncoding.swift */,
+				06CA87C12740F65C00FCB478 /* ValidUTF8Buffer.swift */,
+				06CA874B2740F65B00FCB478 /* VarArgs.swift */,
+				06CA876F2740F65C00FCB478 /* WriteBackMutableSlice.swift */,
+				06CA87AA2740F65C00FCB478 /* Zip.swift */,
+			);
+			name = core;
+			path = ../../stdlib/public/core;
+			sourceTree = "<group>";
+		};
+		06CA87BD2740F65C00FCB478 /* SwiftCore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftCore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06CA87042740F64C00FCB478 /* SwiftCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06CA870C2740F64C00FCB478 /* Build configuration list for PBXNativeTarget "SwiftCore" */;
+			buildPhases = (
+				06CA87012740F64C00FCB478 /* Sources */,
+				06CA87022740F64C00FCB478 /* Frameworks */,
+				06CA87032740F64C00FCB478 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftCore;
+			productName = SwiftCore;
+			productReference = 06CA87052740F64C00FCB478 /* SwiftCore */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06CA86FD2740F64C00FCB478 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					06CA87042740F64C00FCB478 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 06CA87002740F64C00FCB478 /* Build configuration list for PBXProject "SwiftCore" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06CA86FC2740F64C00FCB478;
+			productRefGroup = 06CA87062740F64C00FCB478 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06CA87042740F64C00FCB478 /* SwiftCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06CA87012740F64C00FCB478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06CA87092740F64C00FCB478 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		06CA870A2740F64C00FCB478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		06CA870B2740F64C00FCB478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		06CA870D2740F64C00FCB478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5A8RFL8W7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		06CA870E2740F64C00FCB478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5A8RFL8W7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06CA87002740F64C00FCB478 /* Build configuration list for PBXProject "SwiftCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06CA870A2740F64C00FCB478 /* Debug */,
+				06CA870B2740F64C00FCB478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06CA870C2740F64C00FCB478 /* Build configuration list for PBXNativeTarget "SwiftCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06CA870D2740F64C00FCB478 /* Debug */,
+				06CA870E2740F64C00FCB478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06CA86FD2740F64C00FCB478 /* Project object */;
+}
