@@ -13,12 +13,10 @@ public func min<T: Comparable>(_ x: T, _ y: T) -> T {
     return y < x ? y : x
 }
 /*
-    和 C++ 不同, 这里, 必须是使用 Comparable 的协议, 才能使用 min 这方法.
-    显示的进行协议的指定.
-    隐式的进行协议的指定.
+ 和 C++ 不同, 这里, 必须是使用 Comparable 的协议, 才能使用 min 这方法.
+ 显示的进行协议的指定.
+ 隐式的进行协议的指定.
  */
-
-
 /// Returns the least argument passed.
 ///
 /// - Parameters:
@@ -93,7 +91,7 @@ public func max<T: Comparable>(_ x: T, _ y: T, _ z: T, _ rest: T...) -> T {
 
 
 /*
-    相比, Index 之前是需要人工进行控制, Enumerate 是将 Index 的加减内置到了算法里面.
+ 相比, Index 之前是需要人工进行控制, Enumerate 是将 Index 的加减内置到了算法里面.
  */
 @frozen
 public struct EnumeratedSequence<Base: Sequence> {
@@ -108,7 +106,7 @@ public struct EnumeratedSequence<Base: Sequence> {
 }
 
 /*
-    EnumeratedSequence 的 Iterator,
+ EnumeratedSequence 的 Iterator,
  */
 extension EnumeratedSequence {
     /// The iterator for `EnumeratedSequence`.

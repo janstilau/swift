@@ -261,6 +261,7 @@
 		06CA870F2740F65B00FCB478 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				AAB1EF8A274935DD0005801E /* Readed */,
 				06CA87712740F65C00FCB478 /* Algorithm.swift */,
 				06CA87592740F65B00FCB478 /* AnyHashable.swift */,
 				06CA872B2740F65B00FCB478 /* Array.swift */,
@@ -278,7 +279,6 @@
 				06CA876B2740F65C00FCB478 /* Availability.swift */,
 				06CA87BC2740F65C00FCB478 /* BidirectionalCollection.swift */,
 				06CA87AB2740F65C00FCB478 /* Bitset.swift */,
-				06CA87BA2740F65C00FCB478 /* Bool.swift */,
 				06CA871E2740F65B00FCB478 /* BridgeObjectiveC.swift */,
 				06CA87652740F65C00FCB478 /* BridgeStorage.swift */,
 				06CA87222740F65B00FCB478 /* BridgingBuffer.swift */,
@@ -289,7 +289,6 @@
 				06CA878C2740F65C00FCB478 /* ClosedRange.swift */,
 				06CA872C2740F65B00FCB478 /* CMakeLists.txt */,
 				06CA87CA2740F65C00FCB478 /* CocoaArray.swift */,
-				06CA877B2740F65C00FCB478 /* Codable.swift */,
 				06CA87342740F65B00FCB478 /* Collection.swift */,
 				06CA87422740F65B00FCB478 /* CollectionAlgorithms.swift */,
 				06CA87242740F65B00FCB478 /* CollectionDifference.swift */,
@@ -467,6 +466,15 @@
 			children = (
 			);
 			path = SwiftCore;
+			sourceTree = "<group>";
+		};
+		AAB1EF8A274935DD0005801E /* Readed */ = {
+			isa = PBXGroup;
+			children = (
+				06CA877B2740F65C00FCB478 /* Codable.swift */,
+				06CA87BA2740F65C00FCB478 /* Bool.swift */,
+			);
+			path = Readed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
