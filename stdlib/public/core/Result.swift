@@ -3,8 +3,8 @@
 
 // 这是一个数据包装类.
 /*
-    如果, 是 Success, 那么取 Case 为 Success 的关联值.
-    如果, 是 Fail, 那么取 Case 为 Fail 的关联值.
+ 如果, 是 Success, 那么取 Case 为 Success 的关联值.
+ 如果, 是 Fail, 那么取 Case 为 Fail 的关联值.
  */
 public enum Result<Success, Failure: Error> {
     /// A success, storing a `Success` value.
@@ -156,7 +156,7 @@ public enum Result<Success, Failure: Error> {
     /// - Returns: The success value, if the instance represents a success.
     /// - Throws: The failure value, if the instance represents a failure.
     
-    // 这里的 Get, 和下面的 Init 方法, 分别代表着, Result 这个包装对象, 和最原始的 Success 对象直接桥接的方式. 
+    // 这里的 Get, 和下面的 Init 方法, 分别代表着, Result 这个包装对象, 和最原始的 Success 对象直接桥接的方式.
     @inlinable
     public func get() throws -> Success {
         switch self {
