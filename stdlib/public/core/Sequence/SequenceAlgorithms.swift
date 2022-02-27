@@ -6,7 +6,12 @@ extension Sequence {
 }
 
 extension Sequence {
-    @warn_unqualified_access
+    
+    /*
+     areInIncreasingOrder 应该, 用函数的命名规则来命名参数变量名.
+     Block 的参数, 如果传入的闭包, 是可以 throws 的, 那么外部函数就要进行 trycatch.
+     否则, 就是不带 throws 版本的函数.
+     */
     public func min(
         by areInIncreasingOrder: (Element, Element) throws -> Bool
     ) rethrows -> Element? {
@@ -17,6 +22,7 @@ extension Sequence {
         }
         return result
     }
+    
     public func max(
         by areInIncreasingOrder: (Element, Element) throws -> Bool
     ) rethrows -> Element? {
@@ -35,13 +41,14 @@ extension Sequence where Element: Comparable {
     public func min() -> Element? {
         return self.min(by: <)
     }
-    
     public func max() -> Element? {
         return self.max(by: <)
     }
 }
 
 extension Sequence  {
+    // 使用系统库的代码的好处就是, 简洁.
+    // 其实, 这些逻辑, 自己写一遍也无妨. 但熟悉系统库, 可以写出清晰并且安全的代码.
     public func starts<PossiblePrefix: Sequence>(
         with possiblePrefix: PossiblePrefix,
         by areEquivalent: (Element, PossiblePrefix.Element) throws -> Bool
@@ -69,7 +76,6 @@ extension Sequence where Element: Equatable {
 }
 
 extension Sequence {
-    
     public func elementsEqual<OtherSequence: Sequence>(
         _ other: OtherSequence,
         by areEquivalent: (Element, OtherSequence.Element) throws -> Bool

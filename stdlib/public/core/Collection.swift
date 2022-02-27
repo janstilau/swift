@@ -54,6 +54,7 @@
 ///     // Prints "15.0"
 ///     // Prints "20.0"
 
+// IndexingIterator 通用的基础是, 它其实使用了  Collection 的抽象
 public struct IndexingIterator<Elements: Collection> {
     internal let _elements: Elements
     internal var _position: Elements.Index
@@ -68,7 +69,6 @@ public struct IndexingIterator<Elements: Collection> {
     }
 }
 
-// IndexingIterator 通用的基础是, 它其实使用了  Collection 的抽象
 extension IndexingIterator: IteratorProtocol, Sequence {
     public typealias Element = Elements.Element
     public typealias Iterator = IndexingIterator<Elements>
@@ -81,8 +81,7 @@ extension IndexingIterator: IteratorProtocol, Sequence {
     }
 }
 
-extension IndexingIterator: Sendable
-where Elements: Sendable, Elements.Index: Sendable { }
+extension IndexingIterator: Sendable where Elements: Sendable, Elements.Index: Sendable { }
 
 /// A sequence whose elements can be traversed multiple times,
 /// nondestructively, and accessed by an indexed subscript.
@@ -396,7 +395,7 @@ public protocol Collection: Sequence {
     /// collection, in ascending order.
     associatedtype Indices: Collection = DefaultIndices<Self>
     where Indices.Element == Index,
-            Indices.Index == Index,
+          Indices.Index == Index,
           Indices.SubSequence == Indices
     
     /// The indices that are valid for subscripting the collection, in ascending

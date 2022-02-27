@@ -4,16 +4,6 @@
 /// method is defined as follows:
 ///
 ///     extension Sequence {
-///         /// Returns an array containing the results of
-///         ///
-///         ///   p.reduce(initial, nextPartialResult)
-///         ///
-///         /// for each prefix `p` of `self`, in order from shortest to
-///         /// longest. For example:
-///         ///
-///         ///     (1..<6).scan(0, +) // [0, 1, 3, 6, 10, 15]
-///         ///
-///         /// - Complexity: O(n)
 ///         func scan<Result>(
 ///             _ initial: Result,
 ///             _ nextPartialResult: (Result, Element) -> Result
@@ -25,9 +15,6 @@
 ///             return result
 ///         }
 ///     }
-///
-/// You can build a sequence type that lazily computes the elements in the
-/// result of a scan:
 ///
 ///     struct LazyScanSequence<Base: Sequence, Result>
 ///         : LazySequenceProtocol
@@ -60,9 +47,6 @@
 ///                 nextPartialResult: nextPartialResult)
 ///         }
 ///     }
-///
-/// Finally, you can give all lazy sequences a lazy `scan(_:_:)` method:
-///     
 ///     extension LazySequenceProtocol {
 ///         func scan<Result>(
 ///             _ initial: Result,
@@ -72,29 +56,22 @@
 ///                 initial: initial, base: self, nextPartialResult: nextPartialResult)
 ///         }
 ///     }
-///
-/// With this type and extension method, you can call `.lazy.scan(_:_:)` on any
-/// sequence to create a lazily computed scan. The resulting `LazyScanSequence`
-/// is itself lazy, too, so further sequence operations also defer computation.
-///
-/// The explicit permission to implement operations lazily applies 
-/// only in contexts where the sequence is statically known to conform to
-/// `LazySequenceProtocol`. In the following example, because the extension 
-/// applies only to `Sequence`, side-effects such as the accumulation of
-/// `result` are never unexpectedly dropped or deferred:
-///
-///     extension Sequence where Element == Int {
-///         func sum() -> Int {
-///             var result = 0
-///             _ = self.map { result += $0 }
-///             return result
-///         }
-///     }
-///
-/// Don't actually use `map` for this purpose, however, because it creates 
-/// and discards the resulting array. Instead, use `reduce` for summing 
-/// operations, or `forEach` or a `for`-`in` loop for operations with side 
-/// effects.
+
+/*
+ 以上, 就是如何自定义一个 Lazy 操作符的过程.
+ 
+ RxSwfit 的设计思路不知道是不是从这里来的.
+ 
+ .lazy.map. 返回的是一个 Wrapper 的类型.
+ 这个 Wrapper 的类型, 将 transfom 的操作, 存储到自己的内部.
+ 但是, 迭代这个过程, 是依靠 iter 的, 所以, 每次迭代的时候, 是生成一个 iter, 然后将 wrapper 存储 iter 实现需要的数据复制一份过去.
+ wrapper 中, 存储了 baseSequence, 所以 wrapper 生成的 iter, 存储了 baseSequence 的 iter.
+ 这样, 迭代所生成的数据, 从 base iter -> sec iter -> end iter 流转, 在每个 iter 上, 进行自己的逻辑处理, 最后 end iter 返回最终结果 .
+ 
+ 
+ rxswift 中, Wrapper 就是各个 Producer 对象, Sink 就是 iter 对象.
+ Sink 之间, 使用了 on 协议进行连接, 但是我们知道, sink 中, 就是保留了下一个 observer 的指针, 所以 sink forward, 就是将数据传递到下一个节点.
+ */
 public protocol LazySequenceProtocol: Sequence {
     associatedtype Elements: Sequence = Self where Elements.Element == Element
     
@@ -116,25 +93,25 @@ public protocol LazySequenceProtocol: Sequence {
 /// When there's no special associated `Elements` type, the `elements`
 /// property is provided.
 extension LazySequenceProtocol where Elements == Self {
-    /// Identical to `self`.
-    @inlinable // protocol-only
     public var elements: Self { return self }
 }
 
 extension LazySequenceProtocol {
-    @inlinable // protocol-only
     public var lazy: LazySequence<Elements> {
         return elements.lazy
     }
 }
 
 extension LazySequenceProtocol where Elements: LazySequenceProtocol {
-    @inlinable // protocol-only
     public var lazy: Elements {
         return elements
     }
 }
 
+/*
+ 这就是, Sequence.lazy 返回的实际的内容. 一个 Wrapper.
+ 各种 .rx, .yd, .kf 都是使用了这个思路, 在完成作用域的限制 .
+ */
 public struct LazySequence<Base: Sequence> {
     internal var _base: Base
     internal init(_base: Base) {
@@ -142,35 +119,41 @@ public struct LazySequence<Base: Sequence> {
     }
 }
 
-// 一切, 都交给了 base
+/*
+ LazySequence 对于 Sequence 的实现, 完全就是调用 base 的实现.
+ 
+ LazySequence 必须实现 Sequence.
+ LazyMapSequence 里面存储的, 是一个 Sequence, 在迭代的时候, 它是向 base 询问当前的数据.
+ 
+ sequence.lazy.map.filter.scan
+ 这一系列的源头, 其实是 sequence.lazy 所产生的 LazySequence 对象.
+ 所以, LazySequence 必须要实现 Sequence, 向后面的节点输送内容.
+  
+ 而 LazySequence 的实现就是, 它完完全全是一个代理类, 所有对于 Sequence 的实现, 去自己的 base 中询问. 
+ */
+
 extension LazySequence: Sequence {
     public typealias Element = Base.Element
     public typealias Iterator = Base.Iterator
     
-    @inlinable
     public __consuming func makeIterator() -> Iterator {
         return _base.makeIterator()
     }
     
-    @inlinable // lazy-performance
     public var underestimatedCount: Int {
         return _base.underestimatedCount
     }
     
-    @inlinable // lazy-performance
-    @discardableResult
     public __consuming func _copyContents(
         initializing buf: UnsafeMutableBufferPointer<Element>
     ) -> (Iterator, UnsafeMutableBufferPointer<Element>.Index) {
         return _base._copyContents(initializing: buf)
     }
     
-    @inlinable // lazy-performance
     public func _customContainsEquatableElement(_ element: Element) -> Bool? {
         return _base._customContainsEquatableElement(element)
     }
     
-    @inlinable // generic-performance
     public __consuming func _copyToContiguousArray() -> ContiguousArray<Element> {
         return _base._copyToContiguousArray()
     }
@@ -178,17 +161,11 @@ extension LazySequence: Sequence {
 
 extension LazySequence: LazySequenceProtocol {
     public typealias Elements = Base
-    
-    @inlinable // lazy-performance
     public var elements: Elements { return _base }
 }
 
 // 这种, wrapper 的概念, 从 swift core 里面就存在了.
 extension Sequence {
-    /// A sequence containing the same elements as this sequence,
-    /// but on which some operations, such as `map` and `filter`, are
-    /// implemented lazily.
-    @inlinable // protocol-only
     public var lazy: LazySequence<Self> {
         return LazySequence(_base: self)
     }

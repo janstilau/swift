@@ -25,11 +25,11 @@
 ///
 
 /*
-    这里就是重点所在了, OC 里面, 可以给 nil 发送消息, 是一个很烂的设计.
-    之所以, 可以这样做, 是因为 OC 语言底层的消息机制, 但这不是一个 CleanCode 所应该坚持的风格.
-    Swift 强硬的分辨出, Opitonal 和 非 Optioanl 值, 让程序员将所操作的环境, 进行更好的判断, 设计.
-    不过这也让代码的缩进层级莫名增加了许多.
-*/
+ 这里就是重点所在了, OC 里面, 可以给 nil 发送消息, 是一个很烂的设计.
+ 之所以, 可以这样做, 是因为 OC 语言底层的消息机制, 但这不是一个 CleanCode 所应该坚持的风格.
+ Swift 强硬的分辨出, Opitonal 和 非 Optioanl 值, 让程序员将所操作的环境, 进行更好的判断, 设计.
+ 不过这也让代码的缩进层级莫名增加了许多.
+ */
 /// You must unwrap the value of an `Optional` instance before you can use it
 /// in many contexts. Because Swift provides several ways to safely unwrap
 /// optional values, you can choose the one that helps you write clear,

@@ -1,20 +1,14 @@
 
-/// A `Sequence` whose elements consist of those in a `Base`
-/// `Sequence` passed through a transform function returning `Element`.
-/// These elements are computed lazily, each time they're read, by
-/// calling the transform function on a base element.
+/*
+ lazy.map 返回的实际上, 是这样的一个对象.
+ 迭代的时候, 它生成自己的 Iterator
+ */
 public struct LazyMapSequence<Base: Sequence, Element> {
     
     public typealias Elements = LazyMapSequence
     
-    @usableFromInline
     internal var _base: Base
-    @usableFromInline
     internal let _transform: (Base.Element) -> Element
-    
-    /// Creates an instance with elements `transform(x)` for each element
-    /// `x` of base.
-    @inlinable
     internal init(_base: Base, transform: @escaping (Base.Element) -> Element) {
         self._base = _base
         self._transform = transform
@@ -22,17 +16,11 @@ public struct LazyMapSequence<Base: Sequence, Element> {
 }
 
 extension LazyMapSequence {
-    @frozen
     public struct Iterator {
-        @usableFromInline
         internal var _base: Base.Iterator
-        @usableFromInline
         internal let _transform: (Base.Element) -> Element
         
-        @inlinable
         public var base: Base.Iterator { return _base }
-        
-        @inlinable
         internal init(
             _base: Base.Iterator,
             _transform: @escaping (Base.Element) -> Element
@@ -43,25 +31,16 @@ extension LazyMapSequence {
     }
 }
 
+// map 的 iter 迭代的时候, 从 base 的 iter 中取数据, 然后进行 map 处理, 然后返回 map 之后的数据.
 extension LazyMapSequence.Iterator: IteratorProtocol, Sequence {
-    /// Advances to the next element and returns it, or `nil` if no next element
-    /// exists.
-    ///
-    /// Once `nil` has been returned, all subsequent calls return `nil`.
-    ///
-    /// - Precondition: `next()` has not been applied to a copy of `self`
-    ///   since the copy was made.
-    @inlinable
+    // 这里的 map, 是 Optinal 的 map.
+    // 自己的代码里面, 总是忘记了这个操作符.
     public mutating func next() -> Element? {
         return _base.next().map(_transform)
     }
 }
 
 extension LazyMapSequence: LazySequenceProtocol {
-    /// Returns an iterator over the elements of this sequence.
-    ///
-    /// - Complexity: O(1).
-    @inlinable
     public __consuming func makeIterator() -> Iterator {
         return Iterator(_base: _base.makeIterator(), _transform: _transform)
     }
@@ -175,16 +154,12 @@ where Base: BidirectionalCollection {
 
 extension LazyMapCollection: LazyCollectionProtocol { }
 
-extension LazyMapCollection: RandomAccessCollection
-where Base: RandomAccessCollection { }
+extension LazyMapCollection: RandomAccessCollection where Base: RandomAccessCollection { }
 
 //===--- Support for s.lazy -----------------------------------------------===//
 
+// 在 LazySequenceProtocol 上进行扩展, 而不是在 LazySequence 上进行扩展.
 extension LazySequenceProtocol {
-    /// Returns a `LazyMapSequence` over this `Sequence`.  The elements of
-    /// the result are computed lazily, each time they are read, by
-    /// calling `transform` function on a base element.
-    @inlinable
     public func map<U>(
         _ transform: @escaping (Element) -> U
     ) -> LazyMapSequence<Elements, U> {
@@ -193,8 +168,6 @@ extension LazySequenceProtocol {
 }
 
 extension LazyMapSequence {
-    @inlinable
-    @available(swift, introduced: 5)
     public func map<ElementOfResult>(
         _ transform: @escaping (Element) -> ElementOfResult
     ) -> LazyMapSequence<Base, ElementOfResult> {
