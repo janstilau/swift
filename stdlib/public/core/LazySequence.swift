@@ -1,24 +1,3 @@
-/// A sequence on which normally-eager sequence operations are implemented
-/// lazily.
-///
-/// Lazy sequences can be used to avoid needless storage allocation
-/// and computation, because they use an underlying sequence for
-/// storage and compute their elements on demand. For example, `doubled` in
-/// this code sample is a sequence containing the values `2`, `4`, and `6`.
-///
-///     let doubled = [1, 2, 3].lazy.map { $0 * 2 }
-///
-/// Each time an element of the lazy sequence `doubled` is accessed, the 
-/// closure accesses and transforms an element of the underlying array.
-///
-/// Sequence operations that take closure arguments, such as `map(_:)` and
-/// `filter(_:)`, are normally eager: They use the closure immediately and
-/// return a new array. When you use the `lazy` property, you give the standard
-/// library explicit permission to store the closure and the sequence
-/// in the result, and defer computation until it is needed.
-///
-/// ## Adding New Lazy Operations
-///
 /// To add a new lazy sequence operation, extend this protocol with
 /// a method that returns a lazy wrapper that itself conforms to
 /// `LazySequenceProtocol`.  For example, an eager `scan(_:_:)`
@@ -117,10 +96,6 @@
 /// operations, or `forEach` or a `for`-`in` loop for operations with side 
 /// effects.
 public protocol LazySequenceProtocol: Sequence {
-    /// A `Sequence` that can contain the same elements as this one,
-    /// possibly with a simpler type.
-    ///
-    /// - See also: `elements`
     associatedtype Elements: Sequence = Self where Elements.Element == Element
     
     /// A sequence containing the same elements as this one, possibly with
@@ -160,26 +135,14 @@ extension LazySequenceProtocol where Elements: LazySequenceProtocol {
     }
 }
 
-/// A sequence containing the same elements as a `Base` sequence, but
-/// on which some operations such as `map` and `filter` are
-/// implemented lazily.
-///
-
-
-@frozen // lazy-performance
 public struct LazySequence<Base: Sequence> {
-    @usableFromInline
     internal var _base: Base
-    
-    /// Creates a sequence that has the same elements as `base`, but on
-    /// which some operations such as `map` and `filter` are implemented
-    /// lazily.
-    @inlinable // lazy-performance
     internal init(_base: Base) {
         self._base = _base
     }
 }
 
+// 一切, 都交给了 base
 extension LazySequence: Sequence {
     public typealias Element = Base.Element
     public typealias Iterator = Base.Iterator
@@ -216,12 +179,11 @@ extension LazySequence: Sequence {
 extension LazySequence: LazySequenceProtocol {
     public typealias Elements = Base
     
-    /// The `Base` (presumably non-lazy) sequence from which `self` was created.
     @inlinable // lazy-performance
     public var elements: Elements { return _base }
 }
 
-// 在 Sequence 上增加一个属性, 这个属性就是创建一个 LazySequence 对象.
+// 这种, wrapper 的概念, 从 swift core 里面就存在了.
 extension Sequence {
     /// A sequence containing the same elements as this sequence,
     /// but on which some operations, such as `map` and `filter`, are

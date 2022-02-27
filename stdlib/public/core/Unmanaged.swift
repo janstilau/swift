@@ -1,15 +1,20 @@
-/// A type for propagating an unmanaged object reference.
-///
-/// When you use this type, you become partially responsible for
-/// keeping the object alive.
-// Unmanaged 表示对不清晰的内存管理对象的封装，以及用烫手山芋的方式来管理他们
+/*
+ 这个类, 是专门用来进行手动管理 Swift 对象内存的.
+ 直接传入一个 Swift 对象, 然后可以调用 retained, release 这两个方法.
+ SWIFT 对象的地址, 其实是没有办法直接变为 Pointer 的. 专门使用这个类, 提供了抽取这个地址的方案.
+ */
+
 @frozen
 public struct Unmanaged<Instance: AnyObject> {
     
-    // 保存了指针值, 但是 unowned 表示, 对于 Unmanaged 来说, 创建一个 Unmanaged 的实例, 是不会影响到被管理对象的引用计数的.
+    // 这个类, 管理的数据, 就是一个 AnyObject 的指针. 并且使用 unowned(unsafe) 这种内存管理方案.
+    // 但是, 这个类不对外暴露对象的接口, 而是统一使用类方法, 来获取对象, 然后进行调用.
+    
     @usableFromInline
     internal unowned(unsafe) var _value: Instance
     
+    // 构造方法, 仅仅是做值的记录.
+    // 没有任何的内存管理语义代码的触发.
     @usableFromInline @_transparent
     internal init(_private: Instance) { _value = _private }
     
@@ -21,8 +26,7 @@ public struct Unmanaged<Instance: AnyObject> {
     ///
     /// - Parameter value: An opaque C pointer.
     /// - Returns: An unmanaged class reference to `value`.
-    
-    // 生成一个 Unmanaged 并不会改变引用计数. 通过返回值的类型, 推断出来了 Instance 的类型.
+    @_transparent
     public static func fromOpaque(
     @_nonEphemeral _ value: UnsafeRawPointer
     ) -> Unmanaged {
@@ -38,9 +42,6 @@ public struct Unmanaged<Instance: AnyObject> {
     ///     let ptr = bits.toOpaque()
     ///
     /// - Returns: An opaque pointer to the value of this unmanaged reference.
-    // 一些的基础, 都是 Unmanaged 的内部, 存储了一个引用类型对象的指针 .
-    // 所有的函数, 都是在这个指针上, 进行操作.
-    // 在这个类的内部, 使用 unsafeBitCast 进行了大量的强转操作.
     @_transparent
     public func toOpaque() -> UnsafeMutableRawPointer {
         return unsafeBitCast(_value, to: UnsafeMutableRawPointer.self)
@@ -213,16 +214,16 @@ public struct Unmanaged<Instance: AnyObject> {
                                                                  &tmp._value))
     }
     
-    // Retain 操作, 就是引用计数 ++,
-    // 可以猜测, 内部的逻辑就是找到 _Value 指向的对象, 修改里面的引用计数的值.
+    
+    // 在这几个方法里面, 调用了系统的方法, 来实现真正的内存管理的操作 .
+    /// Performs an unbalanced retain of the object.
     @_transparent
     public func retain() -> Unmanaged {
         Builtin.retain(_value)
         return self
     }
     
-    // Release 操作, 就是引用计数 --,
-    // 可以猜测, 内部的逻辑就是找到 _value 指向的对象, 修改里面的引用计数的值.
+    /// Performs an unbalanced release of the object.
     @_transparent
     public func release() {
         Builtin.release(_value)

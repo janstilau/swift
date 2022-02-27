@@ -1,8 +1,8 @@
+
 /// A `Sequence` whose elements consist of those in a `Base`
 /// `Sequence` passed through a transform function returning `Element`.
 /// These elements are computed lazily, each time they're read, by
 /// calling the transform function on a base element.
-@frozen
 public struct LazyMapSequence<Base: Sequence, Element> {
     
     public typealias Elements = LazyMapSequence
