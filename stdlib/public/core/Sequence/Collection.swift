@@ -1,59 +1,3 @@
-/// A type that iterates over a collection using its indices.
-///
-/// The `IndexingIterator` type is the default iterator for any collection that
-/// doesn't declare its own. It acts as an iterator by using a collection's
-/// indices to step over each value in the collection. Most collections in the
-/// standard library use `IndexingIterator` as their iterator.
-///
-/// By default, any custom collection type you create will inherit a
-/// `makeIterator()` method that returns an `IndexingIterator` instance,
-/// making it unnecessary to declare your own. When creating a custom
-/// collection type, add the minimal requirements of the `Collection`
-/// protocol: starting and ending indices and a subscript for accessing
-/// elements. With those elements defined, the inherited `makeIterator()`
-/// method satisfies the requirements of the `Sequence` protocol.
-///
-/// Here's an example of a type that declares the minimal requirements for a
-/// collection. The `CollectionOfTwo` structure is a fixed-size collection
-/// that always holds two elements of a specific type.
-///
-///     struct CollectionOfTwo<Element>: Collection {
-///         let elements: (Element, Element)
-///
-///         init(_ first: Element, _ second: Element) {
-///             self.elements = (first, second)
-///         }
-///
-///         var startIndex: Int { return 0 }
-///         var endIndex: Int   { return 2 }
-///
-///         subscript(index: Int) -> Element {
-///             switch index {
-///             case 0: return elements.0
-///             case 1: return elements.1
-///             default: fatalError("Index out of bounds.")
-///             }
-///         }
-///         
-///         func index(after i: Int) -> Int {
-///             precondition(i < endIndex, "Can't advance beyond endIndex")
-///             return i + 1
-///         }
-///     }
-///
-/// Because `CollectionOfTwo` doesn't define its own `makeIterator()`
-/// method or `Iterator` associated type, it uses the default iterator type,
-/// `IndexingIterator`. This example shows how a `CollectionOfTwo` instance
-/// can be created holding the values of a point, and then iterated over
-/// using a `for`-`in` loop.
-///
-///     let point = CollectionOfTwo(15.0, 20.0)
-///     for element in point {
-///         print(element)
-///     }
-///     // Prints "15.0"
-///     // Prints "20.0"
-
 // IndexingIterator 通用的基础是, 它其实使用了  Collection 的抽象
 public struct IndexingIterator<Elements: Collection> {
     internal let _elements: Elements
@@ -285,72 +229,35 @@ extension IndexingIterator: Sendable where Elements: Sendable, Elements.Index: S
 /// or bidirectional collection must traverse the entire collection to count
 /// the number of contained elements, accessing its `count` property is an
 /// O(*n*) operation.
+
+
 public protocol Collection: Sequence {
     typealias IndexDistance = Int
     override associatedtype Element
     
-    /// A type that represents a position in the collection.
-    ///
-    /// Valid indices consist of the position of every element and a
-    /// "past the end" position that's not valid for use as a subscript
-    /// argument.
+    /*
+     这是每个 Collection 实现类自定义的数据结构.
+     根据这个数据结构, 可以直接进行取值的操作.
+     对于 Array 来说, 就是 int.
+     对于链表来说, 应该是一个指针.
+     根据哈希表来说, 应该是 Bucket 的指针, 以及 LinkList 上 Node 的指针.
+     */
     associatedtype Index: Comparable
     
-    /// The position of the first element in a nonempty collection.
-    ///
-    /// If the collection is empty, `startIndex` is equal to `endIndex`.
     var startIndex: Index { get }
     
-    /// The collection's "past the end" position---that is, the position one
-    /// greater than the last valid subscript argument.
-    ///
-    /// When you need a range that includes the last element of a collection, use
-    /// the half-open range operator (`..<`) with `endIndex`. The `..<` operator
-    /// creates a range that doesn't include the upper bound, so it's always
-    /// safe to use with `endIndex`. For example:
-    ///
-    ///     let numbers = [10, 20, 30, 40, 50]
-    ///     if let index = numbers.firstIndex(of: 30) {
-    ///         print(numbers[index ..< numbers.endIndex])
-    ///     }
-    ///     // Prints "[30, 40, 50]"
-    ///
-    /// If the collection is empty, `endIndex` is equal to `startIndex`.
     var endIndex: Index { get }
+    
     associatedtype Iterator = IndexingIterator<Self>
+    
     override __consuming func makeIterator() -> Iterator
     
-    /// A sequence that represents a contiguous subrange of the collection's
-    /// elements.
-    ///
-    /// This associated type appears as a requirement in the `Sequence`
-    /// protocol, but it is restated here with stricter constraints. In a
-    /// collection, the subsequence should also conform to `Collection`.
     associatedtype SubSequence: Collection = Slice<Self>
     where SubSequence.Index == Index,
           Element == SubSequence.Element,
           SubSequence.SubSequence == SubSequence
     
-    /// Accesses the element at the specified position.
-    ///
-    /// The following example accesses an element of an array through its
-    /// subscript to print its value:
-    ///
-    ///     var streets = ["Adams", "Bryant", "Channing", "Douglas", "Evarts"]
-    ///     print(streets[1])
-    ///     // Prints "Bryant"
-    ///
-    /// You can subscript a collection with any valid index other than the
-    /// collection's end index. The end index refers to the position one past
-    /// the last element of a collection, so it doesn't correspond with an
-    /// element.
-    ///
-    /// - Parameter position: The position of the element to access. `position`
-    ///   must be a valid index of the collection that is not equal to the
-    ///   `endIndex` property.
-    ///
-    /// - Complexity: O(1)
-    @_borrowed
+    // 直接, 通过 Index 取值.
     subscript(position: Index) -> Element { get }
     
     /// Accesses a contiguous subrange of the collection's elements.
@@ -391,8 +298,6 @@ public protocol Collection: Sequence {
     /// - Complexity: O(1)
     subscript(bounds: Range<Index>) -> SubSequence { get }
     
-    /// A type that represents the indices that are valid for subscripting the
-    /// collection, in ascending order.
     associatedtype Indices: Collection = DefaultIndices<Self>
     where Indices.Element == Index,
           Indices.Index == Index,
@@ -624,19 +529,13 @@ public protocol Collection: Sequence {
     func formIndex(after i: inout Index)
 }
 
-/// Default implementation for forward collections.
+// 提供了大量的默认实现.
 extension Collection {
-    /// Replaces the given index with its successor.
-    ///
-    /// - Parameter i: A valid index of the collection. `i` must be less than
-    ///   `endIndex`.
-    @inlinable // protocol-only
-    @inline(__always)
+    
     public func formIndex(after i: inout Index) {
         i = index(after: i)
     }
     
-    @inlinable
     public func _failEarlyRangeCheck(_ index: Index, bounds: Range<Index>) {
         // FIXME: swift-3-indexing-model: tests.
         _precondition(
@@ -647,7 +546,6 @@ extension Collection {
             "Out of bounds: index >= endIndex")
     }
     
-    @inlinable
     public func _failEarlyRangeCheck(_ index: Index, bounds: ClosedRange<Index>) {
         // FIXME: swift-3-indexing-model: tests.
         _precondition(
@@ -658,7 +556,6 @@ extension Collection {
             "Out of bounds: index > endIndex")
     }
     
-    @inlinable
     public func _failEarlyRangeCheck(_ range: Range<Index>, bounds: Range<Index>) {
         // FIXME: swift-3-indexing-model: tests.
         _precondition(

@@ -288,7 +288,6 @@
 				06CA87B22740F65C00FCB478 /* CharacterProperties.swift */,
 				06CA872C2740F65B00FCB478 /* CMakeLists.txt */,
 				06CA87CA2740F65C00FCB478 /* CocoaArray.swift */,
-				06CA87342740F65B00FCB478 /* Collection.swift */,
 				06CA87422740F65B00FCB478 /* CollectionAlgorithms.swift */,
 				06CA87242740F65B00FCB478 /* CollectionDifference.swift */,
 				06CA87932740F65C00FCB478 /* CollectionOfOne.swift */,
@@ -380,7 +379,6 @@
 				06CA87382740F65B00FCB478 /* SIMDVector.swift */,
 				06CA87C42740F65C00FCB478 /* SIMDVectorTypes.swift.gyb */,
 				06CA87BE2740F65C00FCB478 /* SipHash.swift */,
-				06CA87952740F65C00FCB478 /* Slice.swift */,
 				06CA87442740F65B00FCB478 /* SliceBuffer.swift */,
 				06CA87782740F65C00FCB478 /* SmallString.swift */,
 				06CA87892740F65C00FCB478 /* Sort.swift */,
@@ -471,6 +469,8 @@
 				06CA87942740F65C00FCB478 /* SequenceAlgorithms.swift */,
 				06CA87712740F65C00FCB478 /* Algorithm.swift */,
 				06CA873A2740F65B00FCB478 /* Join.swift */,
+				06CA87342740F65B00FCB478 /* Collection.swift */,
+				06CA87952740F65C00FCB478 /* Slice.swift */,
 			);
 			path = Sequence;
 			sourceTree = "<group>";
