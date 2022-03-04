@@ -78,7 +78,7 @@ extension Bool {
 // Bool 的运算操作符, 在这, 变为了函数.
 // 本质上, 其他语言的运算操作符, 就是函数.
 extension Bool {
-   
+    
     public static func && (lhs: Bool, rhs: @autoclosure () throws -> Bool) rethrows
     -> Bool {
         return lhs ? try rhs() : false

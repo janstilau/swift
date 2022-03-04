@@ -1,32 +1,17 @@
-//===--- DropWhile.swift - Lazy views for drop(while:) --------*- swift -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
-/// A sequence whose elements consist of the elements that follow the initial
-/// consecutive elements of some base sequence that satisfy a given predicate.
-@frozen // lazy-performance
+// A sequence whose elements consist of the elements that follow the initial
+// consecutive elements of some base sequence that satisfy a given predicate.
+/*
+ A sequence whose elements consist of the elements that follow the initial consecutive elements of some base sequence that satisfy a given predicate.
+ */
 public struct LazyDropWhileSequence<Base: Sequence> {
     public typealias Element = Base.Element
     
-    /// Create an instance with elements `transform(x)` for each element
-    /// `x` of base.
-    @inlinable // lazy-performance
     internal init(_base: Base, predicate: @escaping (Element) -> Bool) {
         self._base = _base
         self._predicate = predicate
     }
     
-    @usableFromInline // lazy-performance
     internal var _base: Base
-    @usableFromInline // lazy-performance
     internal let _predicate: (Element) -> Bool
 }
 
@@ -37,36 +22,29 @@ extension LazyDropWhileSequence {
     /// This is the associated iterator for the `LazyDropWhileSequence`,
     /// `LazyDropWhileCollection`, and `LazyDropWhileBidirectionalCollection`
     /// types.
-    @frozen // lazy-performance
     public struct Iterator {
         public typealias Element = Base.Element
         
-        @inlinable // lazy-performance
         internal init(_base: Base.Iterator, predicate: @escaping (Element) -> Bool) {
             self._base = _base
             self._predicate = predicate
         }
         
-        @usableFromInline // lazy-performance
         internal var _predicateHasFailed = false
-        @usableFromInline // lazy-performance
         internal var _base: Base.Iterator
-        @usableFromInline // lazy-performance
         internal let _predicate: (Element) -> Bool
     }
 }
 
 extension LazyDropWhileSequence.Iterator: IteratorProtocol {
-    @inlinable // lazy-performance
+    
     public mutating func next() -> Element? {
-        // Once the predicate has failed for the first time, the base iterator
-        // can be used for the rest of the elements.
+        // 只要 predicate 失败过一次, 之后就一直使用原来的 sequence 的 next 值.
         if _predicateHasFailed {
             return _base.next()
         }
         
-        // Retrieve and discard elements from the base iterator until one fails
-        // the predicate.
+        // 过滤, 原来的 sequence 的元素, 只要符合过滤的条件, 就一直过滤, 直到原来的 sequence 失效
         while let nextElement = _base.next() {
             if !_predicate(nextElement) {
                 _predicateHasFailed = true
@@ -74,7 +52,7 @@ extension LazyDropWhileSequence.Iterator: IteratorProtocol {
             }
         }
         return nil
-    }  
+    }
 }
 
 extension LazyDropWhileSequence: Sequence {
@@ -92,14 +70,6 @@ extension LazyDropWhileSequence: LazySequenceProtocol {
 }
 
 extension LazySequenceProtocol {
-    /// Returns a lazy sequence that skips any initial elements that satisfy
-    /// `predicate`.
-    ///
-    /// - Parameter predicate: A closure that takes an element of the sequence as
-    ///   its argument and returns `true` if the element should be skipped or
-    ///   `false` otherwise. Once `predicate` returns `false` it will not be
-    ///   called again.
-    @inlinable // lazy-performance
     public __consuming func drop(
         while predicate: @escaping (Elements.Element) -> Bool
     ) -> LazyDropWhileSequence<Self.Elements> {
