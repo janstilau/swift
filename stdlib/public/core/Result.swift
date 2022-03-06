@@ -156,6 +156,7 @@ public enum Result<Success, Failure: Error> {
     /// - Returns: The success value, if the instance represents a success.
     /// - Throws: The failure value, if the instance represents a failure.
     
+    // 在 Swift 里面, 必须把 会抛出的错误在注释里面写出来. 因为实际上, 外界只知道这是一个 Error, 而不知道这是一个错误类型. 
     // 这里的 Get, 和下面的 Init 方法, 分别代表着, Result 这个包装对象, 和最原始的 Success 对象直接桥接的方式.
     @inlinable
     public func get() throws -> Success {

@@ -5,7 +5,13 @@ internal func _abstract(
 ) -> Never {
     fatalError("Method must be overridden", file: file, line: line)
 }
-// 目的在于, 隐藏类型.
+
+// 目的在于, 隐藏类型. 以及, 将 iter 变为一个引用类型.
+/*
+ Any 要么是里面存储一个闭包, 然后在实现协议的时候, 使用这个闭包.
+ 要么是存储一个协议实现的对象, 在实现协议的时候, 使用这个对象.
+ 虽然, AnyIterator 是一个 struct, 但是它里面的数据, 使用的是一个 class, 所以他还是一个引用值
+ */
 public struct AnyIterator<Element> {
     internal let _box: _AnyIteratorBoxBase<Element>
     
@@ -22,6 +28,7 @@ public struct AnyIterator<Element> {
     }
 }
 
+// 直接桥接给了, 自己存储的引用值
 extension AnyIterator: IteratorProtocol {
     public func next() -> Element? {
         return _box.next()
@@ -50,28 +57,24 @@ internal class _AnyIteratorBoxBase<Element>: IteratorProtocol {
 // 这个类, 存在的价值就是, 进行值语义到引用语音的改变.
 internal final class _IteratorBox<Base: IteratorProtocol>
 : _AnyIteratorBoxBase<Base.Element> {
+    internal var _base: Base
+    
     internal init(_ base: Base) { self._base = base }
     deinit {}
     internal override func next() -> Base.Element? { return _base.next() }
-    internal var _base: Base
 }
 
 //===--- Sequence ---------------------------------------------------------===//
 //===----------------------------------------------------------------------===//
 
-@_fixed_layout
-@usableFromInline
+// 一个 class.
 internal class _AnySequenceBox<Element> {
-    @inlinable // FIXME(sil-serialize-all)
     internal init() { }
     
-    @inlinable
     internal func _makeIterator() -> AnyIterator<Element> { _abstract() }
     
-    @inlinable
     internal var _underestimatedCount: Int { _abstract() }
     
-    @inlinable
     internal func _map<T>(
         _ transform: (Element) throws -> T
     ) rethrows -> [T] {
@@ -150,8 +153,7 @@ internal class _AnySequenceBox<Element> {
     }
 }
 
-@_fixed_layout
-@usableFromInline
+
 internal class _AnyCollectionBox<Element>: _AnySequenceBox<Element> {
     
     // This deinit has to be present on all the types
@@ -406,22 +408,27 @@ internal class _AnyRandomAccessCollectionBox<Element>
     ) -> _AnyRandomAccessCollectionBox<Element> { _abstract() }
 }
 
-@_fixed_layout
-@usableFromInline
+
+// 真正的 Anysequence 的实现.
 internal final class _SequenceBox<S: Sequence>: _AnySequenceBox<S.Element> {
-    @usableFromInline
+    
+    deinit {}
+    
+    internal init(_base: S) {
+        self._base = _base
+    }
+    
+    internal var _base: S // 成员变量, 存储一个 sequence 的值.
+    
     internal typealias Element = S.Element
     
-    @inline(__always)
-    @inlinable
+    // 各种操作, 全部桥接给 base 来进行实现.
     internal override func _makeIterator() -> AnyIterator<Element> {
         return AnyIterator(_base.makeIterator())
     }
-    @inlinable
     internal override var _underestimatedCount: Int {
         return _base.underestimatedCount
     }
-    @inlinable
     internal override func _map<T>(
         _ transform: (Element) throws -> T
     ) rethrows -> [T] {
@@ -485,17 +492,6 @@ internal final class _SequenceBox<S: Sequence>: _AnySequenceBox<S.Element> {
     internal override func _suffix(_ maxLength: Int) -> [Element] {
         return _base.suffix(maxLength)
     }
-    
-    @inlinable // FIXME(sil-serialize-all)
-    deinit {}
-    
-    @inlinable
-    internal init(_base: S) {
-        self._base = _base
-    }
-    
-    @usableFromInline
-    internal var _base: S
 }
 
 @_fixed_layout
@@ -1136,14 +1132,9 @@ extension _ClosureBasedSequence: Sequence {
     }
 }
 
-/// A type-erased sequence.
-///
-/// An instance of `AnySequence` forwards its operations to an underlying base
-/// sequence having the same `Element` type, hiding the specifics of the
-/// underlying sequence.
-@frozen
+// 隐藏类型, 值语义变为引用语义.
+// 如果, 这个实现了引用语义的类型, 是一个 struct, 那么一定是它的成员变量是一个引用语义的值. 
 public struct AnySequence<Element> {
-    @usableFromInline
     internal let _box: _AnySequenceBox<Element>
     
     /// Creates a sequence whose `makeIterator()` method forwards to
