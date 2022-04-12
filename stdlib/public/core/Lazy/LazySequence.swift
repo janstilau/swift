@@ -64,13 +64,6 @@
  
  .lazy.map. 返回的是一个 Wrapper 的类型.
  这个 Wrapper 的类型, 将 transfom 的操作, 存储到自己的内部.
- 但是, 迭代这个过程, 是依靠 iter 的, 所以, 每次迭代的时候, 是生成一个 iter, 然后将 wrapper 存储 iter 实现需要的数据复制一份过去.
- wrapper 中, 存储了 baseSequence, 所以 wrapper 生成的 iter, 存储了 baseSequence 的 iter.
- 这样, 迭代所生成的数据, 从 base iter -> sec iter -> end iter 流转, 在每个 iter 上, 进行自己的逻辑处理, 最后 end iter 返回最终结果 .
- 
- 
- rxswift 中, Wrapper 就是各个 Producer 对象, Sink 就是 iter 对象.
- Sink 之间, 使用了 on 协议进行连接, 但是我们知道, sink 中, 就是保留了下一个 observer 的指针, 所以 sink forward, 就是将数据传递到下一个节点.
  */
 public protocol LazySequenceProtocol: Sequence {
     associatedtype Elements: Sequence = Self where Elements.Element == Element
@@ -128,8 +121,8 @@ public struct LazySequence<Base: Sequence> {
  sequence.lazy.map.filter.scan
  这一系列的源头, 其实是 sequence.lazy 所产生的 LazySequence 对象.
  所以, LazySequence 必须要实现 Sequence, 向后面的节点输送内容.
-  
- 而 LazySequence 的实现就是, 它完完全全是一个代理类, 所有对于 Sequence 的实现, 去自己的 base 中询问. 
+ 
+ 而 LazySequence 的实现就是, 它完完全全是一个代理类, 所有对于 Sequence 的实现, 去自己的 base 中询问.
  */
 
 extension LazySequence: Sequence {
