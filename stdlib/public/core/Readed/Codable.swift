@@ -1,9 +1,7 @@
 
 /// A type that can encode itself to an external representation.
-/*
-    不一定是 JSON, 这个类型, 是自己能将自己变为一个外存的形式.
-    没有将, 这个外存的形式返回, 所有的数据, 都保存在了 Encode 的内部了.
- */
+
+// 从标准库里面, 把 Ecodeable 的定义, 转移到了这里.
 public protocol Encodable {
     /// Encodes this value into the given encoder.
     ///
@@ -18,7 +16,7 @@ public protocol Encodable {
 }
 
 /*
-    同样的, 具体的外存数据, 在 Decoder 里面存储.
+ 同样的, 具体的外存数据, 在 Decoder 里面存储.
  */
 public protocol Decodable {
     /// Creates a new instance by decoding from the given decoder.
@@ -36,7 +34,7 @@ public typealias Codable = Encodable & Decodable
 //===----------------------------------------------------------------------===//
 
 /*
-    CodingKey 的意思是, 可以充当容器里面的 Key 值, 可以使字符串值, 也可以是 Int 值.
+ CodingKey 的意思是, 可以充当容器里面的 Key 值, 可以使字符串值, 也可以是 Int 值.
  */
 /// A type that can be used as a key for encoding and decoding.
 public protocol CodingKey: Sendable,
@@ -68,12 +66,12 @@ public protocol CodingKey: Sendable,
 
 
 /*
-    Encoder 也是一个 Protocol.
-    具体, 各个值如何进行 Encode, 是交给了三个容器类.
+ Encoder 也是一个 Protocol.
+ 具体, 各个值如何进行 Encode, 是交给了三个容器类.
  
-    其中, KeyedEncodingContainer 用来讲一个值, encode 到一个 key 对应的位置.
-    UnkeyedEncodingContainer 用来将一个值, encode 到特定的位置上, 按序.
-    SingleValueEncodingContainer 则是, 如何来 encode 这个值.
+ 其中, KeyedEncodingContainer 用来讲一个值, encode 到一个 key 对应的位置.
+ UnkeyedEncodingContainer 用来将一个值, encode 到特定的位置上, 按序.
+ SingleValueEncodingContainer 则是, 如何来 encode 这个值.
  */
 /// A type that can encode values into a native format for external
 /// representation.

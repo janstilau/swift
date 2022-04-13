@@ -15,6 +15,7 @@ public struct Unmanaged<Instance: AnyObject> {
     internal unowned(unsafe) var _value: Instance
     
     // Unmanaged 的构造方法, 不会被使用, 使用 static 的静态方法, 来进行生成, 然后调用.
+    // 这个初始化方法, 是 Internal 的, 在外界是无法使用的. 通过这种方式, 使得 Unmanaged 对象的生成, 只能是通过
     internal init(_private: Instance) { _value = _private }
     
     public static func fromOpaque( _ value: UnsafeRawPointer ) -> Unmanaged {
@@ -22,7 +23,7 @@ public struct Unmanaged<Instance: AnyObject> {
         return Unmanaged(_private: unsafeBitCast(value, to: Instance.self))
     }
     
-    // 强暴的, 将自己管理的至真至, 进行类型转化.
+    // 强暴的, 将自己管理的指针, 进行类型转化.
     public func toOpaque() -> UnsafeMutableRawPointer {
         return unsafeBitCast(_value, to: UnsafeMutableRawPointer.self)
     }
@@ -156,7 +157,7 @@ public struct Unmanaged<Instance: AnyObject> {
     
     
     // 在这几个方法里面, 调用了系统的方法, 来实现真正的内存管理的操作 .
-    // 在 Swift 里面, 只能通过 Unmanaged 来进行内存引用计数的变化. 
+    // 在 Swift 里面, 只能通过 Unmanaged 来进行内存引用计数的变化.
     public func retain() -> Unmanaged {
         Builtin.retain(_value)
         return self

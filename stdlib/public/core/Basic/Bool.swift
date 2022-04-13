@@ -1,10 +1,11 @@
 /*
- Swift 里面, 打破了, 非 0 为 True 的这一个规则. 作为判断逻辑的地方, 必须是 Bool 值 .
+ 其实, 就是存储一个 bit 的值.
+ 
+ Bool 类型的专门创建, 使得编译器可以使用类型系统, 来包装代码的含义.
+ 在需要判断的语法里面, 不能再是 非 0 为 True. 可以大大的减少 Bug. 必须显示的进行 Bool 值的构建, 这是 Clean Code 的表示. 
  */
-
 public struct Bool: Sendable {
     
-    // 最终, 在内存上, 就占用一个 Bit 的空间.
     internal var _value: Builtin.Int1
     
     public init() {
@@ -70,6 +71,7 @@ extension Bool: Hashable {
 //===----------------------------------------------------------------------===//
 
 extension Bool {
+    // 增加了操作符的适配, 返回一个新值, 不改变原有值.
     public static prefix func ! (a: Bool) -> Bool {
         return Bool(Builtin.xor_Int1(a._value, true._value))
     }

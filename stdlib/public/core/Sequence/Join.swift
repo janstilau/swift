@@ -116,6 +116,7 @@ extension JoinedSequence: Sequence {
 }
 
 // 这里限制了, 其实是 Sequence 里面的 Element 也必须是 Sequence
+// 这个到底有多少人使用啊. 太偏门的一个实现了. 
 extension Sequence where Element: Sequence {
     /// Returns the concatenated elements of this sequence of sequences,
     /// inserting the given separator between each element.
