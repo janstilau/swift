@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		060D3BC628538A36007B2881 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 060D3BC528538A36007B2881 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		060D3BC028538A36007B2881 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		060D3BC228538A36007B2881 /* ConcurrecyProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ConcurrecyProject; sourceTree = BUILT_PRODUCTS_DIR; };
+		060D3BC528538A36007B2881 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		060D3BCD28538A49007B2881 /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		060D3BCE28538A49007B2881 /* AsyncThrowingCompactMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingCompactMapSequence.swift; sourceTree = "<group>"; };
+		060D3BCF28538A49007B2881 /* Executor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
+		060D3BD028538A49007B2881 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		060D3BD128538A49007B2881 /* Mutex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
+		060D3BD228538A49007B2881 /* AsyncThrowingFlatMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingFlatMapSequence.swift; sourceTree = "<group>"; };
+		060D3BD328538A49007B2881 /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		060D3BD428538A49007B2881 /* AsyncThrowingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingStream.swift; sourceTree = "<group>"; };
+		060D3BD528538A49007B2881 /* TaskLocal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskLocal.cpp; sourceTree = "<group>"; };
+		060D3BD628538A49007B2881 /* TaskPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskPrivate.h; sourceTree = "<group>"; };
+		060D3BD728538A49007B2881 /* MainActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActor.swift; sourceTree = "<group>"; };
+		060D3BD828538A49007B2881 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		060D3BD928538A49007B2881 /* AsyncDropWhileSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDropWhileSequence.swift; sourceTree = "<group>"; };
+		060D3BDA28538A49007B2881 /* DispatchGlobalExecutor.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = DispatchGlobalExecutor.inc; sourceTree = "<group>"; };
+		060D3BDB28538A49007B2881 /* TracingSignpost.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TracingSignpost.cpp; sourceTree = "<group>"; };
+		060D3BDC28538A49007B2881 /* SourceCompatibilityShims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCompatibilityShims.swift; sourceTree = "<group>"; };
+		060D3BDD28538A49007B2881 /* ThreadSanitizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadSanitizer.cpp; sourceTree = "<group>"; };
+		060D3BDE28538A49007B2881 /* AsyncDropFirstSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDropFirstSequence.swift; sourceTree = "<group>"; };
+		060D3BDF28538A49007B2881 /* Error.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
+		060D3BE028538A49007B2881 /* AsyncPrefixWhileSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncPrefixWhileSequence.swift; sourceTree = "<group>"; };
+		060D3BE128538A49007B2881 /* AsyncStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStream.swift; sourceTree = "<group>"; };
+		060D3BE228538A49007B2881 /* AsyncCompactMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCompactMapSequence.swift; sourceTree = "<group>"; };
+		060D3BE328538A49007B2881 /* Actor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Actor.cpp; sourceTree = "<group>"; };
+		060D3BE428538A49007B2881 /* AsyncThrowingDropWhileSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingDropWhileSequence.swift; sourceTree = "<group>"; };
+		060D3BE528538A49007B2881 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		060D3BE628538A49007B2881 /* AsyncLet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncLet.swift; sourceTree = "<group>"; };
+		060D3BE728538A49007B2881 /* AsyncFlatMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFlatMapSequence.swift; sourceTree = "<group>"; };
+		060D3BE828538A49007B2881 /* AsyncThrowingPrefixWhileSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingPrefixWhileSequence.swift; sourceTree = "<group>"; };
+		060D3BE928538A49007B2881 /* TracingSignpost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TracingSignpost.h; sourceTree = "<group>"; };
+		060D3BEA28538A49007B2881 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		060D3BEB28538A49007B2881 /* AsyncIteratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncIteratorProtocol.swift; sourceTree = "<group>"; };
+		060D3BEC28538A49007B2881 /* VoucherSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoucherSupport.h; sourceTree = "<group>"; };
+		060D3BED28538A49007B2881 /* AsyncThrowingFilterSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingFilterSequence.swift; sourceTree = "<group>"; };
+		060D3BEE28538A49007B2881 /* GlobalActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalActor.swift; sourceTree = "<group>"; };
+		060D3BEF28538A49007B2881 /* TaskCancellation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCancellation.swift; sourceTree = "<group>"; };
+		060D3BF028538A49007B2881 /* TaskSleepDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSleepDuration.swift; sourceTree = "<group>"; };
+		060D3BF128538A49007B2881 /* AsyncPrefixSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncPrefixSequence.swift; sourceTree = "<group>"; };
+		060D3BF228538A49007B2881 /* AsyncSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSequence.swift; sourceTree = "<group>"; };
+		060D3BF328538A49007B2881 /* Task.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Task.cpp; sourceTree = "<group>"; };
+		060D3BF428538A49007B2881 /* TracingStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TracingStubs.h; sourceTree = "<group>"; };
+		060D3BF528538A49007B2881 /* AsyncStream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncStream.cpp; sourceTree = "<group>"; };
+		060D3BF628538A49007B2881 /* TaskSleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSleep.swift; sourceTree = "<group>"; };
+		060D3BF728538A49007B2881 /* NonDispatchGlobalExecutor.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = NonDispatchGlobalExecutor.inc; sourceTree = "<group>"; };
+		060D3BF828538A49007B2881 /* TaskGroup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskGroup.cpp; sourceTree = "<group>"; };
+		060D3BF928538A49007B2881 /* TaskLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocal.swift; sourceTree = "<group>"; };
+		060D3BFA28538A49007B2881 /* TaskStatus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskStatus.cpp; sourceTree = "<group>"; };
+		060D3BFB28538A49007B2881 /* CheckedContinuation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedContinuation.swift; sourceTree = "<group>"; };
+		060D3BFC28538A49007B2881 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		060D3BFD28538A49007B2881 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		060D3BFE28538A49007B2881 /* TaskGroupPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskGroupPrivate.h; sourceTree = "<group>"; };
+		060D3BFF28538A49007B2881 /* PartialAsyncTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialAsyncTask.swift; sourceTree = "<group>"; };
+		060D3C0128538A49007B2881 /* magic-symbols-for-install-name.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "magic-symbols-for-install-name.c"; sourceTree = "<group>"; };
+		060D3C0228538A49007B2881 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		060D3C0328538A49007B2881 /* SuspendingClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendingClock.swift; sourceTree = "<group>"; };
+		060D3C0428538A49007B2881 /* TaskAlloc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskAlloc.cpp; sourceTree = "<group>"; };
+		060D3C0528538A49007B2881 /* AsyncLet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncLet.cpp; sourceTree = "<group>"; };
+		060D3C0628538A49007B2881 /* CooperativeGlobalExecutor.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = CooperativeGlobalExecutor.inc; sourceTree = "<group>"; };
+		060D3C0728538A49007B2881 /* TaskGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroup.swift; sourceTree = "<group>"; };
+		060D3C0828538A49007B2881 /* GlobalExecutor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalExecutor.cpp; sourceTree = "<group>"; };
+		060D3C0928538A49007B2881 /* ContinuousClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousClock.swift; sourceTree = "<group>"; };
+		060D3C0A28538A49007B2881 /* AsyncThrowingMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncThrowingMapSequence.swift; sourceTree = "<group>"; };
+		060D3C0B28538A49007B2881 /* AsyncFilterSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFilterSequence.swift; sourceTree = "<group>"; };
+		060D3C0C28538A49007B2881 /* AsyncStreamBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncStreamBuffer.swift; sourceTree = "<group>"; };
+		060D3C0D28538A49007B2881 /* Tracing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tracing.h; sourceTree = "<group>"; };
+		060D3C0E28538A49007B2881 /* AsyncMapSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncMapSequence.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		060D3BBF28538A36007B2881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		060D3BB928538A36007B2881 = {
+			isa = PBXGroup;
+			children = (
+				060D3BC428538A36007B2881 /* ConcurrecyProject */,
+				060D3BC328538A36007B2881 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		060D3BC328538A36007B2881 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				060D3BC228538A36007B2881 /* ConcurrecyProject */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		060D3BC428538A36007B2881 /* ConcurrecyProject */ = {
+			isa = PBXGroup;
+			children = (
+				060D3BCC28538A49007B2881 /* Concurrency */,
+				060D3BC528538A36007B2881 /* main.cpp */,
+			);
+			path = ConcurrecyProject;
+			sourceTree = "<group>";
+		};
+		060D3BCC28538A49007B2881 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				060D3BE328538A49007B2881 /* Actor.cpp */,
+				060D3BFD28538A49007B2881 /* Actor.swift */,
+				060D3BE228538A49007B2881 /* AsyncCompactMapSequence.swift */,
+				060D3BDE28538A49007B2881 /* AsyncDropFirstSequence.swift */,
+				060D3BD928538A49007B2881 /* AsyncDropWhileSequence.swift */,
+				060D3C0B28538A49007B2881 /* AsyncFilterSequence.swift */,
+				060D3BE728538A49007B2881 /* AsyncFlatMapSequence.swift */,
+				060D3BEB28538A49007B2881 /* AsyncIteratorProtocol.swift */,
+				060D3C0528538A49007B2881 /* AsyncLet.cpp */,
+				060D3BE628538A49007B2881 /* AsyncLet.swift */,
+				060D3C0E28538A49007B2881 /* AsyncMapSequence.swift */,
+				060D3BF128538A49007B2881 /* AsyncPrefixSequence.swift */,
+				060D3BE028538A49007B2881 /* AsyncPrefixWhileSequence.swift */,
+				060D3BF228538A49007B2881 /* AsyncSequence.swift */,
+				060D3BF528538A49007B2881 /* AsyncStream.cpp */,
+				060D3BE128538A49007B2881 /* AsyncStream.swift */,
+				060D3C0C28538A49007B2881 /* AsyncStreamBuffer.swift */,
+				060D3BCE28538A49007B2881 /* AsyncThrowingCompactMapSequence.swift */,
+				060D3BE428538A49007B2881 /* AsyncThrowingDropWhileSequence.swift */,
+				060D3BED28538A49007B2881 /* AsyncThrowingFilterSequence.swift */,
+				060D3BD228538A49007B2881 /* AsyncThrowingFlatMapSequence.swift */,
+				060D3C0A28538A49007B2881 /* AsyncThrowingMapSequence.swift */,
+				060D3BE828538A49007B2881 /* AsyncThrowingPrefixWhileSequence.swift */,
+				060D3BD428538A49007B2881 /* AsyncThrowingStream.swift */,
+				060D3BFB28538A49007B2881 /* CheckedContinuation.swift */,
+				060D3BE528538A49007B2881 /* Clock.cpp */,
+				060D3BD028538A49007B2881 /* Clock.swift */,
+				060D3BD828538A49007B2881 /* CMakeLists.txt */,
+				060D3C0928538A49007B2881 /* ContinuousClock.swift */,
+				060D3C0628538A49007B2881 /* CooperativeGlobalExecutor.inc */,
+				060D3BD328538A49007B2881 /* Debug.h */,
+				060D3BEA28538A49007B2881 /* Deque.swift */,
+				060D3BDA28538A49007B2881 /* DispatchGlobalExecutor.inc */,
+				060D3BDF28538A49007B2881 /* Error.cpp */,
+				060D3BCD28538A49007B2881 /* Error.h */,
+				060D3BFC28538A49007B2881 /* Errors.swift */,
+				060D3BCF28538A49007B2881 /* Executor.swift */,
+				060D3BEE28538A49007B2881 /* GlobalActor.swift */,
+				060D3C0828538A49007B2881 /* GlobalExecutor.cpp */,
+				060D3C0028538A49007B2881 /* linker-support */,
+				060D3BD728538A49007B2881 /* MainActor.swift */,
+				060D3BD128538A49007B2881 /* Mutex.cpp */,
+				060D3BF728538A49007B2881 /* NonDispatchGlobalExecutor.inc */,
+				060D3BFF28538A49007B2881 /* PartialAsyncTask.swift */,
+				060D3BDC28538A49007B2881 /* SourceCompatibilityShims.swift */,
+				060D3C0328538A49007B2881 /* SuspendingClock.swift */,
+				060D3BF328538A49007B2881 /* Task.cpp */,
+				060D3C0228538A49007B2881 /* Task.swift */,
+				060D3C0428538A49007B2881 /* TaskAlloc.cpp */,
+				060D3BEF28538A49007B2881 /* TaskCancellation.swift */,
+				060D3BF828538A49007B2881 /* TaskGroup.cpp */,
+				060D3C0728538A49007B2881 /* TaskGroup.swift */,
+				060D3BFE28538A49007B2881 /* TaskGroupPrivate.h */,
+				060D3BD528538A49007B2881 /* TaskLocal.cpp */,
+				060D3BF928538A49007B2881 /* TaskLocal.swift */,
+				060D3BD628538A49007B2881 /* TaskPrivate.h */,
+				060D3BF628538A49007B2881 /* TaskSleep.swift */,
+				060D3BF028538A49007B2881 /* TaskSleepDuration.swift */,
+				060D3BFA28538A49007B2881 /* TaskStatus.cpp */,
+				060D3BDD28538A49007B2881 /* ThreadSanitizer.cpp */,
+				060D3C0D28538A49007B2881 /* Tracing.h */,
+				060D3BDB28538A49007B2881 /* TracingSignpost.cpp */,
+				060D3BE928538A49007B2881 /* TracingSignpost.h */,
+				060D3BF428538A49007B2881 /* TracingStubs.h */,
+				060D3BEC28538A49007B2881 /* VoucherSupport.h */,
+			);
+			name = Concurrency;
+			path = ../../../Concurrency;
+			sourceTree = "<group>";
+		};
+		060D3C0028538A49007B2881 /* linker-support */ = {
+			isa = PBXGroup;
+			children = (
+				060D3C0128538A49007B2881 /* magic-symbols-for-install-name.c */,
+			);
+			path = "linker-support";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		060D3BC128538A36007B2881 /* ConcurrecyProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 060D3BC928538A36007B2881 /* Build configuration list for PBXNativeTarget "ConcurrecyProject" */;
+			buildPhases = (
+				060D3BBE28538A36007B2881 /* Sources */,
+				060D3BBF28538A36007B2881 /* Frameworks */,
+				060D3BC028538A36007B2881 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConcurrecyProject;
+			productName = ConcurrecyProject;
+			productReference = 060D3BC228538A36007B2881 /* ConcurrecyProject */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		060D3BBA28538A36007B2881 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					060D3BC128538A36007B2881 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 060D3BBD28538A36007B2881 /* Build configuration list for PBXProject "ConcurrecyProject" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 060D3BB928538A36007B2881;
+			productRefGroup = 060D3BC328538A36007B2881 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				060D3BC128538A36007B2881 /* ConcurrecyProject */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		060D3BBE28538A36007B2881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				060D3BC628538A36007B2881 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		060D3BC728538A36007B2881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		060D3BC828538A36007B2881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		060D3BCA28538A36007B2881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GAJJ4F72ZK;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		060D3BCB28538A36007B2881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GAJJ4F72ZK;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		060D3BBD28538A36007B2881 /* Build configuration list for PBXProject "ConcurrecyProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				060D3BC728538A36007B2881 /* Debug */,
+				060D3BC828538A36007B2881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		060D3BC928538A36007B2881 /* Build configuration list for PBXNativeTarget "ConcurrecyProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				060D3BCA28538A36007B2881 /* Debug */,
+				060D3BCB28538A36007B2881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 060D3BBA28538A36007B2881 /* Project object */;
+}
