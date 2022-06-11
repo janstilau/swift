@@ -354,6 +354,7 @@ extension StrideThroughIterator: IteratorProtocol {
     /// exists.
     ///
     /// Once `nil` has been returned, all subsequent calls return `nil`.
+    // 这里的实现, 就很简单了.
     @inlinable
     public mutating func next() -> Element? {
         let result = _current.value
@@ -382,6 +383,9 @@ extension StrideThroughIterator: IteratorProtocol {
 /// instances.
 @frozen
 public struct StrideThrough<Element: Strideable> {
+    // 专门, 把 @ 这种, 新起一行进行编写, 看来是一个很官方的写法.
+    // 而 Publich 这种访问权限控制, 则是需要和属性的命名, 在同样的行里面.
+    // 但是, 属性的命名, 究竟是否需要用 _ 开头, 一直是没有很好的规范在这里.
     @usableFromInline
     internal let _start: Element
     @usableFromInline
@@ -409,6 +413,7 @@ extension StrideThrough: Sequence {
     
     // FIXME(conditional-conformances): this is O(N) instead of O(1), leaving it
     // here until a proper Collection conformance is possible
+    // 这里其实不符合 underestimatedCount 的要求, 这也说明了, 在 Swift 里面, 编译器其实是不能完全掌握住所有的事情的.
     @inlinable
     public var underestimatedCount: Int {
         var it = self.makeIterator()
@@ -419,6 +424,9 @@ extension StrideThrough: Sequence {
         return count
     }
     
+    // func contains(_ element: Element) -> Bool
+    // 在 Contains 的判断里面, 使用了这种, 更加精细化的判断方法.
+    // 其实, 个人写的代码, 是可以使用这个方法的. 就算头文件没有暴露出来, 只要实现了该方法, 那么就会到 pwt 里面, 那么, 编译出来的代码, 一定就会使用这里.
     @inlinable
     public func _customContainsEquatableElement(
         _ element: Element

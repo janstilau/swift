@@ -1,17 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-// C Primitive Types
-//===----------------------------------------------------------------------===//
-
 /// The C 'char' type.
 ///
 /// This will be the same as either `CSignedChar` (in the common
@@ -134,7 +120,6 @@ public struct OpaquePointer: Sendable {
   }
 
   /// Creates an `OpaquePointer` from a given address in memory.
-  @_transparent
   public init?(bitPattern: Int) {
     if bitPattern == 0 { return nil }
     self._rawValue = Builtin.inttoptr_Word(bitPattern._builtinWordValue)

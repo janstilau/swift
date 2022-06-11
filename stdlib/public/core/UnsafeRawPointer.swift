@@ -1,16 +1,4 @@
-//===--- UnsafeRawPointer.swift -------------------------------*- swift -*-===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
-/// A raw pointer for accessing 
+/// A raw pointer for accessing
 /// untyped data.
 ///
 /// The `UnsafeRawPointer` type provides no automated memory management, no type safety,
@@ -315,7 +303,8 @@ public struct UnsafeRawPointer: _Pointer, Sendable {
     public func bindMemory<T>(
         to type: T.Type, capacity count: Int
     ) -> UnsafePointer<T> {
-        //
+        // BindMemory 会修改 _rawValue 关联的值.
+        // 这里具体做了什么不是很清楚.
         Builtin.bindMemory(_rawValue, count._builtinWordValue, type)
         return UnsafePointer<T>(_rawValue)
     }
@@ -746,6 +735,7 @@ public struct UnsafeMutableRawPointer: _Pointer, Sendable {
         Builtin.bindMemory(_rawValue, count._builtinWordValue, type)
         var nextPtr = self
         for _ in 0..<count {
+            // 使用 Builtin.initialize 来进行对应内存的初始化工作.
             Builtin.initialize(repeatedValue, nextPtr._rawValue)
             nextPtr += MemoryLayout<T>.stride
         }

@@ -7,14 +7,21 @@ internal func _abstract(
 }
 
 // 目的在于, 隐藏类型. 以及, 将 iter 变为一个引用类型.
-/*
- Any 要么是里面存储一个闭包, 然后在实现协议的时候, 使用这个闭包.
- 要么是存储一个协议实现的对象, 在实现协议的时候, 使用这个对象.
- 虽然, AnyIterator 是一个 struct, 但是它里面的数据, 使用的是一个 class, 所以他还是一个引用值
- */
 public struct AnyIterator<Element> {
+    
+    // _box, 存储的是一个抽象数据类型.
     internal let _box: _AnyIteratorBoxBase<Element>
     
+    // 但是, 实际生成的时候, 是使用的 _IteratorBox 这种实际数据类型.
+    /*
+     这种 _box 之所以这样设计, 可以这样理解.
+     目前是实际在 AnyIterator 内, 就写出了实际的子类. 所以这里没有依赖管理的意图.
+     但是, 可以有不同的子类, 面对不同的 init 方法, 生成不同的子类对象. 而在 AnyIterator 的内部, 是使用接口对象来完成的各种操作.
+     这样, 改变点仅仅是在 Init 方法中. 整个类的实现, 都是通过一个接口对象完成的.
+     
+     AnyIterator 是一个 Struct, 它并没有向外界暴露, 自己是引用语义.
+     所有的实现, 都是交给 _box 来实现, 这是一个引用值.
+     */
     public init<I: IteratorProtocol>(_ base: I) where I.Element == Element {
         self._box = _IteratorBox(base)
     }
@@ -54,7 +61,7 @@ internal class _AnyIteratorBoxBase<Element>: IteratorProtocol {
     internal func next() -> Element? { _abstract() }
 }
 
-// 这个类, 存在的价值就是, 进行值语义到引用语音的改变.
+// 这个类, 存在的价值就是, 进行值语义到引用语义的改变.
 internal final class _IteratorBox<Base: IteratorProtocol>
 : _AnyIteratorBoxBase<Base.Element> {
     internal var _base: Base
@@ -67,7 +74,8 @@ internal final class _IteratorBox<Base: IteratorProtocol>
 //===--- Sequence ---------------------------------------------------------===//
 //===----------------------------------------------------------------------===//
 
-// 一个 class.
+// 一个纯抽象类, 就是为了子类化的.
+// 之所以, 不用接口, 感觉是为了保证引用语义.
 internal class _AnySequenceBox<Element> {
     internal init() { }
     
@@ -410,17 +418,18 @@ internal class _AnyRandomAccessCollectionBox<Element>
 
 
 // 真正的 Anysequence 的实现.
+// Anysequence 是一个引用语义的值. 之所以是引用语义, 是因为它的成员变量是一个引用值. 每次进行传递的时候, 这个引用值都会进行传递.
 internal final class _SequenceBox<S: Sequence>: _AnySequenceBox<S.Element> {
+    
+    internal var _base: S // 成员变量, 存储一个 sequence 的值.
+    
+    internal typealias Element = S.Element
     
     deinit {}
     
     internal init(_base: S) {
         self._base = _base
     }
-    
-    internal var _base: S // 成员变量, 存储一个 sequence 的值.
-    
-    internal typealias Element = S.Element
     
     // 各种操作, 全部桥接给 base 来进行实现.
     internal override func _makeIterator() -> AnyIterator<Element> {
@@ -1113,6 +1122,11 @@ internal final class _RandomAccessCollectionBox<S: RandomAccessCollection>
     internal var _base: S
 }
 
+
+/*
+ 各种快捷的方法背后, 都是有着包装类型存在的.
+ 这个包装类型, 能够将快捷方法,
+ */
 @usableFromInline
 @frozen
 internal struct _ClosureBasedSequence<Iterator: IteratorProtocol> {
@@ -1152,6 +1166,7 @@ public struct AnySequence<Element> {
     }
 }
 
+// AnySequence 没有真正的存储 Sequence 对象, 而是包装了一层, 真正存储的是一个 _SequenceBox 对象.
 extension  AnySequence: Sequence {
     public typealias Iterator = AnyIterator<Element>
     
@@ -1160,10 +1175,14 @@ extension  AnySequence: Sequence {
     public init<S: Sequence>(_ base: S)
     where
     S.Element == Element {
+        // 在真正的实现里面, 使用的 _SequenceBox 生成了实际的对象. 这是一个引用对象.
+        // 而 _box 则是一个接口对象.
         self._box = _SequenceBox(_base: base)
     }
 }
 
+// 所有的真正实现, 都是交给了 Box 对象来进行处理.
+// Interface - Handler 设计方式??? 为了更好的进行替换.
 extension AnySequence {
     
     /// Returns an iterator over the elements of this sequence.
