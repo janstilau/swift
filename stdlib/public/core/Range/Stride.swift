@@ -2,7 +2,10 @@
  Strideable 可以比较, 可以快速的算出来, 两个值之间的差距
  例如, String 是可以比较的, 但是并不能知道, 两个字符串中间, 有多少值
  */
+
+// A type that represents the distance between two values.
 public protocol Strideable: Comparable {
+    
     associatedtype Stride: SignedNumeric, Comparable
     
     // 快速算出, 两个 Stride 之间的差距.

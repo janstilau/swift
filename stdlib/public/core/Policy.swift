@@ -1,20 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2018 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-// Swift Standard Prolog Library.
-//===----------------------------------------------------------------------===//
-
-//===----------------------------------------------------------------------===//
-// Standardized uninhabited type
-//===----------------------------------------------------------------------===//
 /// The return type of functions that do not return normally, that is, a type
 /// with no values.
 ///
@@ -36,23 +19,20 @@ extension Never: Equatable, Comparable, Hashable {}
 
 @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
 extension Never: Identifiable {
-  @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
-  public var id: Never {
-    switch self {}
-  }
+    @available(macOS 12.0, iOS 15.0, watchOS 8.0, tvOS 15.0, *)
+    public var id: Never {
+        switch self {}
+    }
 }
 
-//===----------------------------------------------------------------------===//
-// Standardized aliases
-//===----------------------------------------------------------------------===//
 /// The return type of functions that don't explicitly specify a return type,
 /// that is, an empty tuple `()`.
-///
+
 /// When declaring a function or method, you don't need to specify a return
 /// type if no value will be returned. However, the type of a function,
 /// method, or closure always includes a return type, which is `Void` if
 /// otherwise unspecified.
-///
+
 /// Use `Void` or an empty tuple as the return type when declaring a closure,
 /// function, or method that doesn't return a value.
 ///
@@ -322,7 +302,7 @@ public typealias AnyClass = AnyObject.Type
 ///   - rhs: Another value to compare.
 @_transparent
 public func ~= <T: Equatable>(a: T, b: T) -> Bool {
-  return a == b
+    return a == b
 }
 
 //===----------------------------------------------------------------------===//
@@ -330,51 +310,51 @@ public func ~= <T: Equatable>(a: T, b: T) -> Bool {
 //===----------------------------------------------------------------------===//
 
 precedencegroup AssignmentPrecedence {
-  assignment: true
-  associativity: right
+    assignment: true
+    associativity: right
 }
 precedencegroup FunctionArrowPrecedence {
-  associativity: right
-  higherThan: AssignmentPrecedence
+    associativity: right
+    higherThan: AssignmentPrecedence
 }
 precedencegroup TernaryPrecedence {
-  associativity: right
-  higherThan: FunctionArrowPrecedence
+    associativity: right
+    higherThan: FunctionArrowPrecedence
 }
 precedencegroup DefaultPrecedence {
-  higherThan: TernaryPrecedence
+    higherThan: TernaryPrecedence
 }
 precedencegroup LogicalDisjunctionPrecedence {
-  associativity: left
-  higherThan: TernaryPrecedence
+    associativity: left
+    higherThan: TernaryPrecedence
 }
 precedencegroup LogicalConjunctionPrecedence {
-  associativity: left
-  higherThan: LogicalDisjunctionPrecedence
+    associativity: left
+    higherThan: LogicalDisjunctionPrecedence
 }
 precedencegroup ComparisonPrecedence {
-  higherThan: LogicalConjunctionPrecedence
+    higherThan: LogicalConjunctionPrecedence
 }
 precedencegroup NilCoalescingPrecedence {
-  associativity: right
-  higherThan: ComparisonPrecedence
+    associativity: right
+    higherThan: ComparisonPrecedence
 }
 precedencegroup CastingPrecedence {
-  higherThan: NilCoalescingPrecedence
+    higherThan: NilCoalescingPrecedence
 }
 precedencegroup RangeFormationPrecedence {
-  higherThan: CastingPrecedence
+    higherThan: CastingPrecedence
 }
 precedencegroup AdditionPrecedence {
-  associativity: left
-  higherThan: RangeFormationPrecedence
+    associativity: left
+    higherThan: RangeFormationPrecedence
 }
 precedencegroup MultiplicationPrecedence {
-  associativity: left
-  higherThan: AdditionPrecedence
+    associativity: left
+    higherThan: AdditionPrecedence
 }
 precedencegroup BitwiseShiftPrecedence {
-  higherThan: MultiplicationPrecedence
+    higherThan: MultiplicationPrecedence
 }
 
 
