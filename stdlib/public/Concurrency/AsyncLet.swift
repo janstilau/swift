@@ -1,15 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2020 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 import Swift
 @_implementationOnly import _SwiftConcurrencyShims
 
@@ -19,9 +7,9 @@ import Swift
 @available(SwiftStdlib 5.1, *)
 @_silgen_name("swift_asyncLet_start")
 public func _asyncLetStart<T>(
-  asyncLet: Builtin.RawPointer,
-  options: Builtin.RawPointer?,
-  operation: @Sendable () async throws -> T
+    asyncLet: Builtin.RawPointer,
+    options: Builtin.RawPointer?,
+    operation: @Sendable () async throws -> T
 )
 
 /// DEPRECATED. use _asyncLet_get instead
@@ -38,7 +26,7 @@ public func _asyncLetGetThrowing<T>(asyncLet: Builtin.RawPointer) async throws -
 @available(SwiftStdlib 5.1, *)
 @_silgen_name("swift_asyncLet_end")
 public func _asyncLetEnd(
-  asyncLet: Builtin.RawPointer // TODO: should this take __owned?
+    asyncLet: Builtin.RawPointer // TODO: should this take __owned?
 )
 
 /// Wait if necessary and then project the result value of an async let
@@ -58,5 +46,5 @@ public func _asyncLet_finish(_ asyncLet: Builtin.RawPointer, _ resultBuffer: Bui
 
 @_silgen_name("swift_asyncLet_extractTask")
 func _asyncLetExtractTask(
-  of asyncLet: Builtin.RawPointer
+    of asyncLet: Builtin.RawPointer
 ) -> Builtin.NativeObject

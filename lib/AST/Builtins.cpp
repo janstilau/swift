@@ -380,6 +380,7 @@ getBuiltinFunction(ASTContext &ctx, Identifier id,
 }
 
 /// Synthesize a generic builtin function declaration.
+// 复杂的实现. 
 template <class ExtInfoS, class GenericsS, class ParamsS, class ResultS>
 static FuncDecl *
 getBuiltinFunction(ASTContext &ctx, Identifier id,
