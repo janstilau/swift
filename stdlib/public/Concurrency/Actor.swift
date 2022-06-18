@@ -6,8 +6,8 @@ import Swift
 /// and (potentially remote) `DistributedActor` types.
 ///
 /// The `AnyActor` marker protocol generalizes over all actor types, including
-/// distributed ones. In practice, this protocol can be used to restrict
-/// protocols, or generic parameters to only be usable with actors, which
+/// distributed ones.
+/// In practice, this protocol can be used to restrict  protocols, or generic parameters to only be usable with actors, which
 /// provides the guarantee that calls may be safely made on instances of given
 /// type without worrying about the thread-safety of it -- as they are
 /// guaranteed to follow the actor-style isolation semantics.

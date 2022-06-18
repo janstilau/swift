@@ -2,7 +2,7 @@ import Swift
 
 /// A type that represents a globally-unique actor that can be used to isolate
 /// various declarations anywhere in the program.
-///
+
 /// A type that conforms to the `GlobalActor` protocol and is marked with
 /// the `@globalActor` attribute can be used as a custom attribute. Such types
 /// are called global actor types, and can be applied to any declaration to
@@ -19,7 +19,7 @@ public protocol GlobalActor {
     
     /// The shared actor instance that will be used to provide mutually-exclusive
     /// access to declarations annotated with the given global actor type.
-    ///
+    
     /// The value of this property must always evaluate to the same actor
     /// instance.
     static var shared: ActorType { get }

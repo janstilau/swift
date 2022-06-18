@@ -33,7 +33,6 @@ import Swift
 @available(SwiftStdlib 5.1, *)
 extension MainActor {
     /// Execute the given body closure on the main actor.
-    ///
     /// Historical ABI entry point, superceded by the Sendable version that is
     /// also inlined to back-deploy a semantic fix where this operation would
     /// not hop back at the end.

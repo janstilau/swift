@@ -20,7 +20,8 @@ import Swift
 ///         print(i, terminator: " ")
 ///     }
 ///     // Prints: 1 2 3 4 5 6 7 8 9 10
-///
+
+
 /// An `AsyncSequence` doesn't generate or contain the values; it just defines
 /// how you access them. Along with defining the type of values as an associated
 /// type called `Element`, the `AsyncSequence` defines a `makeAsyncIterator()`
@@ -29,12 +30,16 @@ import Swift
 /// method to produce elements. The difference is that the `AsyncIterator`
 /// defines its `next()` method as `async`, which requires a caller to wait for
 /// the next value with the `await` keyword.
-///
+// 最重要的区别就是, 需要 wait. 在 async 的迭代中, 每一个取值操作, 都会伴随着 wait 的可能性.
+// 如果, Buffter 有值, 直接将值传递过来. 如果没有, 这是直接尽心了协程的调度, 在值产生了之后, 进行 resume.
+
+// 这里就是体现了, Protocol 的作用了. 就是在 Extension 里面, 定义各种快捷方便的方法, 给外界使用.
 /// `AsyncSequence` also defines methods for processing the elements you
 /// receive, modeled on the operations provided by the basic `Sequence` in the
 /// standard library. There are two categories of methods: those that return a
 /// single value, and those that return another `AsyncSequence`.
-///
+
+// 存储 base AsyncSequnce, 然后自己内部进行聚合. 当发现了结果之后, 例如 contains, filter 这种, 直接进行返回. 如果没有, 继续消耗存储的 base, 直到结束.
 /// Single-value methods eliminate the need for a `for await`-`in` loop, and instead
 /// let you make a single `await` call. For example, the `contains(_:)` method
 /// returns a Boolean value that indicates if a given value exists in the
@@ -42,7 +47,8 @@ import Swift
 /// you can test for the existence of a sequence member with a one-line call:
 ///
 ///     let found = await Counter(howHigh: 10).contains(5) // true
-///
+
+// 存储了 base AsyncSequence, 然后接受上游的 element, 在进行了自己的业务逻辑之后, 将处理好的数据, 当做 element 返回.
 /// Methods that return another `AsyncSequence` return a type specific to the
 /// method's semantics. For example, the `.map(_:)` method returns a
 /// `AsyncMapSequence` (or a `AsyncThrowingMapSequence`, if the closure you
@@ -59,7 +65,9 @@ import Swift
 ///         print(s, terminator: " ")
 ///     }
 ///     // Prints: Odd Even Odd Even Odd Even Odd Even Odd Even
-///
+
+
+
 @available(SwiftStdlib 5.1, *)
 @rethrows
 public protocol AsyncSequence {
@@ -70,7 +78,6 @@ public protocol AsyncSequence {
     associatedtype Element
     /// Creates the asynchronous iterator that produces elements of this
     /// asynchronous sequence.
-    ///
     /// - Returns: An instance of the `AsyncIterator` type used to produce
     /// elements of the asynchronous sequence.
     __consuming func makeAsyncIterator() -> AsyncIterator
@@ -78,13 +85,14 @@ public protocol AsyncSequence {
 
 @available(SwiftStdlib 5.1, *)
 extension AsyncSequence {
+    // combine 组合, 将数据组合成为一个数据.
     /// Returns the result of combining the elements of the asynchronous sequence
     /// using the given closure.
     ///
     /// Use the `reduce(_:_:)` method to produce a single value from the elements of
     /// an entire sequence. For example, you can use this method on an sequence of
     /// numbers to find their sum or product.
-    ///
+    
     /// The `nextPartialResult` closure executes sequentially with an accumulating
     /// value initialized to `initialResult` and each element of the sequence.
     ///
@@ -99,23 +107,26 @@ extension AsyncSequence {
     ///     print(sum)
     ///     // Prints: 10
     ///
-    ///
+    
     /// - Parameters:
     ///   - initialResult: The value to use as the initial accumulating value.
     ///     The `nextPartialResult` closure receives `initialResult` the first
     ///     time the closure runs.
+    ///
     ///   - nextPartialResult: A closure that combines an accumulating value and
     ///     an element of the asynchronous sequence into a new accumulating value,
     ///     for use in the next call of the `nextPartialResult` closure or
     ///     returned to the caller.
     /// - Returns: The final accumulated value. If the sequence has no elements,
     ///   the result is `initialResult`.
-    @inlinable
+    // 这种写法, 应该是官方推荐的做法.
+    // 在看熟悉了之后, 可以看到, 每个参数的参数名和类型, 其实可以得到很好地表达.
     public func reduce<Result>(
         _ initialResult: Result,
         _ nextPartialResult:
         (_ partialResult: Result, Element) async throws -> Result
     ) async rethrows -> Result {
+        // 可以看到, 在返回单个值的方法里面, 是直接在里面进行了消耗了. 
         var accumulator = initialResult
         var iterator = makeAsyncIterator()
         while let element = try await iterator.next() {
@@ -126,7 +137,8 @@ extension AsyncSequence {
     
     /// Returns the result of combining the elements of the asynchronous sequence
     /// using the given closure, given a mutable initial value.
-    ///
+    // 这个方法, 有着更加有效的内存利用.
+    // Result 的值, 不再是每次进行复制, 而是可以每次都利用原来的值.
     /// Use the `reduce(into:_:)` method to produce a single value from the
     /// elements of an entire sequence. For example, you can use this method on a
     /// sequence of numbers to find their sum or product.
@@ -149,7 +161,7 @@ extension AsyncSequence {
     ///   the result is `initialResult`.
     @inlinable
     public func reduce<Result>(
-        into initialResult: __owned Result,
+        into initialResult: Result,
         _ updateAccumulatingResult:
         (_ partialResult: inout Result, Element) async throws -> Void
     ) async rethrows -> Result {
@@ -169,6 +181,8 @@ func _contains<Source: AsyncSequence>(
     _ self: Source,
     where predicate: (Source.Element) async throws -> Bool
 ) async rethrows -> Bool {
+    // 传递过来的闭包, 是一个 Async 类型的. 之所以这样, 是因为在真正的实现内部, prodicate 也可能会是一个异步函数.
+    // 例如, 每次都要发送网络请求, 根据网络请求的值判断是否包含. 所以这里可能会进行 wait 的操作.
     for try await element in self {
         if try await predicate(element) {
             return true
@@ -232,11 +246,14 @@ extension AsyncSequence {
     ///   whether the passed element satisfies a condition.
     /// - Returns: `true` if the sequence contains only elements that satisfy
     ///   `predicate`; otherwise, `false`.
-    @inlinable
+    // 能够正确的理解, 这些已经构建出来的小方法, 在使用的时候, 能够大大的减少编码的复杂度.
     public func allSatisfy(
         _ predicate: (Element) async throws -> Bool
     ) async rethrows -> Bool {
-        return try await !contains { try await !predicate($0) }
+        // predicate 符合 !predicate 不符合
+        // contains 包含 !contains 不包含.
+        // 不包含, 不符合的数据, 就是 allSatisfy
+        return try await ! contains { try await !predicate($0) }
     }
 }
 
@@ -359,12 +376,12 @@ extension AsyncSequence {
         by areInIncreasingOrder: (Element, Element) async throws -> Bool
     ) async rethrows -> Element? {
         var it = makeAsyncIterator()
-        guard var result = try await it.next() else { 
-            return nil 
+        guard var result = try await it.next() else {
+            return nil
         }
         while let e = try await it.next() {
-            if try await areInIncreasingOrder(e, result) { 
-                result = e 
+            if try await areInIncreasingOrder(e, result) {
+                result = e
             }
         }
         return result
@@ -414,12 +431,12 @@ extension AsyncSequence {
         by areInIncreasingOrder: (Element, Element) async throws -> Bool
     ) async rethrows -> Element? {
         var it = makeAsyncIterator()
-        guard var result = try await it.next() else { 
-            return nil 
+        guard var result = try await it.next() else {
+            return nil
         }
         while let e = try await it.next() {
-            if try await areInIncreasingOrder(result, e) { 
-                result = e 
+            if try await areInIncreasingOrder(result, e) {
+                result = e
             }
         }
         return result

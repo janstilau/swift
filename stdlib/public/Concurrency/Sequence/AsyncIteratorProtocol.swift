@@ -1,38 +1,32 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2020 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 import Swift
 
 /// A type that asynchronously supplies the values of a sequence one at a
 /// time.
-///
+
+// 和 Iterator 没有任何的区别, 仅仅是, 异步返回数据而已 .
 /// The `AsyncIteratorProtocol` defines the type returned by the
 /// `makeAsyncIterator()` method of the `AsyncSequence` protocol. In short,
 /// the iterator is what produces the asynchronous sequence's values. The
 /// protocol defines a single asynchronous method, `next()`, which either
 /// produces the next element of the sequence, or returns `nil` to signal
 /// the end of the sequence.
-///
+
+
 /// To implement your own `AsyncSequence`, implement a wrapped type that
 /// conforms to `AsyncIteratorProtocol`. The following example shows a `Counter`
+// monotonically 单调的.
 /// type that uses an inner iterator to monotonically generate `Int` values
 /// until reaching a `howHigh` value. While this example isn't itself
 /// asychronous, it shows the shape of a custom sequence and iterator, and how
 /// to use it as if it were asynchronous:
+
+///
+//
 ///
 ///     struct Counter : AsyncSequence {
 ///         typealias Element = Int
 ///         let howHigh: Int
-///
+// 这个 Iterator 本身, 不是异步的. 从这里我们看到, 同步是异步的子集.
 ///         struct AsyncIterator : AsyncIteratorProtocol {
 ///             let howHigh: Int
 ///             var current = 1
@@ -53,7 +47,7 @@ import Swift
 ///             return AsyncIterator(howHigh: howHigh)
 ///         }
 ///     }
-///
+
 /// At the call site, this looks like:
 ///
 ///     for await i in Counter(howHigh: 10) {
@@ -62,13 +56,15 @@ import Swift
 ///     // Prints: 1 2 3 4 5 6 7 8 9 10
 ///
 /// ### End of Iteration
-///
+
+
 /// The iterator returns `nil` to indicate the end of the sequence. After
 /// returning `nil` (or throwing an error) from `next()`, the iterator enters
 /// a terminal state, and all future calls to `next()` must return `nil`.
 ///
 /// ### Cancellation
-///
+
+
 /// Types conforming to `AsyncIteratorProtocol` should use the cancellation
 /// primitives provided by Swift's `Task` API. The iterator can choose how to
 /// handle and respond to cancellation, including:
@@ -87,11 +83,12 @@ import Swift
 @available(SwiftStdlib 5.1, *)
 @rethrows
 public protocol AsyncIteratorProtocol {
-  associatedtype Element
-  /// Asynchronously advances to the next element and returns it, or ends the
-  /// sequence if there is no next element.
-  /// 
-  /// - Returns: The next element, if it exists, or `nil` to signal the end of
-  ///   the sequence.
-  mutating func next() async throws -> Element?
+    associatedtype Element
+    /// Asynchronously advances to the next element and returns it, or ends the
+    /// sequence if there is no next element.
+    ///
+    /// - Returns: The next element, if it exists, or `nil` to signal the end of
+    ///   the sequence.
+    // 唯一的方法, 就是可以异步的返回, 下一个数据.
+    mutating func next() async throws -> Element?
 }
