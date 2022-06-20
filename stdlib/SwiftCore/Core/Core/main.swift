@@ -1,8 +1,8 @@
 //
 //  main.swift
-//  SwiftCore
+//  Core
 //
-//  Created by JustinLau on 2022/6/10.
+//  Created by JustinLau on 2022/6/20.
 //
 
 import Foundation
