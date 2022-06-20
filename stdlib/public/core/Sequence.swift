@@ -10,6 +10,8 @@
 //
 //===----------------------------------------------------------------------===//
 
+import Foundation
+
 /// A type that supplies the values of a sequence one at a time.
 ///
 /// The `IteratorProtocol` protocol is tightly linked with the `Sequence`
@@ -174,6 +176,7 @@
 ///     // Prints "3..."
 ///     // Prints "2..."
 ///     // Prints "1..."
+
 public protocol IteratorProtocol {
   /// The type of element traversed by the iterator.
   associatedtype Element

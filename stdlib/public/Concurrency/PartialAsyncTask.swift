@@ -26,7 +26,7 @@ public struct UnownedJob: Sendable {
 /// A mechanism to interface
 /// between synchronous and asynchronous code,
 /// without correctness checking.
-///
+
 /// A *continuation* is an opaque representation of program state.
 /// To create a continuation in asynchronous code,
 /// call the `withUnsafeContinuation(_:)` or
@@ -42,7 +42,7 @@ public struct UnownedJob: Sendable {
 ///   Resuming from a continuation more than once is undefined behavior.
 ///   Never resuming leaves the task in a suspended state indefinitely,
 ///   and leaks any associated resources.
-///
+
 /// `CheckedContinuation` performs runtime checks
 /// for missing or multiple resume operations.
 /// `UnsafeContinuation` avoids enforcing these invariants at runtime
@@ -56,7 +56,8 @@ public struct UnownedJob: Sendable {
 /// you can replace one with the other in most circumstances,
 /// without making other changes.
 @available(SwiftStdlib 5.1, *)
-@frozen
+// 实际上, 这就是一个包装类型.
+// 真正的调用, 是使用了系统的底层函数.
 public struct UnsafeContinuation<T, E: Error> {
     @usableFromInline internal var context: Builtin.RawUnsafeContinuation
     
@@ -78,8 +79,9 @@ public struct UnsafeContinuation<T, E: Error> {
     /// control immediately returns to the caller.
     /// The task continues executing
     /// when its executor schedules it.
-    @_alwaysEmitIntoClient
-    public func resume(retur__ownedning value:  T) where E == Never {
+    // resume 仅仅是提交一个任务.
+    // 通知, 对应的协程, 可以开始动作了.
+    public func resume(returning value: __owned T) where E == Never {
 #if compiler(>=5.5) && $BuiltinContinuation
         Builtin.resumeNonThrowingContinuationReturning(context, value)
 #else

@@ -1,15 +1,3 @@
-///===--- GlobalExecutor.cpp - Global concurrent executor ------------------===///
-///
-/// This source file is part of the Swift.org open source project
-///
-/// Copyright (c) 2014 - 2020 Apple Inc. and the Swift project authors
-/// Licensed under Apache License v2.0 with Runtime Library Exception
-///
-/// See https:///swift.org/LICENSE.txt for license information
-/// See https:///swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-///
-///===----------------------------------------------------------------------===///
-///
 /// Routines related to the global concurrent execution service.
 ///
 /// The execution side of Swift's concurrency model centers around
@@ -63,25 +51,25 @@ using namespace swift;
 
 SWIFT_CC(swift)
 void (*swift::swift_task_enqueueGlobal_hook)(
-    Job *job, swift_task_enqueueGlobal_original original) = nullptr;
+                                             Job *job, swift_task_enqueueGlobal_original original) = nullptr;
 
 SWIFT_CC(swift)
 void (*swift::swift_task_enqueueGlobalWithDelay_hook)(
-    JobDelay delay, Job *job,
-    swift_task_enqueueGlobalWithDelay_original original) = nullptr;
+                                                      JobDelay delay, Job *job,
+                                                      swift_task_enqueueGlobalWithDelay_original original) = nullptr;
 
 SWIFT_CC(swift)
 void (*swift::swift_task_enqueueGlobalWithDeadline_hook)(
-    long long sec,
-    long long nsec,
-    long long tsec,
-    long long tnsec,
-    int clock, Job *job,
-    swift_task_enqueueGlobalWithDeadline_original original) = nullptr;
+                                                         long long sec,
+                                                         long long nsec,
+                                                         long long tsec,
+                                                         long long tnsec,
+                                                         int clock, Job *job,
+                                                         swift_task_enqueueGlobalWithDeadline_original original) = nullptr;
 
 SWIFT_CC(swift)
 void (*swift::swift_task_enqueueMainExecutor_hook)(
-    Job *job, swift_task_enqueueMainExecutor_original original) = nullptr;
+                                                   Job *job, swift_task_enqueueMainExecutor_original original) = nullptr;
 
 #if SWIFT_CONCURRENCY_COOPERATIVE_GLOBAL_EXECUTOR
 #include "CooperativeGlobalExecutor.inc"
@@ -92,65 +80,65 @@ void (*swift::swift_task_enqueueMainExecutor_hook)(
 #endif
 
 void swift::swift_task_enqueueGlobal(Job *job) {
-  _swift_tsan_release(job);
-
-  concurrency::trace::job_enqueue_global(job);
-
-  if (swift_task_enqueueGlobal_hook)
-    swift_task_enqueueGlobal_hook(job, swift_task_enqueueGlobalImpl);
-  else
-    swift_task_enqueueGlobalImpl(job);
+    _swift_tsan_release(job);
+    
+    concurrency::trace::job_enqueue_global(job);
+    
+    if (swift_task_enqueueGlobal_hook)
+        swift_task_enqueueGlobal_hook(job, swift_task_enqueueGlobalImpl);
+    else
+        swift_task_enqueueGlobalImpl(job);
 }
 
 void swift::swift_task_enqueueGlobalWithDelay(JobDelay delay, Job *job) {
-  concurrency::trace::job_enqueue_global_with_delay(delay, job);
-
-  if (swift_task_enqueueGlobalWithDelay_hook)
-    swift_task_enqueueGlobalWithDelay_hook(
-        delay, job, swift_task_enqueueGlobalWithDelayImpl);
-  else
-    swift_task_enqueueGlobalWithDelayImpl(delay, job);
+    concurrency::trace::job_enqueue_global_with_delay(delay, job);
+    
+    if (swift_task_enqueueGlobalWithDelay_hook)
+        swift_task_enqueueGlobalWithDelay_hook(
+                                               delay, job, swift_task_enqueueGlobalWithDelayImpl);
+    else
+        swift_task_enqueueGlobalWithDelayImpl(delay, job);
 }
 
 void swift::swift_task_enqueueGlobalWithDeadline(
-    long long sec,
-    long long nsec,
-    long long tsec,
-    long long tnsec,
-    int clock, Job *job) {
-  if (swift_task_enqueueGlobalWithDeadline_hook)
-    swift_task_enqueueGlobalWithDeadline_hook(
-        sec, nsec, tsec, tnsec, clock, job, swift_task_enqueueGlobalWithDeadlineImpl);
-  else
-    swift_task_enqueueGlobalWithDeadlineImpl(sec, nsec, tsec, tnsec, clock, job);
+                                                 long long sec,
+                                                 long long nsec,
+                                                 long long tsec,
+                                                 long long tnsec,
+                                                 int clock, Job *job) {
+    if (swift_task_enqueueGlobalWithDeadline_hook)
+        swift_task_enqueueGlobalWithDeadline_hook(
+                                                  sec, nsec, tsec, tnsec, clock, job, swift_task_enqueueGlobalWithDeadlineImpl);
+    else
+        swift_task_enqueueGlobalWithDeadlineImpl(sec, nsec, tsec, tnsec, clock, job);
 }
 
 void swift::swift_task_enqueueMainExecutor(Job *job) {
-  concurrency::trace::job_enqueue_main_executor(job);
-  if (swift_task_enqueueMainExecutor_hook)
-    swift_task_enqueueMainExecutor_hook(job,
-                                        swift_task_enqueueMainExecutorImpl);
-  else
-    swift_task_enqueueMainExecutorImpl(job);
+    concurrency::trace::job_enqueue_main_executor(job);
+    if (swift_task_enqueueMainExecutor_hook)
+        swift_task_enqueueMainExecutor_hook(job,
+                                            swift_task_enqueueMainExecutorImpl);
+    else
+        swift_task_enqueueMainExecutorImpl(job);
 }
 
 ExecutorRef swift::swift_task_getMainExecutor() {
 #if !SWIFT_CONCURRENCY_ENABLE_DISPATCH
-  // FIXME: this isn't right for the non-cooperative environment
-  return ExecutorRef::generic();
+    // FIXME: this isn't right for the non-cooperative environment
+    return ExecutorRef::generic();
 #else
-  return ExecutorRef::forOrdinary(
-           reinterpret_cast<HeapObject*>(&_dispatch_main_q),
-           _swift_task_getDispatchQueueSerialExecutorWitnessTable());
+    return ExecutorRef::forOrdinary(
+                                    reinterpret_cast<HeapObject*>(&_dispatch_main_q),
+                                    _swift_task_getDispatchQueueSerialExecutorWitnessTable());
 #endif
 }
 
 bool ExecutorRef::isMainExecutor() const {
 #if !SWIFT_CONCURRENCY_ENABLE_DISPATCH
-  // FIXME: this isn't right for the non-cooperative environment
-  return isGeneric();
+    // FIXME: this isn't right for the non-cooperative environment
+    return isGeneric();
 #else
-  return Identity == reinterpret_cast<HeapObject*>(&_dispatch_main_q);
+    return Identity == reinterpret_cast<HeapObject*>(&_dispatch_main_q);
 #endif
 }
 

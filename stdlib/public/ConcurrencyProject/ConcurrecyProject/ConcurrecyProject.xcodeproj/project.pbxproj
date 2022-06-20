@@ -76,7 +76,6 @@
 		060D3BFD28538A49007B2881 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		060D3BFE28538A49007B2881 /* TaskGroupPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskGroupPrivate.h; sourceTree = "<group>"; };
 		060D3BFF28538A49007B2881 /* PartialAsyncTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialAsyncTask.swift; sourceTree = "<group>"; };
-		060D3C0128538A49007B2881 /* magic-symbols-for-install-name.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "magic-symbols-for-install-name.c"; sourceTree = "<group>"; };
 		060D3C0228538A49007B2881 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		060D3C0328538A49007B2881 /* SuspendingClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendingClock.swift; sourceTree = "<group>"; };
 		060D3C0428538A49007B2881 /* TaskAlloc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskAlloc.cpp; sourceTree = "<group>"; };
@@ -131,30 +130,11 @@
 		060D3BCC28538A49007B2881 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
+				AA67AEBC285DE5F400D89205 /* Sequence */,
 				060D3BE328538A49007B2881 /* Actor.cpp */,
 				060D3BFD28538A49007B2881 /* Actor.swift */,
-				060D3BE228538A49007B2881 /* AsyncCompactMapSequence.swift */,
-				060D3BDE28538A49007B2881 /* AsyncDropFirstSequence.swift */,
-				060D3BD928538A49007B2881 /* AsyncDropWhileSequence.swift */,
-				060D3C0B28538A49007B2881 /* AsyncFilterSequence.swift */,
-				060D3BE728538A49007B2881 /* AsyncFlatMapSequence.swift */,
-				060D3BEB28538A49007B2881 /* AsyncIteratorProtocol.swift */,
 				060D3C0528538A49007B2881 /* AsyncLet.cpp */,
 				060D3BE628538A49007B2881 /* AsyncLet.swift */,
-				060D3C0E28538A49007B2881 /* AsyncMapSequence.swift */,
-				060D3BF128538A49007B2881 /* AsyncPrefixSequence.swift */,
-				060D3BE028538A49007B2881 /* AsyncPrefixWhileSequence.swift */,
-				060D3BF228538A49007B2881 /* AsyncSequence.swift */,
-				060D3BF528538A49007B2881 /* AsyncStream.cpp */,
-				060D3BE128538A49007B2881 /* AsyncStream.swift */,
-				060D3C0C28538A49007B2881 /* AsyncStreamBuffer.swift */,
-				060D3BCE28538A49007B2881 /* AsyncThrowingCompactMapSequence.swift */,
-				060D3BE428538A49007B2881 /* AsyncThrowingDropWhileSequence.swift */,
-				060D3BED28538A49007B2881 /* AsyncThrowingFilterSequence.swift */,
-				060D3BD228538A49007B2881 /* AsyncThrowingFlatMapSequence.swift */,
-				060D3C0A28538A49007B2881 /* AsyncThrowingMapSequence.swift */,
-				060D3BE828538A49007B2881 /* AsyncThrowingPrefixWhileSequence.swift */,
-				060D3BD428538A49007B2881 /* AsyncThrowingStream.swift */,
 				060D3BFB28538A49007B2881 /* CheckedContinuation.swift */,
 				060D3BE528538A49007B2881 /* Clock.cpp */,
 				060D3BD028538A49007B2881 /* Clock.swift */,
@@ -170,7 +150,6 @@
 				060D3BCF28538A49007B2881 /* Executor.swift */,
 				060D3BEE28538A49007B2881 /* GlobalActor.swift */,
 				060D3C0828538A49007B2881 /* GlobalExecutor.cpp */,
-				060D3C0028538A49007B2881 /* linker-support */,
 				060D3BD728538A49007B2881 /* MainActor.swift */,
 				060D3BD128538A49007B2881 /* Mutex.cpp */,
 				060D3BF728538A49007B2881 /* NonDispatchGlobalExecutor.inc */,
@@ -201,12 +180,31 @@
 			path = ../../../Concurrency;
 			sourceTree = "<group>";
 		};
-		060D3C0028538A49007B2881 /* linker-support */ = {
+		AA67AEBC285DE5F400D89205 /* Sequence */ = {
 			isa = PBXGroup;
 			children = (
-				060D3C0128538A49007B2881 /* magic-symbols-for-install-name.c */,
+				060D3BF228538A49007B2881 /* AsyncSequence.swift */,
+				060D3BEB28538A49007B2881 /* AsyncIteratorProtocol.swift */,
+				060D3C0E28538A49007B2881 /* AsyncMapSequence.swift */,
+				060D3BE228538A49007B2881 /* AsyncCompactMapSequence.swift */,
+				060D3BDE28538A49007B2881 /* AsyncDropFirstSequence.swift */,
+				060D3BD928538A49007B2881 /* AsyncDropWhileSequence.swift */,
+				060D3C0B28538A49007B2881 /* AsyncFilterSequence.swift */,
+				060D3BE728538A49007B2881 /* AsyncFlatMapSequence.swift */,
+				060D3BF128538A49007B2881 /* AsyncPrefixSequence.swift */,
+				060D3BE028538A49007B2881 /* AsyncPrefixWhileSequence.swift */,
+				060D3BCE28538A49007B2881 /* AsyncThrowingCompactMapSequence.swift */,
+				060D3BE428538A49007B2881 /* AsyncThrowingDropWhileSequence.swift */,
+				060D3BED28538A49007B2881 /* AsyncThrowingFilterSequence.swift */,
+				060D3BD228538A49007B2881 /* AsyncThrowingFlatMapSequence.swift */,
+				060D3C0A28538A49007B2881 /* AsyncThrowingMapSequence.swift */,
+				060D3BE828538A49007B2881 /* AsyncThrowingPrefixWhileSequence.swift */,
+				060D3BD428538A49007B2881 /* AsyncThrowingStream.swift */,
+				060D3BF528538A49007B2881 /* AsyncStream.cpp */,
+				060D3BE128538A49007B2881 /* AsyncStream.swift */,
+				060D3C0C28538A49007B2881 /* AsyncStreamBuffer.swift */,
 			);
-			path = "linker-support";
+			path = Sequence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,18 +1,8 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2021 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
 
 import Swift
 
 /// A service that can execute jobs.
+// 可以入队任务. 
 @available(SwiftStdlib 5.1, *)
 public protocol Executor: AnyObject, Sendable {
   func enqueue(_ job: UnownedJob)
