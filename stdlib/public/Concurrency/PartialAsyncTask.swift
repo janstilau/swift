@@ -1,15 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2020 - 2021 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
 import Swift
 @_implementationOnly import _SwiftConcurrencyShims
 
@@ -26,13 +14,13 @@ internal func _swiftJobRun(_ job: UnownedJob,
 @available(SwiftStdlib 5.1, *)
 @frozen
 public struct UnownedJob: Sendable {
-  private var context: Builtin.Job
-
-  @_alwaysEmitIntoClient
-  @inlinable
-  public func _runSynchronously(on executor: UnownedSerialExecutor) {
-      _swiftJobRun(self, executor)
-  }
+    private var context: Builtin.Job
+    
+    @_alwaysEmitIntoClient
+    @inlinable
+    public func _runSynchronously(on executor: UnownedSerialExecutor) {
+        _swiftJobRun(self, executor)
+    }
 }
 
 /// A mechanism to interface
@@ -70,78 +58,78 @@ public struct UnownedJob: Sendable {
 @available(SwiftStdlib 5.1, *)
 @frozen
 public struct UnsafeContinuation<T, E: Error> {
-  @usableFromInline internal var context: Builtin.RawUnsafeContinuation
-
-  @_alwaysEmitIntoClient
-  internal init(_ context: Builtin.RawUnsafeContinuation) {
-    self.context = context
-  }
-
-  /// Resume the task that's awaiting the continuation
-  /// by returning the given value.
-  ///
-  /// - Parameter value: The value to return from the continuation.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume(returning value: __owned T) where E == Never {
-    #if compiler(>=5.5) && $BuiltinContinuation
-    Builtin.resumeNonThrowingContinuationReturning(context, value)
-    #else
-    fatalError("Swift compiler is incompatible with this SDK version")
-    #endif
-  }
-
-  /// Resume the task that's awaiting the continuation
-  /// by returning the given value.
-  ///
-  /// - Parameter value: The value to return from the continuation.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume(returning value: __owned T) {
-    #if compiler(>=5.5) && $BuiltinContinuation
-    Builtin.resumeThrowingContinuationReturning(context, value)
-    #else
-    fatalError("Swift compiler is incompatible with this SDK version")
-    #endif
-  }
-
-  /// Resume the task that's awaiting the continuation
-  /// by throwing the given error.
-  ///
-  /// - Parameter error: The error to throw from the continuation.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume(throwing error: __owned E) {
+    @usableFromInline internal var context: Builtin.RawUnsafeContinuation
+    
+    @_alwaysEmitIntoClient
+    internal init(_ context: Builtin.RawUnsafeContinuation) {
+        self.context = context
+    }
+    
+    /// Resume the task that's awaiting the continuation
+    /// by returning the given value.
+    ///
+    /// - Parameter value: The value to return from the continuation.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume(retur__ownedning value:  T) where E == Never {
 #if compiler(>=5.5) && $BuiltinContinuation
-    Builtin.resumeThrowingContinuationThrowing(context, error)
+        Builtin.resumeNonThrowingContinuationReturning(context, value)
 #else
-    fatalError("Swift compiler is incompatible with this SDK version")
+        fatalError("Swift compiler is incompatible with this SDK version")
 #endif
-  }
+    }
+    
+    /// Resume the task that's awaiting the continuation
+    /// by returning the given value.
+    ///
+    /// - Parameter value: The value to return from the continuation.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume(returning value: __owned T) {
+#if compiler(>=5.5) && $BuiltinContinuation
+        Builtin.resumeThrowingContinuationReturning(context, value)
+#else
+        fatalError("Swift compiler is incompatible with this SDK version")
+#endif
+    }
+    
+    /// Resume the task that's awaiting the continuation
+    /// by throwing the given error.
+    ///
+    /// - Parameter error: The error to throw from the continuation.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume(throwing error: __owned E) {
+#if compiler(>=5.5) && $BuiltinContinuation
+        Builtin.resumeThrowingContinuationThrowing(context, error)
+#else
+        fatalError("Swift compiler is incompatible with this SDK version")
+#endif
+    }
 }
 
 @available(SwiftStdlib 5.1, *)
@@ -149,72 +137,72 @@ extension UnsafeContinuation: Sendable where T: Sendable { }
 
 @available(SwiftStdlib 5.1, *)
 extension UnsafeContinuation {
-  /// Resume the task that's awaiting the continuation
-  /// by returning or throwing the given result value.
-  ///
-  /// - Parameter result: The result.
-  ///   If it contains a `.success` value,
-  ///   the continuation returns that value;
-  ///   otherwise, it throws the `.error` value.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume<Er: Error>(with result: Result<T, Er>) where E == Error {
-    switch result {
-      case .success(let val):
-        self.resume(returning: val)
-      case .failure(let err):
-        self.resume(throwing: err)
+    /// Resume the task that's awaiting the continuation
+    /// by returning or throwing the given result value.
+    ///
+    /// - Parameter result: The result.
+    ///   If it contains a `.success` value,
+    ///   the continuation returns that value;
+    ///   otherwise, it throws the `.error` value.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume<Er: Error>(with result: Result<T, Er>) where E == Error {
+        switch result {
+        case .success(let val):
+            self.resume(returning: val)
+        case .failure(let err):
+            self.resume(throwing: err)
+        }
     }
-  }
-
-  /// Resume the task that's awaiting the continuation
-  /// by returning or throwing the given result value.
-  ///
-  /// - Parameter result: The result.
-  ///   If it contains a `.success` value,
-  ///   the continuation returns that value;
-  ///   otherwise, it throws the `.error` value.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume(with result: Result<T, E>) {
-    switch result {
-      case .success(let val):
-        self.resume(returning: val)
-      case .failure(let err):
-        self.resume(throwing: err)
+    
+    /// Resume the task that's awaiting the continuation
+    /// by returning or throwing the given result value.
+    ///
+    /// - Parameter result: The result.
+    ///   If it contains a `.success` value,
+    ///   the continuation returns that value;
+    ///   otherwise, it throws the `.error` value.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume(with result: Result<T, E>) {
+        switch result {
+        case .success(let val):
+            self.resume(returning: val)
+        case .failure(let err):
+            self.resume(throwing: err)
+        }
     }
-  }
-
-  /// Resume the task that's awaiting the continuation by returning.
-  ///
-  /// A continuation must be resumed exactly once.
-  /// If the continuation has already resumed,
-  /// then calling this method results in undefined behavior.
-  ///
-  /// After calling this method,
-  /// control immediately returns to the caller.
-  /// The task continues executing
-  /// when its executor schedules it.
-  @_alwaysEmitIntoClient
-  public func resume() where T == Void {
-    self.resume(returning: ())
-  }
+    
+    /// Resume the task that's awaiting the continuation by returning.
+    ///
+    /// A continuation must be resumed exactly once.
+    /// If the continuation has already resumed,
+    /// then calling this method results in undefined behavior.
+    ///
+    /// After calling this method,
+    /// control immediately returns to the caller.
+    /// The task continues executing
+    /// when its executor schedules it.
+    @_alwaysEmitIntoClient
+    public func resume() where T == Void {
+        self.resume(returning: ())
+    }
 }
 
 #if _runtime(_ObjC)
@@ -223,28 +211,28 @@ extension UnsafeContinuation {
 @available(SwiftStdlib 5.1, *)
 @_alwaysEmitIntoClient
 internal func _resumeUnsafeContinuation<T>(
-  _ continuation: UnsafeContinuation<T, Never>,
-  _ value: __owned T
+    _ continuation: UnsafeContinuation<T, Never>,
+    _ value: __owned T
 ) {
-  continuation.resume(returning: value)
+    continuation.resume(returning: value)
 }
 
 @available(SwiftStdlib 5.1, *)
 @_alwaysEmitIntoClient
 internal func _resumeUnsafeThrowingContinuation<T>(
-  _ continuation: UnsafeContinuation<T, Error>,
-  _ value: __owned T
+    _ continuation: UnsafeContinuation<T, Error>,
+    _ value: __owned T
 ) {
-  continuation.resume(returning: value)
+    continuation.resume(returning: value)
 }
 
 @available(SwiftStdlib 5.1, *)
 @_alwaysEmitIntoClient
 internal func _resumeUnsafeThrowingContinuationWithError<T>(
-  _ continuation: UnsafeContinuation<T, Error>,
-  _ error: __owned Error
+    _ continuation: UnsafeContinuation<T, Error>,
+    _ error: __owned Error
 ) {
-  continuation.resume(throwing: error)
+    continuation.resume(throwing: error)
 }
 
 #endif
@@ -260,11 +248,11 @@ internal func _resumeUnsafeThrowingContinuationWithError<T>(
 @_unsafeInheritExecutor
 @_alwaysEmitIntoClient
 public func withUnsafeContinuation<T>(
-  _ fn: (UnsafeContinuation<T, Never>) -> Void
+    _ fn: (UnsafeContinuation<T, Never>) -> Void
 ) async -> T {
-  return await Builtin.withUnsafeContinuation {
-    fn(UnsafeContinuation<T, Never>($0))
-  }
+    return await Builtin.withUnsafeContinuation {
+        fn(UnsafeContinuation<T, Never>($0))
+    }
 }
 
 /// Suspends the current task,
@@ -281,16 +269,16 @@ public func withUnsafeContinuation<T>(
 @_unsafeInheritExecutor
 @_alwaysEmitIntoClient
 public func withUnsafeThrowingContinuation<T>(
-  _ fn: (UnsafeContinuation<T, Error>) -> Void
+    _ fn: (UnsafeContinuation<T, Error>) -> Void
 ) async throws -> T {
-  return try await Builtin.withUnsafeThrowingContinuation {
-    fn(UnsafeContinuation<T, Error>($0))
-  }
+    return try await Builtin.withUnsafeThrowingContinuation {
+        fn(UnsafeContinuation<T, Error>($0))
+    }
 }
 
 /// A hack to mark an SDK that supports swift_continuation_await.
 @available(SwiftStdlib 5.1, *)
 @_alwaysEmitIntoClient
 public func _abiEnableAwaitContinuation() {
-  fatalError("never use this function")
+    fatalError("never use this function")
 }
