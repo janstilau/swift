@@ -352,6 +352,7 @@ public protocol Collection: Sequence {
     /// Valid indices consist of the position of every element and a
     /// "past the end" position that's not valid for use as a subscript
     /// argument.
+    // 对于 Collection 来说, Index 可比较. 这样才能使用 endIndex 来判断结尾的位置.
     associatedtype Index: Comparable
     
     /// The position of the first element in a nonempty collection.
@@ -361,7 +362,8 @@ public protocol Collection: Sequence {
     
     /// The collection's "past the end" position---that is, the position one
     /// greater than the last valid subscript argument.
-    ///
+    // 这是一个, 惯例的概念. End 就是最后加 1.
+    
     /// When you need a range that includes the last element of a collection, use
     /// the half-open range operator (`..<`) with `endIndex`. The `..<` operator
     /// creates a range that doesn't include the upper bound, so it's always
@@ -382,6 +384,7 @@ public protocol Collection: Sequence {
     /// By default, a collection conforms to the `Sequence` protocol by
     /// supplying `IndexingIterator` as its associated `Iterator`
     /// type.
+    // associatedtype 可以有默认值.
     associatedtype Iterator = IndexingIterator<Self>
     
     // FIXME: Only needed for associated type inference. Otherwise,
@@ -419,7 +422,7 @@ public protocol Collection: Sequence {
     ///   `endIndex` property.
     ///
     /// - Complexity: O(1)
-    @_borrowed
+    
     subscript(position: Index) -> Element { get }
     
     /// Accesses a contiguous subrange of the collection's elements.
