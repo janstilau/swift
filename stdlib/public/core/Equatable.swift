@@ -1,19 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-// This source file is part of the Swift.org open source project
-//
-// Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
-// Licensed under Apache License v2.0 with Runtime Library Exception
-//
-// See https://swift.org/LICENSE.txt for license information
-// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
-//
-//===----------------------------------------------------------------------===//
-
-//===----------------------------------------------------------------------===//
-// Equatable
-//===----------------------------------------------------------------------===//
-
 /// A type that can be compared for value equality.
 ///
 /// Types that conform to the `Equatable` protocol can be compared for equality
@@ -165,35 +149,35 @@
 ///     print(c === a, c === b, separator: ", ")
 ///     // Prints "true, false"
 public protocol Equatable {
-  /// Returns a Boolean value indicating whether two values are equal.
-  ///
-  /// Equality is the inverse of inequality. For any values `a` and `b`,
-  /// `a == b` implies that `a != b` is `false`.
-  ///
-  /// - Parameters:
-  ///   - lhs: A value to compare.
-  ///   - rhs: Another value to compare.
-  static func == (lhs: Self, rhs: Self) -> Bool
+    /// Returns a Boolean value indicating whether two values are equal.
+    ///
+    /// Equality is the inverse of inequality. For any values `a` and `b`,
+    /// `a == b` implies that `a != b` is `false`.
+    ///
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    static func == (lhs: Self, rhs: Self) -> Bool
 }
 
 extension Equatable {
-  /// Returns a Boolean value indicating whether two values are not equal.
-  ///
-  /// Inequality is the inverse of equality. For any values `a` and `b`, `a != b`
-  /// implies that `a == b` is `false`.
-  ///
-  /// This is the default implementation of the not-equal-to operator (`!=`)
-  /// for any type that conforms to `Equatable`.
-  ///
-  /// - Parameters:
-  ///   - lhs: A value to compare.
-  ///   - rhs: Another value to compare.
-  // transparent because sometimes types that use this generate compile-time
-  // warnings, e.g. that an expression always evaluates to true
-  @_transparent
-  public static func != (lhs: Self, rhs: Self) -> Bool {
-    return !(lhs == rhs)
-  }
+    /// Returns a Boolean value indicating whether two values are not equal.
+    ///
+    /// Inequality is the inverse of equality. For any values `a` and `b`, `a != b`
+    /// implies that `a == b` is `false`.
+    ///
+    /// This is the default implementation of the not-equal-to operator (`!=`)
+    /// for any type that conforms to `Equatable`.
+    ///
+    /// - Parameters:
+    ///   - lhs: A value to compare.
+    ///   - rhs: Another value to compare.
+    // transparent because sometimes types that use this generate compile-time
+    // warnings, e.g. that an expression always evaluates to true
+    @_transparent
+    public static func != (lhs: Self, rhs: Self) -> Bool {
+        return !(lhs == rhs)
+    }
 }
 
 //===----------------------------------------------------------------------===//
@@ -248,14 +232,14 @@ extension Equatable {
 ///   - rhs: Another reference to compare.
 @inlinable // trivial-implementation
 public func === (lhs: AnyObject?, rhs: AnyObject?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return ObjectIdentifier(l) == ObjectIdentifier(r)
-  case (nil, nil):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return ObjectIdentifier(l) == ObjectIdentifier(r)
+    case (nil, nil):
+        return true
+    default:
+        return false
+    }
 }
 
 /// Returns a Boolean value indicating whether two references point to
@@ -270,7 +254,7 @@ public func === (lhs: AnyObject?, rhs: AnyObject?) -> Bool {
 ///   - rhs: Another reference to compare.
 @inlinable // trivial-implementation
 public func !== (lhs: AnyObject?, rhs: AnyObject?) -> Bool {
-  return !(lhs === rhs)
+    return !(lhs === rhs)
 }
 
 
