@@ -6,7 +6,8 @@ import Foundation
 /// protocol. Sequences provide access to their elements by creating an
 /// iterator, which keeps track of its iteration process and returns one
 /// element at a time as it advances through the sequence.
-///
+/// 从这里说的很清楚了, 就是 Iter 里面会记录遍历的状态, 这样不同的 Sequence 返回不同的 Iter 可以分别进行遍历
+
 /// Whenever you use a `for`-`in` loop with an array, set, or any other
 /// collection or sequence, you're using that type's iterator. Swift uses a
 /// sequence's or collection's iterator internally to enable the `for`-`in`
@@ -25,7 +26,7 @@ import Foundation
 ///     // Prints "Butterfly"
 ///     // Prints "Camel"
 ///     // Prints "Dolphin"
-///
+
 /// Behind the scenes, Swift uses the `animals` array's iterator to loop over
 /// the contents of the array.
 ///
@@ -42,7 +43,7 @@ import Foundation
 /// iterator. Next, the `while` loop calls the iterator's `next()` method
 /// repeatedly, binding each element that is returned to `animal` and exiting
 /// when the `next()` method returns `nil`.
-///
+
 /// Using Iterators Directly
 /// ========================
 ///
@@ -89,7 +90,7 @@ import Foundation
 ///     }
 ///     print(longestAnimal)
 ///     // Prints Optional("Butterfly")
-///
+
 /// Using Multiple Iterators
 /// ========================
 ///
@@ -97,7 +98,7 @@ import Foundation
 /// sequence, be sure you know that the specific sequence supports repeated
 /// iteration, either because you know its concrete type or because the
 /// sequence is also constrained to the `Collection` protocol.
-///
+
 /// Obtain each separate iterator from separate calls to the sequence's
 /// `makeIterator()` method rather than by copying. Copying an iterator is
 /// safe, but advancing one copy of an iterator by calling its `next()` method
@@ -125,7 +126,7 @@ import Foundation
 ///             return CountdownIterator(self)
 ///         }
 ///     }
-///
+
 /// The `makeIterator()` method returns another custom type, an iterator named
 /// `CountdownIterator`. The `CountdownIterator` type keeps track of both the
 /// `Countdown` sequence that it's iterating and the number of times it has
@@ -196,6 +197,7 @@ public protocol IteratorProtocol {
     ///
     /// - Returns: The next element in the underlying sequence, if a next element
     ///   exists; otherwise, `nil`.
+    // 必须是 mutaing, 因为 iter 里面一般都是会存储状态的. 每次 next 都会更新这个状态.
     mutating func next() -> Element?
 }
 

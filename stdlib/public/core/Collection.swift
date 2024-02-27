@@ -16,6 +16,7 @@
 // 在系统库里面, 经常有这种, 感觉没有什么价值的类型定义 .
 // 其实, 这是为了将代码, 纳入到稳定算法的要求. 稳定算法, 对标的是 Collection 这层抽象.
 // 定义一个 CollectionOfTwo 这样的一个简单 Collection, 就不用专门为 CollectionOfTwo 这个场景编写算法了, 直接用针对 Collection 的实现就好了.
+
 /// Here's an example of a type that declares the minimal requirements for a
 /// collection. The `CollectionOfTwo` structure is a fixed-size collection
 /// that always holds two elements of a specific type.
