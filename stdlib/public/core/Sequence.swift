@@ -437,6 +437,7 @@ extension Sequence where Self.Iterator == Self {
 /// `Base` iterator before possibly returning the first available element.
 ///
 /// The underlying iterator's sequence may be infinite.
+/// 泛型编程.
 @frozen
 public struct DropFirstSequence<Base: Sequence> {
     @usableFromInline
@@ -463,6 +464,7 @@ extension DropFirstSequence: Sequence {
         var it = _base.makeIterator()
         var dropped = 0
         while dropped < _limit, it.next() != nil { dropped &+= 1 }
+        // 在生成 iter 的时候, 就提前消耗了.
         return it
     }
     
@@ -610,6 +612,8 @@ extension DropWhileSequence: Sequence {
         return try DropWhileSequence(iterator: _iterator, predicate: predicate)
     }
 }
+
+// 所有的 组合 sequence, 都是在原有的 Sequenece 上进行了包装. 
 
 //===----------------------------------------------------------------------===//
 // Default implementations for Sequence

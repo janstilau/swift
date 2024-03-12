@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		065EBB912BA01B3600CBA2DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBB902BA01B3600CBA2DB /* AppDelegate.swift */; };
+		065EBB932BA01B3600CBA2DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBB922BA01B3600CBA2DB /* ViewController.swift */; };
+		065EBB952BA01B3700CBA2DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065EBB942BA01B3700CBA2DB /* Assets.xcassets */; };
+		065EBB982BA01B3700CBA2DB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 065EBB972BA01B3700CBA2DB /* Base */; };
+		065EBBE12BA01B4B00CBA2DB /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA02BA01B4A00CBA2DB /* Task.cpp */; };
+		065EBBE22BA01B4B00CBA2DB /* TaskStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA12BA01B4A00CBA2DB /* TaskStatus.cpp */; };
+		065EBBE32BA01B4B00CBA2DB /* TaskLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA22BA01B4A00CBA2DB /* TaskLocal.swift */; };
+		065EBBE42BA01B4B00CBA2DB /* TaskGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA32BA01B4A00CBA2DB /* TaskGroup.cpp */; };
+		065EBBE52BA01B4B00CBA2DB /* AsyncLet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA42BA01B4A00CBA2DB /* AsyncLet.cpp */; };
+		065EBBE62BA01B4B00CBA2DB /* PartialAsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA52BA01B4A00CBA2DB /* PartialAsyncTask.swift */; };
+		065EBBE72BA01B4B00CBA2DB /* MainActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA62BA01B4A00CBA2DB /* MainActor.swift */; };
+		065EBBE82BA01B4B00CBA2DB /* CheckedContinuation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA72BA01B4A00CBA2DB /* CheckedContinuation.swift */; };
+		065EBBE92BA01B4B00CBA2DB /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA82BA01B4A00CBA2DB /* Errors.swift */; };
+		065EBBEA2BA01B4B00CBA2DB /* DispatchGlobalExecutor.inc in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBA92BA01B4A00CBA2DB /* DispatchGlobalExecutor.inc */; };
+		065EBBEB2BA01B4B00CBA2DB /* SourceCompatibilityShims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBAA2BA01B4A00CBA2DB /* SourceCompatibilityShims.swift */; };
+		065EBBEC2BA01B4B00CBA2DB /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBAC2BA01B4A00CBA2DB /* Executor.swift */; };
+		065EBBED2BA01B4B00CBA2DB /* GlobalExecutor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBAD2BA01B4A00CBA2DB /* GlobalExecutor.cpp */; };
+		065EBBEE2BA01B4B00CBA2DB /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBAE2BA01B4A00CBA2DB /* Task.swift */; };
+		065EBBEF2BA01B4B00CBA2DB /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 065EBBAF2BA01B4A00CBA2DB /* CMakeLists.txt */; };
+		065EBBF02BA01B4B00CBA2DB /* TaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBB12BA01B4A00CBA2DB /* TaskGroup.swift */; };
+		065EBBF12BA01B4B00CBA2DB /* TaskLocal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBB32BA01B4A00CBA2DB /* TaskLocal.cpp */; };
+		065EBBF22BA01B4B00CBA2DB /* ThreadSanitizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBB42BA01B4A00CBA2DB /* ThreadSanitizer.cpp */; };
+		065EBBF32BA01B4B00CBA2DB /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBB72BA01B4A00CBA2DB /* Actor.swift */; };
+		065EBBF42BA01B4B00CBA2DB /* TaskSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBBA2BA01B4B00CBA2DB /* TaskSleep.swift */; };
+		065EBBF52BA01B4B00CBA2DB /* TaskSleepDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBBB2BA01B4B00CBA2DB /* TaskSleepDuration.swift */; };
+		065EBBF62BA01B4B00CBA2DB /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBBC2BA01B4B00CBA2DB /* Mutex.cpp */; };
+		065EBBF72BA01B4B00CBA2DB /* CooperativeGlobalExecutor.inc in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBBD2BA01B4B00CBA2DB /* CooperativeGlobalExecutor.inc */; };
+		065EBBF82BA01B4B00CBA2DB /* TracingSignpost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBBE2BA01B4B00CBA2DB /* TracingSignpost.cpp */; };
+		065EBBF92BA01B4B00CBA2DB /* AsyncCompactMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC02BA01B4B00CBA2DB /* AsyncCompactMapSequence.swift */; };
+		065EBBFA2BA01B4B00CBA2DB /* AsyncDropFirstSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC12BA01B4B00CBA2DB /* AsyncDropFirstSequence.swift */; };
+		065EBBFB2BA01B4B00CBA2DB /* AsyncDropWhileSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC22BA01B4B00CBA2DB /* AsyncDropWhileSequence.swift */; };
+		065EBBFC2BA01B4B00CBA2DB /* AsyncFilterSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC32BA01B4B00CBA2DB /* AsyncFilterSequence.swift */; };
+		065EBBFD2BA01B4B00CBA2DB /* AsyncFlatMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC42BA01B4B00CBA2DB /* AsyncFlatMapSequence.swift */; };
+		065EBBFE2BA01B4B00CBA2DB /* AsyncIteratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC52BA01B4B00CBA2DB /* AsyncIteratorProtocol.swift */; };
+		065EBBFF2BA01B4B00CBA2DB /* AsyncMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC62BA01B4B00CBA2DB /* AsyncMapSequence.swift */; };
+		065EBC002BA01B4B00CBA2DB /* AsyncPrefixSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC72BA01B4B00CBA2DB /* AsyncPrefixSequence.swift */; };
+		065EBC012BA01B4B00CBA2DB /* AsyncPrefixWhileSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC82BA01B4B00CBA2DB /* AsyncPrefixWhileSequence.swift */; };
+		065EBC022BA01B4B00CBA2DB /* AsyncSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBC92BA01B4B00CBA2DB /* AsyncSequence.swift */; };
+		065EBC032BA01B4B00CBA2DB /* AsyncStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCA2BA01B4B00CBA2DB /* AsyncStream.cpp */; };
+		065EBC042BA01B4B00CBA2DB /* AsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCB2BA01B4B00CBA2DB /* AsyncStream.swift */; };
+		065EBC052BA01B4B00CBA2DB /* AsyncStreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCC2BA01B4B00CBA2DB /* AsyncStreamBuffer.swift */; };
+		065EBC062BA01B4B00CBA2DB /* AsyncThrowingCompactMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCD2BA01B4B00CBA2DB /* AsyncThrowingCompactMapSequence.swift */; };
+		065EBC072BA01B4B00CBA2DB /* AsyncThrowingDropWhileSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCE2BA01B4B00CBA2DB /* AsyncThrowingDropWhileSequence.swift */; };
+		065EBC082BA01B4B00CBA2DB /* AsyncThrowingFilterSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBCF2BA01B4B00CBA2DB /* AsyncThrowingFilterSequence.swift */; };
+		065EBC092BA01B4B00CBA2DB /* AsyncThrowingFlatMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD02BA01B4B00CBA2DB /* AsyncThrowingFlatMapSequence.swift */; };
+		065EBC0A2BA01B4B00CBA2DB /* AsyncThrowingMapSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD12BA01B4B00CBA2DB /* AsyncThrowingMapSequence.swift */; };
+		065EBC0B2BA01B4B00CBA2DB /* AsyncThrowingPrefixWhileSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD22BA01B4B00CBA2DB /* AsyncThrowingPrefixWhileSequence.swift */; };
+		065EBC0C2BA01B4B00CBA2DB /* AsyncThrowingStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD32BA01B4B00CBA2DB /* AsyncThrowingStream.swift */; };
+		065EBC0D2BA01B4B00CBA2DB /* GlobalActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD52BA01B4B00CBA2DB /* GlobalActor.swift */; };
+		065EBC0E2BA01B4B00CBA2DB /* TaskAlloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD62BA01B4B00CBA2DB /* TaskAlloc.cpp */; };
+		065EBC0F2BA01B4B00CBA2DB /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD72BA01B4B00CBA2DB /* Clock.swift */; };
+		065EBC102BA01B4B00CBA2DB /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD82BA01B4B00CBA2DB /* Deque.swift */; };
+		065EBC112BA01B4B00CBA2DB /* NonDispatchGlobalExecutor.inc in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBD92BA01B4B00CBA2DB /* NonDispatchGlobalExecutor.inc */; };
+		065EBC122BA01B4B00CBA2DB /* AsyncLet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDA2BA01B4B00CBA2DB /* AsyncLet.swift */; };
+		065EBC132BA01B4B00CBA2DB /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDB2BA01B4B00CBA2DB /* Clock.cpp */; };
+		065EBC142BA01B4B00CBA2DB /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDC2BA01B4B00CBA2DB /* Error.cpp */; };
+		065EBC152BA01B4B00CBA2DB /* TaskCancellation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDD2BA01B4B00CBA2DB /* TaskCancellation.swift */; };
+		065EBC162BA01B4B00CBA2DB /* SuspendingClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDE2BA01B4B00CBA2DB /* SuspendingClock.swift */; };
+		065EBC172BA01B4B00CBA2DB /* ContinuousClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBDF2BA01B4B00CBA2DB /* ContinuousClock.swift */; };
+		065EBC182BA01B4B00CBA2DB /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 065EBBE02BA01B4B00CBA2DB /* Actor.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		065EBB8D2BA01B3600CBA2DB /* AsyncAwait.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncAwait.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		065EBB902BA01B3600CBA2DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		065EBB922BA01B3600CBA2DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		065EBB942BA01B3700CBA2DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		065EBB972BA01B3700CBA2DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		065EBB992BA01B3700CBA2DB /* AsyncAwait.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AsyncAwait.entitlements; sourceTree = "<group>"; };
+		065EBB9F2BA01B4A00CBA2DB /* AsyncAwait-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsyncAwait-Bridging-Header.h"; sourceTree = "<group>"; };
+		065EBBA02BA01B4A00CBA2DB /* Task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Task.cpp; path = ../../Task.cpp; sourceTree = "<group>"; };
+		065EBBA12BA01B4A00CBA2DB /* TaskStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskStatus.cpp; path = ../../TaskStatus.cpp; sourceTree = "<group>"; };
+		065EBBA22BA01B4A00CBA2DB /* TaskLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskLocal.swift; path = ../../TaskLocal.swift; sourceTree = "<group>"; };
+		065EBBA32BA01B4A00CBA2DB /* TaskGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskGroup.cpp; path = ../../TaskGroup.cpp; sourceTree = "<group>"; };
+		065EBBA42BA01B4A00CBA2DB /* AsyncLet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AsyncLet.cpp; path = ../../AsyncLet.cpp; sourceTree = "<group>"; };
+		065EBBA52BA01B4A00CBA2DB /* PartialAsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartialAsyncTask.swift; path = ../../PartialAsyncTask.swift; sourceTree = "<group>"; };
+		065EBBA62BA01B4A00CBA2DB /* MainActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainActor.swift; path = ../../MainActor.swift; sourceTree = "<group>"; };
+		065EBBA72BA01B4A00CBA2DB /* CheckedContinuation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckedContinuation.swift; path = ../../CheckedContinuation.swift; sourceTree = "<group>"; };
+		065EBBA82BA01B4A00CBA2DB /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = ../../Errors.swift; sourceTree = "<group>"; };
+		065EBBA92BA01B4A00CBA2DB /* DispatchGlobalExecutor.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; name = DispatchGlobalExecutor.inc; path = ../../DispatchGlobalExecutor.inc; sourceTree = "<group>"; };
+		065EBBAA2BA01B4A00CBA2DB /* SourceCompatibilityShims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SourceCompatibilityShims.swift; path = ../../SourceCompatibilityShims.swift; sourceTree = "<group>"; };
+		065EBBAB2BA01B4A00CBA2DB /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Debug.h; path = ../../Debug.h; sourceTree = "<group>"; };
+		065EBBAC2BA01B4A00CBA2DB /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Executor.swift; path = ../../Executor.swift; sourceTree = "<group>"; };
+		065EBBAD2BA01B4A00CBA2DB /* GlobalExecutor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalExecutor.cpp; path = ../../GlobalExecutor.cpp; sourceTree = "<group>"; };
+		065EBBAE2BA01B4A00CBA2DB /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../../Task.swift; sourceTree = "<group>"; };
+		065EBBAF2BA01B4A00CBA2DB /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = ../../CMakeLists.txt; sourceTree = "<group>"; };
+		065EBBB02BA01B4A00CBA2DB /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Error.h; path = ../../Error.h; sourceTree = "<group>"; };
+		065EBBB12BA01B4A00CBA2DB /* TaskGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskGroup.swift; path = ../../TaskGroup.swift; sourceTree = "<group>"; };
+		065EBBB22BA01B4A00CBA2DB /* TaskGroupPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGroupPrivate.h; path = ../../TaskGroupPrivate.h; sourceTree = "<group>"; };
+		065EBBB32BA01B4A00CBA2DB /* TaskLocal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskLocal.cpp; path = ../../TaskLocal.cpp; sourceTree = "<group>"; };
+		065EBBB42BA01B4A00CBA2DB /* ThreadSanitizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadSanitizer.cpp; path = ../../ThreadSanitizer.cpp; sourceTree = "<group>"; };
+		065EBBB52BA01B4A00CBA2DB /* Tracing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracing.h; path = ../../Tracing.h; sourceTree = "<group>"; };
+		065EBBB62BA01B4A00CBA2DB /* TracingSignpost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TracingSignpost.h; path = ../../TracingSignpost.h; sourceTree = "<group>"; };
+		065EBBB72BA01B4A00CBA2DB /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Actor.swift; path = ../../Actor.swift; sourceTree = "<group>"; };
+		065EBBB82BA01B4B00CBA2DB /* VoucherSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VoucherSupport.h; path = ../../VoucherSupport.h; sourceTree = "<group>"; };
+		065EBBB92BA01B4B00CBA2DB /* TracingStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TracingStubs.h; path = ../../TracingStubs.h; sourceTree = "<group>"; };
+		065EBBBA2BA01B4B00CBA2DB /* TaskSleep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSleep.swift; path = ../../TaskSleep.swift; sourceTree = "<group>"; };
+		065EBBBB2BA01B4B00CBA2DB /* TaskSleepDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSleepDuration.swift; path = ../../TaskSleepDuration.swift; sourceTree = "<group>"; };
+		065EBBBC2BA01B4B00CBA2DB /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mutex.cpp; path = ../../Mutex.cpp; sourceTree = "<group>"; };
+		065EBBBD2BA01B4B00CBA2DB /* CooperativeGlobalExecutor.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; name = CooperativeGlobalExecutor.inc; path = ../../CooperativeGlobalExecutor.inc; sourceTree = "<group>"; };
+		065EBBBE2BA01B4B00CBA2DB /* TracingSignpost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TracingSignpost.cpp; path = ../../TracingSignpost.cpp; sourceTree = "<group>"; };
+		065EBBBF2BA01B4B00CBA2DB /* TaskPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskPrivate.h; path = ../../TaskPrivate.h; sourceTree = "<group>"; };
+		065EBBC02BA01B4B00CBA2DB /* AsyncCompactMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncCompactMapSequence.swift; sourceTree = "<group>"; };
+		065EBBC12BA01B4B00CBA2DB /* AsyncDropFirstSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncDropFirstSequence.swift; sourceTree = "<group>"; };
+		065EBBC22BA01B4B00CBA2DB /* AsyncDropWhileSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncDropWhileSequence.swift; sourceTree = "<group>"; };
+		065EBBC32BA01B4B00CBA2DB /* AsyncFilterSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncFilterSequence.swift; sourceTree = "<group>"; };
+		065EBBC42BA01B4B00CBA2DB /* AsyncFlatMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncFlatMapSequence.swift; sourceTree = "<group>"; };
+		065EBBC52BA01B4B00CBA2DB /* AsyncIteratorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncIteratorProtocol.swift; sourceTree = "<group>"; };
+		065EBBC62BA01B4B00CBA2DB /* AsyncMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncMapSequence.swift; sourceTree = "<group>"; };
+		065EBBC72BA01B4B00CBA2DB /* AsyncPrefixSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncPrefixSequence.swift; sourceTree = "<group>"; };
+		065EBBC82BA01B4B00CBA2DB /* AsyncPrefixWhileSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncPrefixWhileSequence.swift; sourceTree = "<group>"; };
+		065EBBC92BA01B4B00CBA2DB /* AsyncSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSequence.swift; sourceTree = "<group>"; };
+		065EBBCA2BA01B4B00CBA2DB /* AsyncStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncStream.cpp; sourceTree = "<group>"; };
+		065EBBCB2BA01B4B00CBA2DB /* AsyncStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncStream.swift; sourceTree = "<group>"; };
+		065EBBCC2BA01B4B00CBA2DB /* AsyncStreamBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncStreamBuffer.swift; sourceTree = "<group>"; };
+		065EBBCD2BA01B4B00CBA2DB /* AsyncThrowingCompactMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingCompactMapSequence.swift; sourceTree = "<group>"; };
+		065EBBCE2BA01B4B00CBA2DB /* AsyncThrowingDropWhileSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingDropWhileSequence.swift; sourceTree = "<group>"; };
+		065EBBCF2BA01B4B00CBA2DB /* AsyncThrowingFilterSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingFilterSequence.swift; sourceTree = "<group>"; };
+		065EBBD02BA01B4B00CBA2DB /* AsyncThrowingFlatMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingFlatMapSequence.swift; sourceTree = "<group>"; };
+		065EBBD12BA01B4B00CBA2DB /* AsyncThrowingMapSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingMapSequence.swift; sourceTree = "<group>"; };
+		065EBBD22BA01B4B00CBA2DB /* AsyncThrowingPrefixWhileSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingPrefixWhileSequence.swift; sourceTree = "<group>"; };
+		065EBBD32BA01B4B00CBA2DB /* AsyncThrowingStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncThrowingStream.swift; sourceTree = "<group>"; };
+		065EBBD52BA01B4B00CBA2DB /* GlobalActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalActor.swift; path = ../../GlobalActor.swift; sourceTree = "<group>"; };
+		065EBBD62BA01B4B00CBA2DB /* TaskAlloc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskAlloc.cpp; path = ../../TaskAlloc.cpp; sourceTree = "<group>"; };
+		065EBBD72BA01B4B00CBA2DB /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = ../../Clock.swift; sourceTree = "<group>"; };
+		065EBBD82BA01B4B00CBA2DB /* Deque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Deque.swift; path = ../../Deque.swift; sourceTree = "<group>"; };
+		065EBBD92BA01B4B00CBA2DB /* NonDispatchGlobalExecutor.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; name = NonDispatchGlobalExecutor.inc; path = ../../NonDispatchGlobalExecutor.inc; sourceTree = "<group>"; };
+		065EBBDA2BA01B4B00CBA2DB /* AsyncLet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncLet.swift; path = ../../AsyncLet.swift; sourceTree = "<group>"; };
+		065EBBDB2BA01B4B00CBA2DB /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Clock.cpp; path = ../../Clock.cpp; sourceTree = "<group>"; };
+		065EBBDC2BA01B4B00CBA2DB /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Error.cpp; path = ../../Error.cpp; sourceTree = "<group>"; };
+		065EBBDD2BA01B4B00CBA2DB /* TaskCancellation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCancellation.swift; path = ../../TaskCancellation.swift; sourceTree = "<group>"; };
+		065EBBDE2BA01B4B00CBA2DB /* SuspendingClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuspendingClock.swift; path = ../../SuspendingClock.swift; sourceTree = "<group>"; };
+		065EBBDF2BA01B4B00CBA2DB /* ContinuousClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContinuousClock.swift; path = ../../ContinuousClock.swift; sourceTree = "<group>"; };
+		065EBBE02BA01B4B00CBA2DB /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Actor.cpp; path = ../../Actor.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		065EBB8A2BA01B3600CBA2DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		065EBB842BA01B3600CBA2DB = {
+			isa = PBXGroup;
+			children = (
+				065EBB8F2BA01B3600CBA2DB /* AsyncAwait */,
+				065EBB8E2BA01B3600CBA2DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		065EBB8E2BA01B3600CBA2DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				065EBB8D2BA01B3600CBA2DB /* AsyncAwait.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		065EBB8F2BA01B3600CBA2DB /* AsyncAwait */ = {
+			isa = PBXGroup;
+			children = (
+				065EBBE02BA01B4B00CBA2DB /* Actor.cpp */,
+				065EBBB72BA01B4A00CBA2DB /* Actor.swift */,
+				065EBBA42BA01B4A00CBA2DB /* AsyncLet.cpp */,
+				065EBBDA2BA01B4B00CBA2DB /* AsyncLet.swift */,
+				065EBBA72BA01B4A00CBA2DB /* CheckedContinuation.swift */,
+				065EBBDB2BA01B4B00CBA2DB /* Clock.cpp */,
+				065EBBD72BA01B4B00CBA2DB /* Clock.swift */,
+				065EBBAF2BA01B4A00CBA2DB /* CMakeLists.txt */,
+				065EBBDF2BA01B4B00CBA2DB /* ContinuousClock.swift */,
+				065EBBBD2BA01B4B00CBA2DB /* CooperativeGlobalExecutor.inc */,
+				065EBBAB2BA01B4A00CBA2DB /* Debug.h */,
+				065EBBD82BA01B4B00CBA2DB /* Deque.swift */,
+				065EBBA92BA01B4A00CBA2DB /* DispatchGlobalExecutor.inc */,
+				065EBBDC2BA01B4B00CBA2DB /* Error.cpp */,
+				065EBBB02BA01B4A00CBA2DB /* Error.h */,
+				065EBBA82BA01B4A00CBA2DB /* Errors.swift */,
+				065EBBAC2BA01B4A00CBA2DB /* Executor.swift */,
+				065EBBD52BA01B4B00CBA2DB /* GlobalActor.swift */,
+				065EBBAD2BA01B4A00CBA2DB /* GlobalExecutor.cpp */,
+				065EBBA62BA01B4A00CBA2DB /* MainActor.swift */,
+				065EBBBC2BA01B4B00CBA2DB /* Mutex.cpp */,
+				065EBBD92BA01B4B00CBA2DB /* NonDispatchGlobalExecutor.inc */,
+				065EBBA52BA01B4A00CBA2DB /* PartialAsyncTask.swift */,
+				065EBBD42BA01B4B00CBA2DB /* Sequence */,
+				065EBBAA2BA01B4A00CBA2DB /* SourceCompatibilityShims.swift */,
+				065EBBDE2BA01B4B00CBA2DB /* SuspendingClock.swift */,
+				065EBBA02BA01B4A00CBA2DB /* Task.cpp */,
+				065EBBAE2BA01B4A00CBA2DB /* Task.swift */,
+				065EBBD62BA01B4B00CBA2DB /* TaskAlloc.cpp */,
+				065EBBDD2BA01B4B00CBA2DB /* TaskCancellation.swift */,
+				065EBBA32BA01B4A00CBA2DB /* TaskGroup.cpp */,
+				065EBBB12BA01B4A00CBA2DB /* TaskGroup.swift */,
+				065EBBB22BA01B4A00CBA2DB /* TaskGroupPrivate.h */,
+				065EBBB32BA01B4A00CBA2DB /* TaskLocal.cpp */,
+				065EBBA22BA01B4A00CBA2DB /* TaskLocal.swift */,
+				065EBBBF2BA01B4B00CBA2DB /* TaskPrivate.h */,
+				065EBBBA2BA01B4B00CBA2DB /* TaskSleep.swift */,
+				065EBBBB2BA01B4B00CBA2DB /* TaskSleepDuration.swift */,
+				065EBBA12BA01B4A00CBA2DB /* TaskStatus.cpp */,
+				065EBBB42BA01B4A00CBA2DB /* ThreadSanitizer.cpp */,
+				065EBBB52BA01B4A00CBA2DB /* Tracing.h */,
+				065EBBBE2BA01B4B00CBA2DB /* TracingSignpost.cpp */,
+				065EBBB62BA01B4A00CBA2DB /* TracingSignpost.h */,
+				065EBBB92BA01B4B00CBA2DB /* TracingStubs.h */,
+				065EBBB82BA01B4B00CBA2DB /* VoucherSupport.h */,
+				065EBB902BA01B3600CBA2DB /* AppDelegate.swift */,
+				065EBB922BA01B3600CBA2DB /* ViewController.swift */,
+				065EBB942BA01B3700CBA2DB /* Assets.xcassets */,
+				065EBB962BA01B3700CBA2DB /* Main.storyboard */,
+				065EBB992BA01B3700CBA2DB /* AsyncAwait.entitlements */,
+				065EBB9F2BA01B4A00CBA2DB /* AsyncAwait-Bridging-Header.h */,
+			);
+			path = AsyncAwait;
+			sourceTree = "<group>";
+		};
+		065EBBD42BA01B4B00CBA2DB /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				065EBBC02BA01B4B00CBA2DB /* AsyncCompactMapSequence.swift */,
+				065EBBC12BA01B4B00CBA2DB /* AsyncDropFirstSequence.swift */,
+				065EBBC22BA01B4B00CBA2DB /* AsyncDropWhileSequence.swift */,
+				065EBBC32BA01B4B00CBA2DB /* AsyncFilterSequence.swift */,
+				065EBBC42BA01B4B00CBA2DB /* AsyncFlatMapSequence.swift */,
+				065EBBC52BA01B4B00CBA2DB /* AsyncIteratorProtocol.swift */,
+				065EBBC62BA01B4B00CBA2DB /* AsyncMapSequence.swift */,
+				065EBBC72BA01B4B00CBA2DB /* AsyncPrefixSequence.swift */,
+				065EBBC82BA01B4B00CBA2DB /* AsyncPrefixWhileSequence.swift */,
+				065EBBC92BA01B4B00CBA2DB /* AsyncSequence.swift */,
+				065EBBCA2BA01B4B00CBA2DB /* AsyncStream.cpp */,
+				065EBBCB2BA01B4B00CBA2DB /* AsyncStream.swift */,
+				065EBBCC2BA01B4B00CBA2DB /* AsyncStreamBuffer.swift */,
+				065EBBCD2BA01B4B00CBA2DB /* AsyncThrowingCompactMapSequence.swift */,
+				065EBBCE2BA01B4B00CBA2DB /* AsyncThrowingDropWhileSequence.swift */,
+				065EBBCF2BA01B4B00CBA2DB /* AsyncThrowingFilterSequence.swift */,
+				065EBBD02BA01B4B00CBA2DB /* AsyncThrowingFlatMapSequence.swift */,
+				065EBBD12BA01B4B00CBA2DB /* AsyncThrowingMapSequence.swift */,
+				065EBBD22BA01B4B00CBA2DB /* AsyncThrowingPrefixWhileSequence.swift */,
+				065EBBD32BA01B4B00CBA2DB /* AsyncThrowingStream.swift */,
+			);
+			name = Sequence;
+			path = ../../Sequence;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		065EBB8C2BA01B3600CBA2DB /* AsyncAwait */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 065EBB9C2BA01B3700CBA2DB /* Build configuration list for PBXNativeTarget "AsyncAwait" */;
+			buildPhases = (
+				065EBB892BA01B3600CBA2DB /* Sources */,
+				065EBB8A2BA01B3600CBA2DB /* Frameworks */,
+				065EBB8B2BA01B3600CBA2DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AsyncAwait;
+			productName = AsyncAwait;
+			productReference = 065EBB8D2BA01B3600CBA2DB /* AsyncAwait.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		065EBB852BA01B3600CBA2DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					065EBB8C2BA01B3600CBA2DB = {
+						CreatedOnToolsVersion = 15.3;
+						LastSwiftMigration = 1530;
+					};
+				};
+			};
+			buildConfigurationList = 065EBB882BA01B3600CBA2DB /* Build configuration list for PBXProject "AsyncAwait" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 065EBB842BA01B3600CBA2DB;
+			productRefGroup = 065EBB8E2BA01B3600CBA2DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				065EBB8C2BA01B3600CBA2DB /* AsyncAwait */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		065EBB8B2BA01B3600CBA2DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				065EBB952BA01B3700CBA2DB /* Assets.xcassets in Resources */,
+				065EBB982BA01B3700CBA2DB /* Base in Resources */,
+				065EBBEF2BA01B4B00CBA2DB /* CMakeLists.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		065EBB892BA01B3600CBA2DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				065EBBE42BA01B4B00CBA2DB /* TaskGroup.cpp in Sources */,
+				065EBC0B2BA01B4B00CBA2DB /* AsyncThrowingPrefixWhileSequence.swift in Sources */,
+				065EBBFD2BA01B4B00CBA2DB /* AsyncFlatMapSequence.swift in Sources */,
+				065EBC182BA01B4B00CBA2DB /* Actor.cpp in Sources */,
+				065EBC042BA01B4B00CBA2DB /* AsyncStream.swift in Sources */,
+				065EBBF02BA01B4B00CBA2DB /* TaskGroup.swift in Sources */,
+				065EBC0E2BA01B4B00CBA2DB /* TaskAlloc.cpp in Sources */,
+				065EBBE12BA01B4B00CBA2DB /* Task.cpp in Sources */,
+				065EBB932BA01B3600CBA2DB /* ViewController.swift in Sources */,
+				065EBBFE2BA01B4B00CBA2DB /* AsyncIteratorProtocol.swift in Sources */,
+				065EBBFF2BA01B4B00CBA2DB /* AsyncMapSequence.swift in Sources */,
+				065EBC062BA01B4B00CBA2DB /* AsyncThrowingCompactMapSequence.swift in Sources */,
+				065EBC172BA01B4B00CBA2DB /* ContinuousClock.swift in Sources */,
+				065EBBE52BA01B4B00CBA2DB /* AsyncLet.cpp in Sources */,
+				065EBBFA2BA01B4B00CBA2DB /* AsyncDropFirstSequence.swift in Sources */,
+				065EBBE22BA01B4B00CBA2DB /* TaskStatus.cpp in Sources */,
+				065EBBF52BA01B4B00CBA2DB /* TaskSleepDuration.swift in Sources */,
+				065EBBE32BA01B4B00CBA2DB /* TaskLocal.swift in Sources */,
+				065EBC0A2BA01B4B00CBA2DB /* AsyncThrowingMapSequence.swift in Sources */,
+				065EBBEC2BA01B4B00CBA2DB /* Executor.swift in Sources */,
+				065EBC0F2BA01B4B00CBA2DB /* Clock.swift in Sources */,
+				065EBBEA2BA01B4B00CBA2DB /* DispatchGlobalExecutor.inc in Sources */,
+				065EBC032BA01B4B00CBA2DB /* AsyncStream.cpp in Sources */,
+				065EBBFC2BA01B4B00CBA2DB /* AsyncFilterSequence.swift in Sources */,
+				065EBC162BA01B4B00CBA2DB /* SuspendingClock.swift in Sources */,
+				065EBC022BA01B4B00CBA2DB /* AsyncSequence.swift in Sources */,
+				065EBC092BA01B4B00CBA2DB /* AsyncThrowingFlatMapSequence.swift in Sources */,
+				065EBC052BA01B4B00CBA2DB /* AsyncStreamBuffer.swift in Sources */,
+				065EBC142BA01B4B00CBA2DB /* Error.cpp in Sources */,
+				065EBBEE2BA01B4B00CBA2DB /* Task.swift in Sources */,
+				065EBBEB2BA01B4B00CBA2DB /* SourceCompatibilityShims.swift in Sources */,
+				065EBC072BA01B4B00CBA2DB /* AsyncThrowingDropWhileSequence.swift in Sources */,
+				065EBC0D2BA01B4B00CBA2DB /* GlobalActor.swift in Sources */,
+				065EBBE82BA01B4B00CBA2DB /* CheckedContinuation.swift in Sources */,
+				065EBC082BA01B4B00CBA2DB /* AsyncThrowingFilterSequence.swift in Sources */,
+				065EBBE92BA01B4B00CBA2DB /* Errors.swift in Sources */,
+				065EBC002BA01B4B00CBA2DB /* AsyncPrefixSequence.swift in Sources */,
+				065EBC122BA01B4B00CBA2DB /* AsyncLet.swift in Sources */,
+				065EBC132BA01B4B00CBA2DB /* Clock.cpp in Sources */,
+				065EBBF72BA01B4B00CBA2DB /* CooperativeGlobalExecutor.inc in Sources */,
+				065EBBF22BA01B4B00CBA2DB /* ThreadSanitizer.cpp in Sources */,
+				065EBBF82BA01B4B00CBA2DB /* TracingSignpost.cpp in Sources */,
+				065EBC102BA01B4B00CBA2DB /* Deque.swift in Sources */,
+				065EBBED2BA01B4B00CBA2DB /* GlobalExecutor.cpp in Sources */,
+				065EBBF12BA01B4B00CBA2DB /* TaskLocal.cpp in Sources */,
+				065EBBFB2BA01B4B00CBA2DB /* AsyncDropWhileSequence.swift in Sources */,
+				065EBC112BA01B4B00CBA2DB /* NonDispatchGlobalExecutor.inc in Sources */,
+				065EBBE72BA01B4B00CBA2DB /* MainActor.swift in Sources */,
+				065EBC012BA01B4B00CBA2DB /* AsyncPrefixWhileSequence.swift in Sources */,
+				065EBB912BA01B3600CBA2DB /* AppDelegate.swift in Sources */,
+				065EBBE62BA01B4B00CBA2DB /* PartialAsyncTask.swift in Sources */,
+				065EBBF92BA01B4B00CBA2DB /* AsyncCompactMapSequence.swift in Sources */,
+				065EBC152BA01B4B00CBA2DB /* TaskCancellation.swift in Sources */,
+				065EBC0C2BA01B4B00CBA2DB /* AsyncThrowingStream.swift in Sources */,
+				065EBBF32BA01B4B00CBA2DB /* Actor.swift in Sources */,
+				065EBBF42BA01B4B00CBA2DB /* TaskSleep.swift in Sources */,
+				065EBBF62BA01B4B00CBA2DB /* Mutex.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		065EBB962BA01B3700CBA2DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				065EBB972BA01B3700CBA2DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		065EBB9A2BA01B3700CBA2DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		065EBB9B2BA01B3700CBA2DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		065EBB9D2BA01B3700CBA2DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AsyncAwait/AsyncAwait.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5A8RFL8W7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redstar.binggo.AsyncAwait;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncAwait/AsyncAwait-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		065EBB9E2BA01B3700CBA2DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AsyncAwait/AsyncAwait.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q5A8RFL8W7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redstar.binggo.AsyncAwait;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncAwait/AsyncAwait-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		065EBB882BA01B3600CBA2DB /* Build configuration list for PBXProject "AsyncAwait" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				065EBB9A2BA01B3700CBA2DB /* Debug */,
+				065EBB9B2BA01B3700CBA2DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		065EBB9C2BA01B3700CBA2DB /* Build configuration list for PBXNativeTarget "AsyncAwait" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				065EBB9D2BA01B3700CBA2DB /* Debug */,
+				065EBB9E2BA01B3700CBA2DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 065EBB852BA01B3600CBA2DB /* Project object */;
+}
