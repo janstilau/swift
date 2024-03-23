@@ -5,6 +5,7 @@
  将发生的错误, 以及正确的业务数据, 塞到一个 Result 的 Enum 中.
  这要比, Data, Error 这种方式更加的清晰, 还是那个原则, 将 Enum 当做盒子来进行看待.
  */
+// 使用 Result, 需要将 Success, 和 Error 的类型, 都显式的写出来.
 public enum Result<Success, Failure: Error> {
     /// A success, storing a `Success` value.
     case success(Success)
@@ -30,7 +31,7 @@ public enum Result<Success, Failure: Error> {
     ///   instance.
     /// - Returns: A `Result` instance with the result of evaluating `transform`
     ///   as the new success value if this instance represents a success.
-    // 这种, 根据 Enum 的 case 值, 来进行 transform 的函数, 其实非常非常普遍.
+    // 可以看到, 在新的返回值里面, Success 的 Type 已经是 NewSuccess 了.
     public func map<NewSuccess>(
         _ transform: (Success) -> NewSuccess
     ) -> Result<NewSuccess, Failure> {
