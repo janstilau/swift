@@ -2,7 +2,8 @@
 import Swift
 
 /// A service that can execute jobs.
-// 可以入队任务. 
+// 可以入队任务.
+
 @available(SwiftStdlib 5.1, *)
 public protocol Executor: AnyObject, Sendable {
   func enqueue(_ job: UnownedJob)
@@ -34,6 +35,11 @@ public protocol SerialExecutor: Executor {
 /// also keep the actor's associated executor alive; if they are
 /// different objects, the executor must be referenced strongly by the
 /// actor.
+/*
+ /// 一个对串行执行器（SerialExecutor 值）的无所有权引用。
+
+ /// 这是核心调度操作内部使用的优化类型。 它是一个无所有权引用，以避免在抽象地处理 actor 时进行不必要的引用计数工作。 通常，为了允许这样做，核心操作会施加额外的约束。 例如，保持一个 actor 存活必须同时保持 actor 的关联执行器存活；如果它们是不同的对象，执行器必须由 actor 强引用。
+ */
 @available(SwiftStdlib 5.1, *)
 @frozen
 public struct UnownedSerialExecutor: Sendable {
@@ -64,6 +70,7 @@ public struct UnownedSerialExecutor: Sendable {
 @_silgen_name("_swift_task_enqueueOnExecutor")
 internal func _enqueueOnExecutor<E>(job: UnownedJob, executor: E)
 where E: SerialExecutor {
+    // 这里方法经常看到.
   executor.enqueue(job)
 }
 

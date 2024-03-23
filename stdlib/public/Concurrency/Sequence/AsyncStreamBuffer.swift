@@ -125,7 +125,6 @@ extension AsyncStream {
             let limit = state.limit
             let count = state.pending.count
             
-            // 如果, 已经有存储的 continuation 了, 那么其实是每次产生数据, 都有一个环境操作在里面.
             if !state.continuations.isEmpty {
                 /*
                  可能会在不同的线程里面, 调用 it.next, 所以, 可能会有不同的协程, 进行等待.

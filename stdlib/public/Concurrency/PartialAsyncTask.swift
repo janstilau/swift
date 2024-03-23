@@ -55,6 +55,15 @@ public struct UnownedJob: Sendable {
 /// Because both types have the same interface,
 /// you can replace one with the other in most circumstances,
 /// without making other changes.
+/*
+ /// 这是一个在同步和异步代码之间进行接口交互的机制，但不进行正确性检查。
+
+ /// *Continuation* 是程序状态的不透明表示。在异步代码中创建 continuation，调用 `withUnsafeContinuation(_:)` 或 `withUnsafeThrowingContinuation(_:)` 函数。要恢复异步任务，调用 `resume(returning:)`、`resume(throwing:)`、`resume(with:)` 或 `resume()` 方法。
+
+ /// - 重要：在程序的每个执行路径上，您必须恰好调用一次 resume 方法。从 continuation 恢复超过一次是未定义行为。不恢复将使任务无限期处于挂起状态，并泄漏任何相关资源。
+
+ /// `CheckedContinuation` 执行运行时检查，以确保未丢失或多次恢复操作。`UnsafeContinuation` 避免在运行时强制执行这些不变式，因为它旨在成为一种低开销的机制，用于将 Swift 任务与事件循环、委托方法、回调和其他非`async`调度机制进行接口交互。然而，在开发过程中，验证这些不变式在测试中被遵守的能力是很重要的。由于这两种类型具有相同的接口，因此在大多数情况下，您可以在不进行其他更改的情况下将一个替换为另一个。
+ */
 @available(SwiftStdlib 5.1, *)
 // 实际上, 这就是一个包装类型.
 // 真正的调用, 是使用了系统的底层函数.

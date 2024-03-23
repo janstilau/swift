@@ -64,6 +64,29 @@ import Swift
 /// like the reason for cancellation.
 /// This reflects the fact that a task can be canceled for many reasons,
 /// and additional reasons can accrue during the cancellation process.
+
+/*
+ /// 一个异步工作单元。
+
+ /// 当你创建一个 `Task` 实例时，你提供一个包含该任务要执行的工作的闭包。任务可以在创建后立即开始运行；你不需要显式地启动或安排它们。创建任务后，你使用该实例与其进行交互 --- 例如，等待其完成或取消它。丢弃对任务的引用而不等待该任务完成或取消它并不是编程错误。任务会运行，无论你是否保留对它的引用。然而，如果你丢弃了对任务的引用，你就放弃了等待该任务结果或取消任务的能力。
+
+ /// 为了支持对当前任务的操作，它可以是一个分离任务或子任务，`Task` 也暴露了类方法，如 `yield()`。因为这些方法是异步的，所以它们总是作为现有任务的一部分调用。
+
+ /// 只有作为任务的一部分运行的代码才能与该任务进行交互。要与当前任务进行交互，你调用 `Task` 上的一个静态方法。
+
+ /// 任务的执行可以看作是任务运行的一系列周期。每个这样的周期在挂起点或任务完成时结束。这些执行周期由 `PartialAsyncTask` 的实例表示。除非你正在实现自定义执行器，否则你不会直接与部分任务交互。
+
+ /// 有关 `Task` 所在的语言级并发模型的信息，请参阅[The Swift Programming Language][tspl] 中的[Concurrency][concurrency]。
+
+ /// 任务取消
+ /// ========
+ /// 任务包括一种用于指示取消的共享机制，但没有用于处理取消的共享实现。根据任务中的工作，停止该工作的正确方法会有所不同。同样，代码作为任务的一部分运行时，负责在适当时检查取消。在包含多个部分的长任务中，你可能需要在几个点上检查取消，并在每个点上以不同的方式处理取消。如果你只需要抛出错误来停止工作，请调用 `Task.checkCancellation()` 函数来检查取消。对取消的其他响应包括返回已完成的工作，返回空结果或返回 `nil`。
+
+ /// 取消是一种纯布尔状态；没有办法包含额外的信息，比如取消的原因。这反映了任务可能因多种原因而被取消，并且在取消过程中可能会积累额外的原因。
+
+ [concurrency]: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
+ [tspl]: https://docs.swift.org/swift-book/
+ */
 @available(SwiftStdlib 5.1, *)
 @frozen
 public struct Task<Success: Sendable, Failure: Error>: Sendable {
@@ -205,6 +228,20 @@ extension Task: Equatable {
 /// In both cases, priority elevation helps you prevent a low-priority task
 /// from blocking the execution of a high priority task,
 /// which is also known as *priority inversion*.
+/*
+ /// 任务的优先级。
+
+ /// 执行器确定优先级信息如何影响任务调度的方式。行为取决于当前使用的执行器。通常，执行器会尝试在低优先级任务之前运行具有更高优先级的任务。然而，优先级的处理语义取决于每个平台和 `Executor` 实现。
+
+ /// 子任务会自动继承其父任务的优先级。通过 `detach(priority:operation:)` 创建的分离任务不会继承任务优先级，因为它们没有附加到当前任务。
+
+ /// 在某些情况下，任务的优先级会被提高 --- 也就是说，任务被视为具有更高的优先级，但实际上并没有改变任务的优先级：
+ ///
+ /// - 如果一个任务代表一个 actor 运行，并且一个新的具有更高优先级的任务被排入到该 actor 中，则该 actor 的当前任务会临时提高到被排入任务的优先级。这种优先级提升允许新任务以其被排入的优先级进行处理。
+ /// - 如果一个具有更高优先级的任务调用了 `get()` 方法，则此任务的优先级会增加，直到任务完成。
+
+ /// 在这两种情况下，优先级提升帮助您防止低优先级任务阻塞高优先级任务的执行，这也被称为*优先级反转*。
+ */
 @available(SwiftStdlib 5.1, *)
 public struct TaskPriority: RawRepresentable, Sendable {
     public typealias RawValue = UInt8

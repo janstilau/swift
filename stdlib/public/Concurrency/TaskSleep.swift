@@ -11,6 +11,8 @@ extension Task where Success == Never, Failure == Never {
     public static func sleep(_ duration: UInt64) async {
         return await Builtin.withUnsafeContinuation {
             (continuation: Builtin.RawUnsafeContinuation) -> Void in
+            // 在这里, 就是创建了一个 Job
+            // 首先, 创建了一个当前的状态, 然后, 将这个状态入队.
             let job = _taskCreateNullaryContinuationJob(
                 priority: Int(Task.currentPriority.rawValue),
                 continuation: continuation)
