@@ -17,7 +17,8 @@ public struct Unmanaged<Instance: AnyObject> {
     ///
     /// - Parameter value: An opaque C pointer.
     /// - Returns: An unmanaged class reference to `value`.
-    @_transparent
+    
+    // 实际上, 想要吧 C 函数, 变为对象, 其实就是应该使用 Unmanaged 这个类.
     public static func fromOpaque(
         _ value: UnsafeRawPointer
     ) -> Unmanaged {
@@ -49,7 +50,7 @@ public struct Unmanaged<Instance: AnyObject> {
     ///
     /// - Parameter value: A class instance.
     /// - Returns: An unmanaged reference to the object passed as `value`.
-    @_transparent
+    
     public static func passRetained(_ value: Instance) -> Unmanaged {
         return Unmanaged(_private: value).retain()
     }

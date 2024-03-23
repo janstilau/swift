@@ -71,3 +71,4 @@ SortedCFDatabase.def
 htmlcov
 .coverage
 /benchmark/scripts/Benchmark_Driverc
+UserInterfaceState.xcuserstate
